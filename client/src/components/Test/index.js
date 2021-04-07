@@ -25,16 +25,17 @@ const ContentContainer = styled.div`
   align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
 `;
 
-function TestMain() {
+function TestMain(props) {
   // User Name 입력 값 확인 메소드
   const [userName, setUserName] = useState('');
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setUserName(e.target.value);
   };
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // 이름을 입력하고, 시작하기를 누른다.
+    // 이름 state가 리덕스에 저장되어야한다.
+    // 화면 전환을 위해, isStarted 상태를 false -> true로 바껴야한다.
   };
 
   return (
@@ -59,7 +60,13 @@ function TestMain() {
             />
           </form>
         </FormContainer>
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          disabled={!userName}
+          type="submit"
+          variant="contained"
+          color="primary"
+          onClick={() => props.setIsStarted(2)}
+        >
           시작하기
         </Button>
       </ContentContainer>
