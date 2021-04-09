@@ -3691,6 +3691,13 @@
   "resolved" "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz"
   "version" "1.0.2"
 
+"cose-base@^1.0.0":
+  "integrity" "sha512-s9whTXInMSgAp/NVXVNuVxVKzGH2qck3aQlVHxDCdAEPgtMKwc4Wq6/QKhgdEdgbLSi9rBTAcPoRa6JpiG4ksg=="
+  "resolved" "https://registry.npmjs.org/cose-base/-/cose-base-1.0.3.tgz"
+  "version" "1.0.3"
+  dependencies:
+    "layout-base" "^1.0.0"
+
 "cosmiconfig@^5.0.0":
   "integrity" "sha512-H65gsXo1SKjf8zmrJ67eJk8aIRKV5ff2D4uKZIBZShbhGSpEmsQOPW/SKMKYhSTrqR7ufy6RP69rPogdaPh/kA=="
   "resolved" "https://registry.npmjs.org/cosmiconfig/-/cosmiconfig-5.2.1.tgz"
@@ -4053,7 +4060,14 @@
   "resolved" "https://registry.npmjs.org/cyclist/-/cyclist-1.0.1.tgz"
   "version" "1.0.1"
 
-"cytoscape@^3.18.2", "cytoscape@^3.2.19":
+"cytoscape-cose-bilkent@^4.1.0":
+  "integrity" "sha512-wgQlVIUJF13Quxiv5e1gstZ08rnZj2XaLHGoFMYXz7SkNfCDOOteKBE6SYRfA9WxxI/iBc3ajfDoc6hb/MRAHQ=="
+  "resolved" "https://registry.npmjs.org/cytoscape-cose-bilkent/-/cytoscape-cose-bilkent-4.1.0.tgz"
+  "version" "4.1.0"
+  dependencies:
+    "cose-base" "^1.0.0"
+
+"cytoscape@^3.18.2", "cytoscape@^3.2.0", "cytoscape@^3.2.19":
   "integrity" "sha512-NRY3JTrUzx0fSn44LyMlPqC8/zuuOo8kbr2hFlfjiObRmtir+lnxVg08f8wUA4X/P80df9vSThKDASl39yH+Iw=="
   "resolved" "https://registry.npmjs.org/cytoscape/-/cytoscape-3.18.2.tgz"
   "version" "3.18.2"
@@ -7196,6 +7210,11 @@
   dependencies:
     "lodash" "^4.17.5"
     "webpack-sources" "^1.1.0"
+
+"layout-base@^1.0.0":
+  "integrity" "sha512-8h2oVEZNktL4BH2JCOI90iD1yXwL6iNW7KcCKT2QZgQJR2vbqDsldCTPRU9NifTCqHZci57XvQQ15YTu+sTYPg=="
+  "resolved" "https://registry.npmjs.org/layout-base/-/layout-base-1.0.2.tgz"
+  "version" "1.0.2"
 
 "leven@^3.1.0":
   "integrity" "sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A=="
