@@ -6,7 +6,7 @@ import { IoHomeOutline, IoGameControllerOutline } from 'react-icons/io5';
 import { GiOrganigram } from 'react-icons/gi';
 
 import { useDispatch } from 'react-redux';
-import { homeSelect } from '../../actions';
+import { home } from '../../actions';
 
 export default function SimpleBottomNavigation() {
   const dispatch = useDispatch();
@@ -25,26 +25,26 @@ export default function SimpleBottomNavigation() {
       <BottomNavigationAction
         key={0}
         label="Home"
-        onMouseOver={() => dispatch(homeSelect(0))}
+        onMouseOver={() => dispatch(home(0))}
         icon={<IoHomeOutline />}
       />
 
       <BottomNavigationAction
         key={1}
         label="Test"
-        onMouseOver={() => dispatch(homeSelect(1))}
+        onMouseOver={() => dispatch(home(1))}
         icon={<BsCardChecklist />}
       />
       <BottomNavigationAction
         key={2}
         label="Game"
-        onMouseOver={() => dispatch(homeSelect(2))}
+        onMouseOver={() => dispatch(home(2))}
         icon={<IoGameControllerOutline />}
       />
       <BottomNavigationAction
         key={3}
         label="Characters"
-        onMouseOver={() => dispatch(homeSelect(3))}
+        onMouseOver={() => dispatch(home(3))}
         icon={<GiOrganigram />}
       />
     </BottomNavigation>
