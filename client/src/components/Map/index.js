@@ -2,7 +2,12 @@ import React from 'react';
 import Cytoscape from 'cytoscape';
 import CytoscapeComponent from 'react-cytoscapejs';
 import coseBilkent from 'cytoscape-cose-bilkent';
+import one from './1.jpg';
 import two from './2.jpg';
+import three from './3.jpg';
+import four from './4.jpg';
+import five from './5.jpg';
+import six from './6.jpg';
 
 const data = [
   // node
@@ -16,11 +21,25 @@ const data = [
   { data: { id: '102', source: '1', target: '2' } },
   { data: { id: '304', source: '3', target: '4' } },
   { data: { id: '104', source: '1', target: '4' } },
+  { data: { id: '405', source: '1', target: '5' } },
+  { data: { id: '506', source: '5', target: '6' } },
+  { data: { id: '305', source: '3', target: '5' } },
+  { data: { id: '204', source: '2', target: '4' } },
+  { data: { id: '103', source: '1', target: '3' } },
+  { data: { id: '206', source: '2', target: '6' } },
 ];
 
 const cy_for_rank = Cytoscape({
   elements: data,
 });
+
+const pageRank = cy_for_rank.elements().pageRank();
+// elements들의 rank들입니다.
+
+const nodeMaxSize = 50;
+const nodeMinSize = 5;
+const fontMaxSize = 8;
+const fontMinSize = 5;
 
 Cytoscape.use(coseBilkent);
 
@@ -61,11 +80,52 @@ export default function Map() {
         'source-arrow-shape': 'triangle',
       },
     },
+
+    {
+      selector: '#1',
+      style: {
+        // shape: 'roundrectangle',
+        'background-image': one,
+        'background-fit': 'cover',
+      },
+    },
     {
       selector: '#2',
       style: {
         // shape: 'roundrectangle',
         'background-image': two,
+        'background-fit': 'cover',
+      },
+    },
+    {
+      selector: '#3',
+      style: {
+        // shape: 'roundrectangle',
+        'background-image': three,
+        'background-fit': 'cover',
+      },
+    },
+    {
+      selector: '#4',
+      style: {
+        // shape: 'roundrectangle',
+        'background-image': four,
+        'background-fit': 'cover',
+      },
+    },
+    {
+      selector: '#5',
+      style: {
+        // shape: 'roundrectangle',
+        'background-image': five,
+        'background-fit': 'cover',
+      },
+    },
+    {
+      selector: '#6',
+      style: {
+        // shape: 'roundrectangle',
+        'background-image': six,
         'background-fit': 'cover',
       },
     },
@@ -81,7 +141,7 @@ export default function Map() {
 
   return (
     <CytoscapeComponent
-      elements={elements}
+      elements={data}
       style={{ width: '100%', height: '100%' }}
       stylesheet={style}
       layout={layout}
