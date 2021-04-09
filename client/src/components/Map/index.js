@@ -18,45 +18,29 @@ const data = [
   { data: { id: '5', label: '이민호' } },
   { data: { id: '6', label: '이윤호' } },
   // edge
-  { data: { id: '102', source: '1', target: '2' } },
-  { data: { id: '304', source: '3', target: '4' } },
-  { data: { id: '104', source: '1', target: '4' } },
-  { data: { id: '405', source: '1', target: '5' } },
-  { data: { id: '506', source: '5', target: '6' } },
-  { data: { id: '305', source: '3', target: '5' } },
+  { data: { id: '201', source: '2', target: '1' } },
+  { data: { id: '301', source: '3', target: '1' } },
+  { data: { id: '401', source: '4', target: '1' } },
+  { data: { id: '501', source: '5', target: '1' } },
+  { data: { id: '605', source: '6', target: '5' } },
+  { data: { id: '503', source: '5', target: '3' } },
   { data: { id: '204', source: '2', target: '4' } },
-  { data: { id: '103', source: '1', target: '3' } },
-  { data: { id: '206', source: '2', target: '6' } },
 ];
-
-const cy_for_rank = Cytoscape({
-  elements: data,
-});
-
-const pageRank = cy_for_rank.elements().pageRank();
-// elements들의 rank들입니다.
-
-const nodeMaxSize = 50;
-const nodeMinSize = 5;
-const fontMaxSize = 8;
-const fontMinSize = 5;
 
 Cytoscape.use(coseBilkent);
 
 export default function Map() {
-  const elements = [
-    // node
-    { data: { id: '1', label: '나문희' } },
-    { data: { id: '2', label: '이순재' } },
-    { data: { id: '3', label: '박해미' } },
-    { data: { id: '4', label: '이준하' } },
-    { data: { id: '5', label: '이민호' } },
-    { data: { id: '6', label: '이윤호' } },
-    // edge
-    { data: { id: '102', source: '1', target: '2' } },
-    { data: { id: '304', source: '3', target: '4' } },
-    { data: { id: '104', source: '1', target: '4' } },
-  ];
+  const cy_for_rank = Cytoscape({
+    elements: data,
+  });
+
+  const pageRank = cy_for_rank.elements().pageRank();
+  // elements들의 rank들입니다.
+
+  const nodeMaxSize = 50;
+  const nodeMinSize = 5;
+  const fontMaxSize = 8;
+  const fontMinSize = 5;
 
   const style = [
     // the stylesheet for the graph
@@ -65,6 +49,15 @@ export default function Map() {
       style: {
         'background-color': '#666',
         label: 'data(label)',
+        width: function (ele) {
+          return nodeMaxSize * pageRank.rank('#' + ele.id()) + nodeMinSize;
+        },
+        height: function (ele) {
+          return nodeMaxSize * pageRank.rank('#' + ele.id()) + nodeMinSize;
+        },
+        'font-size': function (ele) {
+          return fontMaxSize * pageRank.rank('#' + ele.id()) + fontMinSize;
+        },
       },
     },
 
@@ -140,12 +133,15 @@ export default function Map() {
   };
 
   return (
-    <CytoscapeComponent
-      elements={data}
-      style={{ width: '100%', height: '100%' }}
-      stylesheet={style}
-      layout={layout}
-      zoom={1}
-    />
+    <>
+      <CytoscapeComponent
+        elements={data}
+        style={{ width: '100%', height: '100%' }}
+        stylesheet={style}
+        layout={layout}
+        zoom={1}
+      />
+      />
+    </>
   );
 }
