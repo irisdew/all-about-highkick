@@ -1,4 +1,5 @@
 import React from 'react';
+import Map from '../../components/Map';
 
 function Characters() {
   return (
@@ -7,10 +8,12 @@ function Characters() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        width: '90vw',
         height: '90vh',
+        margin: 'auto',
       }}
     >
-      <h1>Characters</h1>
+      <Map />
     </div>
   );
 }
