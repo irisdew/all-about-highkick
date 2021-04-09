@@ -34,13 +34,29 @@ export default function Map() {
     elements: data,
   });
 
-  const pageRank = cy_for_rank.elements().pageRank();
   // elements들의 rank들입니다.
+  const pageRank = cy_for_rank.elements().pageRank();
 
+  // node & font 크기 값
   const nodeMaxSize = 50;
   const nodeMinSize = 5;
+  const nodeActiveSize = 28;
   const fontMaxSize = 8;
   const fontMinSize = 5;
+  const fontActiveSize = 7;
+
+  // edge & arrow 크기값
+  const edgeWidth = '2px';
+  var edgeActiveWidth = '4px';
+  const arrowScale = 0.8;
+  const arrowActiveScale = 1.2;
+
+  // 상위 node & edge color
+  const dimColor = '#dfe4ea';
+  const edgeColor = '#ced6e0';
+  const nodeColor = '#57606f';
+  const nodeActiveColor = '#ffa502';
+  const successorColor = '#ff6348';
 
   const style = [
     // the stylesheet for the graph
@@ -58,22 +74,35 @@ export default function Map() {
         'font-size': function (ele) {
           return fontMaxSize * pageRank.rank('#' + ele.id()) + fontMinSize;
         },
+        color: nodeColor,
       },
     },
 
     {
       selector: 'edge',
       style: {
-        width: 3,
+        width: edgeWidth,
         'curve-style': 'bezier',
-        'line-color': '#ccc',
-        'target-arrow-color': '#ccc',
-        'target-arrow-shape': 'vee',
-        'source-arrow-color': '#ccc',
-        'source-arrow-shape': 'triangle',
+        'line-color': edgeColor,
+        'source-arrow-color': edgeColor,
+        'source-arrow-shape': 'vee',
+        'arrow-scale': arrowScale,
       },
     },
-
+    {
+      selector: 'node:selected',
+      style: {
+        'border-width': '6px',
+        'border-color': '#AAD8FF',
+        'border-opacity': '0.5',
+        'background-color': '#77828C',
+        width: 50,
+        height: 50,
+        //text props
+        // 'text-outline-color': '#77828C',
+        // 'text-outline-width': 8,
+      },
+    },
     {
       selector: '#1',
       style: {
@@ -140,7 +169,6 @@ export default function Map() {
         stylesheet={style}
         layout={layout}
         zoom={1}
-      />
       />
     </>
   );
