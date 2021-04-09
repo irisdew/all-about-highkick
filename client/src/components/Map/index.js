@@ -40,23 +40,23 @@ export default function Map() {
   // node & font 크기 값
   const nodeMaxSize = 50;
   const nodeMinSize = 5;
-  const nodeActiveSize = 28;
+  // const nodeActiveSize = 28;
   const fontMaxSize = 8;
   const fontMinSize = 5;
-  const fontActiveSize = 7;
+  // const fontActiveSize = 7;
 
   // edge & arrow 크기값
   const edgeWidth = '2px';
-  var edgeActiveWidth = '4px';
+  // var edgeActiveWidth = '4px';
   const arrowScale = 0.8;
-  const arrowActiveScale = 1.2;
+  // const arrowActiveScale = 1.2;
 
   // 상위 node & edge color
-  const dimColor = '#dfe4ea';
+  // const dimColor = '#dfe4ea';
   const edgeColor = '#ced6e0';
   const nodeColor = '#57606f';
-  const nodeActiveColor = '#ffa502';
-  const successorColor = '#ff6348';
+  // const nodeActiveColor = '#ffa502';
+  // const successorColor = '#ff6348';
 
   const style = [
     // the stylesheet for the graph
@@ -161,6 +161,8 @@ export default function Map() {
     tile: true,
   };
 
+  let myCyRef;
+
   return (
     <>
       <CytoscapeComponent
@@ -168,7 +170,22 @@ export default function Map() {
         style={{ width: '100%', height: '100%' }}
         stylesheet={style}
         layout={layout}
-        zoom={1}
+        zoomingEnabled={true}
+        boxSelectionEnabled={true}
+        maxZoom={5}
+        minZoom={1}
+        cy={(cy) => {
+          myCyRef = cy;
+
+          console.log('EVT', cy);
+
+          cy.on('tap', 'node', (evt) => {
+            var node = evt.target;
+            console.log('EVT', evt);
+            console.log('TARGET', node.data());
+            console.log('TARGET TYPE', typeof node[0]);
+          });
+        }}
       />
     </>
   );
