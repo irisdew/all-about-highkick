@@ -1,28 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const QuestionContainer = styled.h2`
+const QuestionContainer = styled.h1`
   border: 2px solid black;
-  width: 30vw;
+  color: black;
 `;
 
 function Question(props) {
   const question = {
-    1: '111111111111111111문제111111111111111111',
-    2: '222222222222222222문제22222222222222222',
-    3: '3333333333333333333문제3333333331333333333',
-    4: '444444444444444444문제4444444444444444444',
-    5: '555555555555555555문제5555555555555555555',
-    6: '666666666666666666문제6666666666666666666',
-    7: '777777777777777777문제7777777777777777777',
-    8: '888888888888888888문제8888888888888888888',
-    9: '999999999999999999문제9999999999999999999',
-    10: 'AAAAAAAAAAAAAAAAA문제AAAAAAAAAAAAAAAAAAAA',
-    11: 'BBBBBBBBBBBBBBBBBB문제BBBBBBBBBBBBBBBBBBBB',
-    12: 'CCCCCCCCCCCCCCCCCC문제CCCCCCCCCCCCCCCCCCCC',
+    1: 'Q1. 문희가 문희했다. 그럼 문희는 ?',
+    2: 'Q2. 순재가 순재했다. 그럼 순재는 ?',
+    3: 'Q3. 혜미가 혜미했다. 그럼 혜미는 ?',
+    4: 'Q4. 준하가 준하했다. 그럼 준하는 ?',
+    5: 'Q5. 서선생이 서선생했다. 그럼 서선생은 ?',
+    6: 'Q6. 민용이가 민용했다. 그럼 민용이는 ?',
+    7: 'Q7. 찬성이가 찬성했다. 그럼 찬성이는 ?',
+    8: 'Q8. 범이가 범이했다. 그럼 범이는 ?',
+    9: 'Q9. 개성댁이 개성댁했다. 그럼 개성댁은 ?',
+    10: 'Q10. 신지가 신지했다. 그럼 신지는 ?',
   };
 
-  return <QuestionContainer>{question[1]}</QuestionContainer>;
+  return <QuestionContainer>{question[props.qNumber]}</QuestionContainer>;
 }
 
 export default Question;

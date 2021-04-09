@@ -2,14 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ImageContainer = styled.div`
-  width: 30vw;
-  height: 20vw;
-  border: 2px solid black;
+  align-items: center;
+  text-align: center;
   /* background-image : url() */
 `;
+const ProcessImageContainer = styled.div`
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  border: 2px solid black;
+`;
+const ProcessImg = styled.img``;
 
 function Image(props) {
-  return <ImageContainer>이미지 컨테이너</ImageContainer>;
+  const imgName = `/images/Qimage${props.qNumber}.jpg`;
+
+  return (
+    <>
+      <ProcessImageContainer>
+        <ProcessImg src={imgName} alt={imgName} />
+      </ProcessImageContainer>
+    </>
+  );
 }
 
 export default Image;

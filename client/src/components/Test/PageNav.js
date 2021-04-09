@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Pagination from '@material-ui/lab/Pagination';
 
 const PageNavContainer = styled.div`
-  width: 30vw;
   border: 2px solid black;
+  align-items: center;
 `;
 
 function PageNav(props) {
