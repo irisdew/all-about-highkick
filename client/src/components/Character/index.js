@@ -2,6 +2,115 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
+import { PieChart, AreaChart } from '@toast-ui/react-chart';
+import '@toast-ui/chart/dist/toastui-chart.min.css';
+
+const FeelingChart = () => {
+  const data = {
+    categories: ['Browser'],
+    series: [
+      {
+        name: '행복',
+        data: 5,
+      },
+      {
+        name: '슬픔',
+        data: 2,
+      },
+      {
+        name: '놀람',
+        data: 4,
+      },
+      {
+        name: '화남',
+        data: 7,
+      },
+      {
+        name: '평온',
+        data: 8,
+      },
+      {
+        name: 'Etc',
+        data: 7,
+      },
+    ],
+  };
+
+  const options = {
+    chart: {
+      width: 600,
+      height: 400,
+      format: '1,000',
+    },
+    yAxis: {
+      title: 'Month',
+    },
+    xAxis: {
+      title: 'Amount',
+      min: 0,
+      max: 9000,
+      suffix: '$',
+    },
+    series: {
+      showLabel: true,
+      selectable: true,
+      clockwise: false,
+      dataLabels: {
+        visible: true,
+        anchor: 'outer',
+      },
+    },
+  };
+
+  return (
+    <>
+      <PieChart data={data} options={options} />
+    </>
+  );
+};
+
+const AmountChart = () => {
+  const data = {
+    categories: ['June', 'July', 'Aug', 'Sep', 'Oct', 'Nov'],
+    series: [
+      {
+        name: 'Income',
+        data: [8000, 1000, 7000, 2000, 5000, 3000],
+      },
+    ],
+  };
+
+  const options = {
+    chart: {
+      width: 600,
+      height: 400,
+      // title: 'Monthly Revenue',
+      format: '1,000',
+    },
+    yAxis: {
+      title: 'Month',
+    },
+    xAxis: {
+      title: 'Amount',
+      min: 0,
+      max: 9000,
+      suffix: '$',
+    },
+    series: {
+      showLabel: true,
+    },
+    legend: {
+      visible: false,
+      showCheckbox: false,
+    },
+  };
+
+  return (
+    <>
+      <AreaChart data={data} options={options} />
+    </>
+  );
+};
 
 const Character = () => {
   return (
@@ -43,6 +152,7 @@ const Character = () => {
           <div
             style={{
               position: 'relative',
+              display: 'block',
               //   paddingBottom: '56.25%',
               //   overflow: 'hidden',
             }}
@@ -66,21 +176,23 @@ const Character = () => {
               src="https://kr.mathworks.com/help/matlab/ref/wordcloud.png"
             />
           </div>
-          <div style={{ height: '30vh' }}>
+          <div style={{ display: 'block' }}>
             <h2>주요 감정</h2>
-            <img
+            {/* <img
               height="70%"
               alt="chart-sample"
               src="https://images.edrawmax.com/images/knowledge/radar-chart-1-what.jpg"
-            />
+            /> */}
+            <FeelingChart />
           </div>
-          <div style={{ height: '30vh' }}>
+          <div style={{ display: 'block' }}>
             <h2>분량 변화</h2>
-            <img
+            {/* <img
               height="70%"
               alt="chart-sample"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6KrHkgtFax7Q-r6odPn1uZ_wex3i_qIjEcw&usqp=CAU"
-            />
+            /> */}
+            <AmountChart />
           </div>
         </Grid>
       </Grid>
