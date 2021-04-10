@@ -5,6 +5,7 @@ import About from './pages/Intro';
 import Test from './pages/Test';
 import Game from './pages/Game';
 
+import Characters from './pages/Characters';
 import Navbar from './components/Navbar';
 import './App.css';
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/game" component={Game} />
 
         <Route path="/temp" component={Character} />
+        <Route path="/characters" component={Characters} />
       </Switch>
     </Router>
   );
