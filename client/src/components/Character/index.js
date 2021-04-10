@@ -40,10 +40,15 @@ const Character = () => {
             </p>
           </Paper>
           {/* </Paper> */}
-          <div style={{ width: '100%', height: '56.25%' }}>
+          <div
+            style={{
+              position: 'relative',
+              //   paddingBottom: '56.25%',
+              //   overflow: 'hidden',
+            }}
+          >
             <iframe
               width="100%"
-              height="56.25%"
               src="https://www.youtube.com/embed/LSkzkePLuCM"
               title="YouTube video player"
               frameborder="0"
@@ -53,8 +58,30 @@ const Character = () => {
           </div>
         </Grid>
         <Grid item xs={8}>
-          <Paper>xs=6</Paper>
-          <Paper>xs=6</Paper>
+          <div style={{ height: '30vh' }}>
+            <h2>사용 단어</h2>
+            <img
+              height="70%"
+              alt="wordcloud-sample"
+              src="https://kr.mathworks.com/help/matlab/ref/wordcloud.png"
+            />
+          </div>
+          <div style={{ height: '30vh' }}>
+            <h2>주요 감정</h2>
+            <img
+              height="70%"
+              alt="chart-sample"
+              src="https://images.edrawmax.com/images/knowledge/radar-chart-1-what.jpg"
+            />
+          </div>
+          <div style={{ height: '30vh' }}>
+            <h2>분량 변화</h2>
+            <img
+              height="70%"
+              alt="chart-sample"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6KrHkgtFax7Q-r6odPn1uZ_wex3i_qIjEcw&usqp=CAU"
+            />
+          </div>
         </Grid>
       </Grid>
     </div>
