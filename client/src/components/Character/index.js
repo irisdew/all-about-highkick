@@ -168,30 +168,20 @@ const Character = () => {
           </div>
         </Grid>
         <Grid item xs={8}>
-          <div style={{ height: '30vh' }}>
+          <div style={{ display: 'block' }}>
             <h2>사용 단어</h2>
             <img
-              height="70%"
+              width="80%"
               alt="wordcloud-sample"
               src="https://kr.mathworks.com/help/matlab/ref/wordcloud.png"
             />
           </div>
           <div style={{ display: 'block' }}>
             <h2>주요 감정</h2>
-            {/* <img
-              height="70%"
-              alt="chart-sample"
-              src="https://images.edrawmax.com/images/knowledge/radar-chart-1-what.jpg"
-            /> */}
             <FeelingChart />
           </div>
           <div style={{ display: 'block' }}>
             <h2>분량 변화</h2>
-            {/* <img
-              height="70%"
-              alt="chart-sample"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6KrHkgtFax7Q-r6odPn1uZ_wex3i_qIjEcw&usqp=CAU"
-            /> */}
             <AmountChart />
           </div>
         </Grid>
