@@ -159,6 +159,7 @@ const Character = () => {
           >
             <iframe
               width="100%"
+              height="250px"
               src="https://www.youtube.com/embed/LSkzkePLuCM"
               title="YouTube video player"
               frameborder="0"

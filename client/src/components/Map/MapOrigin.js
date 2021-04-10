@@ -7,7 +7,7 @@ const data = [
   // node
   { data: { id: '1', label: '나문희' } },
   { data: { id: '2', label: '이순재' } },
-  { data: { id: '3', label: '박해미' } },
+  { data: { id: '3', label: '박해미', url: '/temp' } },
   { data: { id: '4', label: '이준하' } },
   { data: { id: '5', label: '이민호' } },
   { data: { id: '6', label: '이윤호' } },
@@ -191,6 +191,11 @@ export default function Map() {
             console.log('EVT', evt);
             console.log('TARGET', node.data());
             console.log('TARGET TYPE', typeof node[0]);
+
+            const url = evt.target.data('url');
+            if (url && url !== '') {
+              window.open(url);
+            }
           });
         }}
       />
