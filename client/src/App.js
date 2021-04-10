@@ -5,8 +5,11 @@ import About from './pages/Intro';
 import Test from './pages/Test';
 import Game from './pages/Game';
 
+import Characters from './pages/Characters';
 import Navbar from './components/Navbar';
 import './App.css';
+
+import Character from './components/Character';
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/test" component={Test} />
         <Route path="/game" component={Game} />
+
+        <Route path="/temp" component={Character} />
+        <Route path="/characters" component={Characters} />
       </Switch>
     </Router>
   );
