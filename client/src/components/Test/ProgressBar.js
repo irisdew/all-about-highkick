@@ -37,14 +37,15 @@ const useStylesFacebook = makeStyles((theme) => ({
   },
 }));
 
-const ProgressContainer = styled.div`
-  width: 30vw;
-`;
+const ProgressContainer = styled.div``;
 
 function ProgressBar(props) {
   return (
     <ProgressContainer>
-      <BorderLinearProgress variant="determinate" value={(7 / 12) * 100} />
+      <BorderLinearProgress
+        variant="determinate"
+        value={props.qNumber !== 1 && ((props.qNumber - 1) / 9) * 100}
+      />
     </ProgressContainer>
   );
 }
