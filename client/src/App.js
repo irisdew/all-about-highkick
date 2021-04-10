@@ -6,6 +6,8 @@ import Game from './pages/Game';
 import Navbar from './components/Navbar';
 import './App.css';
 
+import Character from './components/Character';
+
 function App() {
   return (
     <Router>
@@ -14,6 +16,8 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/test" component={Test} />
         <Route path="/game" component={Game} />
+
+        <Route path="/temp" component={Character} />
       </Switch>
     </Router>
   );
