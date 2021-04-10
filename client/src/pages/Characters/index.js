@@ -22,21 +22,34 @@ function Characters() {
         margin: 'auto',
       }}
     >
-      <FormControlLabel
+      <div
         style={{
-          alignSelf: 'flex-end',
+          width: '70%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
           marginTop: '1vw',
         }}
-        control={
-          <Switch
-            checked={isDA}
-            onChange={handleChange}
-            name="checkedB"
-            color="primary"
-          />
-        }
-        label="Data Analysis"
-      />
+      >
+        {!isDA && <p>우리가 익히 알고 있는 하이킥의 인물 관계입니다.</p>}
+        {isDA && (
+          <p>
+            대본 데이터 분석 결과 함께 있는 씬의 횟수로 집계된 하이킥의 인물
+            관계입니다.
+          </p>
+        )}
+        <FormControlLabel
+          control={
+            <Switch
+              checked={isDA}
+              onChange={handleChange}
+              name="checkedB"
+              color="primary"
+            />
+          }
+          label="Data Analysis"
+        />
+      </div>
       <Map isDA={isDA} />
     </div>
   );
