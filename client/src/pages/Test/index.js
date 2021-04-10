@@ -4,7 +4,6 @@ import TestSurvey from './TestSurvey';
 import TestRoading from './TestRoading';
 import TestResult from './TestResult';
 import TestWord from './TestWord';
-import { Route } from 'react-router-dom';
 
 import styled from 'styled-components';
 
