@@ -97,7 +97,7 @@ https://www.figma.com/file/vCEKQsMqQHvSZV35DZzyuo/ver1?node-id=11%3A0
 
 ## 6. 버전
   
-- Ver1.0 : [링크이동]()   
+- Ver1.0 : [링크이동](http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com/)   
 
 ## 7. FAQ
   - 자주 받는 질문 정리
