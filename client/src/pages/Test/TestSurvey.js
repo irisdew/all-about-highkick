@@ -65,7 +65,7 @@ function TestSurvey(props) {
         </Button> */}
 
               <Button
-                style={{ display: qNumber === 10 ? true : 'none' }}
+                disabled={qNumber === 10 ? false : true}
                 type="submit"
                 variant="contained"
                 color="primary"
