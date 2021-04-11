@@ -4,10 +4,17 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@toast-ui/chart": "^4.3.0",
+    "@toast-ui/react-chart": "^4.3.0",
+    "cytoscape": "^3.18.2",
+    "cytoscape-cose-bilkent": "^4.1.0",
+    "disqus-react": "^1.0.11",
     "react": "^17.0.2",
+    "react-cytoscapejs": "^1.2.1",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.3",
@@ -26,12 +33,22 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "prettier"
     ],
+    "parser": "babel-eslint",
     "rules": {
-      "react/prefer-stateless-function": 0,
       "react/jsx-filename-extension": 0,
-      "react/jsx-one-expression-per-line": 0
+      "import/no-named-as-default": 0,
+      "import/no-named-as-default-member": 0,
+      "import/no-unresolved": 0,
+      "import/prefer-default-export": 0,
+      "no-underscore-dangle": 0,
+      "no-console": 0,
+      "react/forbid-prop-types": 0
+    },
+    "env": {
+      "browser": true
     }
   },
   "browserslist": {
