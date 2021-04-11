@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 
 import Image from '../../components/Test/Image';
 import Question from '../../components/Test/Question';
-import PageNav from '../../components/Test/PageNav';
+
 import TestRadio from '../../components/Test/TestRadio';
 import ProgressBar from '../../components/Test/ProgressBar';
 import Button from '@material-ui/core/Button';
@@ -54,16 +54,6 @@ function TestSurvey(props) {
             <ProgressBar qNumber={qNumber} />
             <TestRadio qNumber={qNumber} setQNumber={setQNumber} />
             <ButtonContainer>
-              {/* 첫 페이지 일때 === 1 일때
-        <Button
-          style={{ display: qNumber === 12 ? true : 'none' }}
-          variant="contained"
-          color="primary"
-          onClick={() => props.setIsStarted(1)}
-        >
-          돌아가기
-        </Button> */}
-
               <Button
                 disabled={qNumber === 10 ? false : true}
                 type="submit"
@@ -78,12 +68,6 @@ function TestSurvey(props) {
             </ButtonContainer>
           </Paper>
         </Grid>
-        {/* 페이지네이션 */}
-        {/* <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <PageNav qNumber={qNumber} />
-          </Paper>
-        </Grid> */}
       </Grid>
     </ContentContainer>
   );
