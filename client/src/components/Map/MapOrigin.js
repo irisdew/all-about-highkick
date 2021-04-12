@@ -42,7 +42,7 @@ const data = [
 
 Cytoscape.use(coseBilkent);
 
-export default function Map() {
+export default function Map({ onClick }) {
   // const cy_for_rank = Cytoscape({
   //   elements: data,
   // });
@@ -198,10 +198,12 @@ export default function Map() {
             console.log('TARGET', node.data());
             console.log('TARGET TYPE', typeof node[0]);
 
-            const url = evt.target.data('url');
-            if (url && url !== '') {
-              window.open(url);
-            }
+            // const url = evt.target.data('url');
+            // if (url && url !== '') {
+            //   window.open(url);
+            // }
+
+            onClick();
           });
         }}
       />

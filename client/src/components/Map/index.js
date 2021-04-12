@@ -3,12 +3,7 @@ import MapOrigin from './MapOrigin';
 import MapDA from './MapDA';
 import Character from '../Character';
 
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -17,7 +12,7 @@ import { MdClose } from 'react-icons/md';
 import Slide from '@material-ui/core/Slide';
 
 export default function Map({ isDA }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -25,6 +20,7 @@ export default function Map({ isDA }) {
 
   const handleClose = () => {
     setOpen(false);
+    window.location.reload();
   };
 
   const Transition = React.forwardRef(function Transition(props, ref) {
@@ -35,6 +31,7 @@ export default function Map({ isDA }) {
     <>
       {!isDA && <MapOrigin onClick={handleClickOpen} />}
       {isDA && <MapDA />}
+
       <Dialog
         fullScreen
         open={open}
