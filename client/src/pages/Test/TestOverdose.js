@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { testPage, testOverdoseCount } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Button } from '@material-ui/core';
+
+import OverdoseTestQuestion from '../../components/Test/OverdoseTestQuestion';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,19 +23,22 @@ const useStyles = makeStyles((theme) => ({
 
 const PageTitle = styled.h1``;
 
-function TestOverdose(props) {
+function TestOverdose() {
   const classes = useStyles();
 
-  const [isAnswer, setIsAnswer] = useState(0);
+  const [overdoseQuestion, setOverdoseQuestion] = useState([]);
+  // 제출버튼 활성화용 일뿐, 다른페이지에서는 이 state를 사용하지 않기에, 굳이 redux로 관리하지 않아도 되나 ?
   const [isChecked, setIsChecked] = useState(0);
+  const dispatch = useDispatch();
 
   function AnswerCounter() {
     let AnswerCount = 0;
+
     for (var i = 1; i <= 10; i++)
       if (document.querySelector(`input[name='${i}']:checked`).value === 'true')
         AnswerCount += 1;
 
-    return AnswerCount;
+    dispatch(testOverdoseCount(AnswerCount));
   }
   function CheckedCounter() {
     let checkedCount = 0;
@@ -39,12 +46,19 @@ function TestOverdose(props) {
       if (document.querySelectorAll('.select-radio')[i].checked)
         checkedCount += 1;
 
+    // 일단은, useState로 관리하는데, redux를 사용하기 시작했으므로, 사소한 것도, 모두 redux에서 관리해야 한다면, dispatch 할 것
     setIsChecked(checkedCount);
   }
   useEffect(() => {
-    if (isAnswer !== 0) console.log(isAnswer);
-  }, [isAnswer, isChecked]);
+    fetch('http://localhost:3000/data/overdose.json')
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.test);
+        setOverdoseQuestion(res.test);
+      });
+  }, []);
 
+  if (!overdoseQuestion.length) return null;
   return (
     <div className={classes.root}>
       <Grid container alignItems="center" justify="center" spacing={3}>
@@ -56,400 +70,38 @@ function TestOverdose(props) {
         <Grid container item xs={12} spacing={2}>
           <Grid item xs={6}>
             <Paper className={classes.paper}>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q1-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="1"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q1-select1">이준하</label>
-                <input
-                  id="q1-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="1"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q1-select2">이민호</label>
-                <input
-                  id="q1-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="1"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q1-select3">이윤호</label>
-                <input
-                  id="q1-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="1"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q1-select4">이민용</label>
-              </div>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q2-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="2"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q2-select1">이준하</label>
-                <input
-                  id="q2-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="2"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q2-select2">이민호</label>
-                <input
-                  id="q2-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="2"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q2-select3">이윤호</label>
-                <input
-                  id="q2-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="2"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q2-select4">이민용</label>
-              </div>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q3-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="3"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q3-select1">이준하</label>
-                <input
-                  id="q3-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="3"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q3-select2">이민호</label>
-                <input
-                  id="q3-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="3"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q3-select3">이윤호</label>
-                <input
-                  id="q3-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="3"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q3-select4">이민용</label>
-              </div>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q4-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="4"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q4-select1">이준하</label>
-                <input
-                  id="q4-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="4"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q4-select2">이민호</label>
-                <input
-                  id="q4-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="4"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q4-select3">이윤호</label>
-                <input
-                  id="q4-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="4"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q4-select4">이민용</label>
-              </div>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q5-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="5"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q5-select1">이준하</label>
-                <input
-                  id="q5-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="5"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q5-select2">이민호</label>
-                <input
-                  id="q5-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="5"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q5-select3">이윤호</label>
-                <input
-                  id="q5-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="5"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q5-select4">이민용</label>
-              </div>
+              {overdoseQuestion.slice(0, 5).map((question, index) => {
+                return (
+                  <OverdoseTestQuestion
+                    key={index}
+                    id={question.id}
+                    question={question.question}
+                    select1={question.select1}
+                    select2={question.select2}
+                    select3={question.select3}
+                    select4={question.select4}
+                    checkedCounter={CheckedCounter}
+                  />
+                );
+              })}
             </Paper>
           </Grid>
           <Grid item xs={6}>
             <Paper className={classes.paper}>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q6-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="6"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q6-select1">이준하</label>
-                <input
-                  id="q6-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="6"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q6-select2">이민호</label>
-                <input
-                  id="q6-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="6"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q6-select3">이윤호</label>
-                <input
-                  id="q6-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="6"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q6-select4">이민용</label>
-              </div>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q7-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="7"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q7-select1">이준하</label>
-                <input
-                  id="q7-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="7"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q7-select2">이민호</label>
-                <input
-                  id="q7-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="7"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q7-select3">이윤호</label>
-                <input
-                  id="q7-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="7"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q7-select4">이민용</label>
-              </div>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q8-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="8"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q8-select1">이준하</label>
-                <input
-                  id="q8-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="8"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q8-select2">이민호</label>
-                <input
-                  id="q8-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="8"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q8-select3">이윤호</label>
-                <input
-                  id="q8-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="8"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q8-select4">이민용</label>
-              </div>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q9-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="9"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q9-select1">이준하</label>
-                <input
-                  id="q9-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="9"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q9-select2">이민호</label>
-                <input
-                  id="q9-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="9"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q9-select3">이윤호</label>
-                <input
-                  id="q9-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="9"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q9-select4">이민용</label>
-              </div>
-              <div className={classes.root}>
-                <p>Q1. 이씨가족 가족유니폰 4번에 해당되는 사람은 ?</p>
-                <input
-                  id="q10-select1"
-                  className="select-radio"
-                  type="radio"
-                  value={true}
-                  name="10"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q10-select1">이준하</label>
-                <input
-                  id="q10-select2"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="10"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q10-select2">이민호</label>
-                <input
-                  id="q10-select3"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="10"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q10-select3">이윤호</label>
-                <input
-                  id="q10-select4"
-                  className="select-radio"
-                  type="radio"
-                  value={false}
-                  name="10"
-                  onClick={() => CheckedCounter()}
-                />
-                <label htmlFor="q10-select4">이민용</label>
-              </div>
+              {overdoseQuestion.slice(5, 10).map((question, index) => {
+                return (
+                  <OverdoseTestQuestion
+                    key={index}
+                    id={question.id}
+                    question={question.question}
+                    select1={question.select1}
+                    select2={question.select2}
+                    select3={question.select3}
+                    select4={question.select4}
+                    checkedCounter={CheckedCounter}
+                  />
+                );
+              })}
             </Paper>
           </Grid>
         </Grid>
@@ -460,10 +112,10 @@ function TestOverdose(props) {
               variant="contained"
               color="primary"
               onClick={() => {
-                setIsAnswer(AnswerCounter());
-                props.setIsStarted(4);
+                AnswerCounter();
+                dispatch(testPage(4));
                 setTimeout(function () {
-                  props.setIsStarted(7);
+                  dispatch(testPage(7));
                 }, 3000);
               }}
             >

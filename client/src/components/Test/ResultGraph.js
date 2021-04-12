@@ -1,10 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { PieChart, BarChart } from '@toast-ui/react-chart';
+import { PieChart } from '@toast-ui/react-chart';
 import '@toast-ui/chart/dist/toastui-chart.min.css';
 
 const data = {
-  categories: ['Browser'],
+  categories: ['분석결과'],
   series: [
     {
       name: '행복',
@@ -35,9 +36,8 @@ const data = {
 
 const options = {
   chart: {
-    width: 700,
+    width: 600,
     height: 500,
-    title: `${'OOO님 성향유형'}`,
     format: '1,000',
   },
   yAxis: {
@@ -73,9 +73,10 @@ const BottomGraphDiv = styled.div`
   justify-content: center;
 `;
 function ResultGraph() {
+  const userName = useSelector((state) => state.test.name);
   return (
     <BottomSectorContainer>
-      <BottomSectorTitle>OOO님 분석 결과</BottomSectorTitle>
+      <BottomSectorTitle>{userName}님 분석 결과</BottomSectorTitle>
       <BottomGraphDiv>
         <PieChart data={data} options={options} />
       </BottomGraphDiv>

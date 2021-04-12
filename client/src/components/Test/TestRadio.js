@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { testSurveyNumber } from '../../actions';
 
 const TestRadioContainer = styled.div`
   border: 2px solid black;
@@ -44,7 +46,7 @@ function TestRadio(props) {
     19: [5, '1.신지는 신지했다. 그래서 신지했다.'],
     20: [4, '2.신지는 신지했다. 그래서 신지했다.'],
   };
-
+  const dispatch = useDispatch();
   return (
     <TestRadioContainer>
       <div>
@@ -56,7 +58,8 @@ function TestRadio(props) {
           onClick={(event) => {
             setTimeout(() => (event.target.checked = false), 500);
             if (props.qNumber !== 10) {
-              props.setQNumber(props.qNumber + 1);
+              dispatch(testSurveyNumber(props.qNumber + 1));
+              // props.setQNumber(props.qNumber + 1);
               console.log(event.target.value);
             } else {
               console.log(event.target.value);
@@ -74,7 +77,8 @@ function TestRadio(props) {
           onClick={(event) => {
             setTimeout(() => (event.target.checked = false), 500);
             if (props.qNumber !== 10) {
-              props.setQNumber(props.qNumber + 1);
+              dispatch(testSurveyNumber(props.qNumber + 1));
+              // props.setQNumber(props.qNumber + 1);
               console.log(event.target.value);
             } else {
               console.log(event.target.value);

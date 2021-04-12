@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import TestMain from '../../components/Test';
 import TestSurvey from './TestSurvey';
 import TestRoading from './TestRoading';
@@ -28,20 +30,22 @@ const Container = styled.div`
 function Test() {
   // 리덕스로 isStarted 상태제어해서 뷰 분리 해야함.
   // 일단은, 부모컴포넌트에서 setState를 넘겨줘서, 자식컴포넌트에서 변경하는 식으로 했음
-  const [isStarted, setIsStarted] = useState(1);
+  const isStarted = useSelector((state) => state.test.page);
+
+  useEffect(() => {}, [isStarted]);
 
   return (
     <>
       <Container>
-        {isStarted === 1 && <TestMain setIsStarted={setIsStarted} />}
-        {isStarted === 2 && <TestSurvey setIsStarted={setIsStarted} />}
-        {isStarted === 3 && <TestWord setIsStarted={setIsStarted} />}
-        {isStarted === 4 && <TestRoading setIsStarted={setIsStarted} />}
+        {isStarted === 1 && <TestMain />}
+        {isStarted === 2 && <TestSurvey />}
+        {isStarted === 3 && <TestWord />}
+        {isStarted === 4 && <TestRoading />}
         {isStarted === 5 && <TestResult />}
-        {isStarted === 6 && <TestOverdose setIsStarted={setIsStarted} />}
-        {isStarted === 7 && <TestOverdoseResult />}
+        {isStarted === 6 && <TestOverdose />}
+        {isStarted === 7 ? <TestOverdoseResult /> : <></>}
 
-        {/* <Route path="/test/result" exact component={TestResult} /> */}
+        {/* 테스트 둘다 공유기능 생각했을 때, 라우팅으로, 개별 페이지로 전환해야하나 ? */}
       </Container>
     </>
   );

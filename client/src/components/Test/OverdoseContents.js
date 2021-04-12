@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const ImgContainer = styled.div`
@@ -11,18 +12,23 @@ const ImgContainer = styled.div`
 `;
 
 function OverdoseContents(props) {
+  const overdoseCount = useSelector((state) => state.test.overdoseCount);
   return (
     <ImgContainer>
-      <img src={'./images/overdoseimg1.jpg'} alt={'bronze'} />
-      <h2>맞은 갯수 : {'2'}개</h2>
-      <h2>{'Bronse'}</h2>
+      <img
+        src={props.data[overdoseCount].imgSrc}
+        alt={props.data[overdoseCount].rank}
+      />
+      <h2>맞은 갯수 : {overdoseCount}/10 개</h2>
+      <h2>{props.data[overdoseCount].rank}</h2>
       <p>
-        당신은 하이킥 초보자 !! <br />
-        최소 2000년생으로 추측이 됩니다.
+        {props.data[overdoseCount].description1} <br />
+        {props.data[overdoseCount].description2}
         <br />
-        이번 기회에 2007년 최고의 빅재미 시트콤 !!
+        {props.data[overdoseCount].description3}
         <br />
-        거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?<br />
+        {props.data[overdoseCount].description4}
+        <br />
       </p>
     </ImgContainer>
   );

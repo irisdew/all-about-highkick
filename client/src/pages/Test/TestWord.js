@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { testPage } from '../../actions';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -21,12 +23,12 @@ const useStyles = makeStyles((theme) => ({
 
 const WordTestTitle = styled.h1``;
 
-function TestWord(props) {
+function TestWord() {
   // 문항 10개 고르지 않은 경우, 버튼 활성화 안되도록 해야함
   // 그러기 위해선, WordItems 컴포넌트에서, 체크된 카운팅 State 필요
   const [isChecked, setIsChecked] = useState(10);
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   return (
     <div>
       <Grid container spacing={3}>
@@ -55,9 +57,11 @@ function TestWord(props) {
               variant="contained"
               color="primary"
               onClick={() => {
-                props.setIsStarted(4);
+                dispatch(testPage(4));
+                // props.setIsStarted(4);
                 setTimeout(function () {
-                  props.setIsStarted(5);
+                  dispatch(testPage(5));
+                  // props.setIsStarted(5);
                 }, 3000);
               }}
             >
