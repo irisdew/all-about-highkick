@@ -55,9 +55,9 @@ function TestOverdoseResult(props) {
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              {props.testCount !== -1 && (
+              {props.overdoseCount !== -1 && (
                 <OverdoseContents
-                  answerCount={props.testCount}
+                  answerCount={props.overdoseCount}
                   data={overdoseData}
                 />
               )}

@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Button } from '@material-ui/core';
 
+import OverdoseTestQuestion from '../../components/Test/OverdoseTestQuestion';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -18,50 +20,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PageTitle = styled.h1``;
-
-function TestOverdoseQuestion(props) {
-  return (
-    <div>
-      <p>{props.question}</p>
-      <input
-        id={`q${props.id}-select1`}
-        className="select-radio"
-        type="radio"
-        value={`${props.select1[1]}`}
-        name={`${props.id}`}
-        onClick={() => props.checkedCounter()}
-      />
-      <label htmlFor={`q${props.id}-select1`}>{props.select1[0]}</label>
-      <input
-        id={`q${props.id}-select2`}
-        className="select-radio"
-        type="radio"
-        value={`${props.select2[1]}`}
-        name={`${props.id}`}
-        onClick={() => props.checkedCounter()}
-      />
-      <label htmlFor={`q${props.id}-select2`}>{props.select2[0]}</label>
-      <input
-        id={`q${props.id + 1}-select3`}
-        className="select-radio"
-        type="radio"
-        value={`${props.select3[1]}`}
-        name={`${props.id}`}
-        onClick={() => props.checkedCounter()}
-      />
-      <label htmlFor={`q${props.id}-select3`}>{props.select3[0]}</label>
-      <input
-        id={`q${props.id}-select4`}
-        className="select-radio"
-        type="radio"
-        value={`${props.select4[1]}`}
-        name={`${props.id}`}
-        onClick={() => props.checkedCounter()}
-      />
-      <label htmlFor={`q${props.id}-select4`}>{props.select4[0]}</label>
-    </div>
-  );
-}
 
 function TestOverdose(props) {
   const classes = useStyles();
@@ -79,7 +37,7 @@ function TestOverdose(props) {
 
     // 부모 컴포넌트에서 넘긴 setState로 했는데, 리덕스로 state변경시, 업데이트 값이 바로 반영되고
     // 결과 페이지 변환 시, 그 값이 적용 되어 있어야 함.
-    props.setTest(AnswerCount);
+    props.setOverdoseCountTest(AnswerCount);
   }
   function CheckedCounter() {
     let checkedCount = 0;
@@ -111,9 +69,8 @@ function TestOverdose(props) {
           <Grid item xs={6}>
             <Paper className={classes.paper}>
               {overdoseQuestion.slice(0, 5).map((question, index) => {
-                console.log(question);
                 return (
-                  <TestOverdoseQuestion
+                  <OverdoseTestQuestion
                     key={index}
                     id={question.id}
                     question={question.question}
@@ -130,9 +87,8 @@ function TestOverdose(props) {
           <Grid item xs={6}>
             <Paper className={classes.paper}>
               {overdoseQuestion.slice(5, 10).map((question, index) => {
-                console.log(question);
                 return (
-                  <TestOverdoseQuestion
+                  <OverdoseTestQuestion
                     key={index}
                     id={question.id}
                     question={question.question}

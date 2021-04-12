@@ -29,7 +29,7 @@ function Test() {
   // 리덕스로 isStarted 상태제어해서 뷰 분리 해야함.
   // 일단은, 부모컴포넌트에서 setState를 넘겨줘서, 자식컴포넌트에서 변경하는 식으로 했음
   const [isStarted, setIsStarted] = useState(1);
-  const [test, setTest] = useState(-1);
+  const [overdoseCount, setOverdoseCountTest] = useState(-1);
 
   return (
     <>
@@ -40,11 +40,17 @@ function Test() {
         {isStarted === 4 && <TestRoading setIsStarted={setIsStarted} />}
         {isStarted === 5 && <TestResult />}
         {isStarted === 6 && (
-          <TestOverdose setIsStarted={setIsStarted} setTest={setTest} />
+          <TestOverdose
+            setIsStarted={setIsStarted}
+            setOverdoseCountTest={setOverdoseCountTest}
+          />
         )}
 
-        {isStarted === 7 && test !== -1 ? (
-          <TestOverdoseResult setIsStarted={setIsStarted} testCount={test} />
+        {isStarted === 7 ? (
+          <TestOverdoseResult
+            setIsStarted={setIsStarted}
+            overdoseCount={overdoseCount}
+          />
         ) : (
           <></>
         )}
