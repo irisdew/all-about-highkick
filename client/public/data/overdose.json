@@ -1,0 +1,174 @@
+{
+    "test" : [
+        {
+            "id" : "1",
+            "question" : "1. OO 을 향해달려 하이킥 하이킥 ~",
+            "select1" : ["하늘", "false"],
+            "select2" : ["빌딩", "false"],
+            "select3" : ["창공", "true"],
+            "select4" : ["지붕", "false"]
+        },
+        {
+            "id" : "2",
+            "question" : "2. 이씨가문 가족유니폰 4번에 해당되는 사람은?",
+            "select1" : ["이준하", "false"],
+            "select2" : ["이민호", "true"],
+            "select3" : ["이윤호", "false"],
+            "select4" : ["이민용", "false"]
+        },
+        {
+            "id" : "3",
+            "question" : "3. 전설의 호박고구마, 문희에게 호박고구마를 준 인물은 ?",
+            "select1" : ["이사온 윗집사람", "false"],
+            "select2" : ["영기엄마", "true"],
+            "select3" : ["김범", "false"],
+            "select4" : ["서민정선생 어머님", "false"]
+        },
+        {
+            "id" : "4",
+            "question" : "4. 민용랜드(옥탑방) 봉을 세운 인물은?",
+            "select1" : ["이순재", "false"],
+            "select2" : ["나문희", "true"],
+            "select3" : ["이준하", "false"],
+            "select4" : ["박혜미", "false"]
+        },
+        {
+            "id" : "5",
+            "question" : "5. 이순재가 들으면서  눈물을 흘린 유미엄마가 작사한 노래 제목은?",
+            "select1" : ["개같은사랑", "false"],
+            "select2" : ["사랑은소처럼", "false"],
+            "select3" : ["사랑은개나소나", "true"],
+            "select4" : ["소를닮은내사랑", "false"]
+        },
+        {
+            "id" : "6",
+            "question" : "6. 박혜미가 신지가 얄미워서 3일만에 독학한 언어는 ?",
+            "select1" : ["일본어", "false"],
+            "select2" : ["중국어", "false"],
+            "select3" : ["프랑스어", "false"],
+            "select4" : ["러시아어", "true"]
+        },
+        {
+            "id" : "7",
+            "question" : "7. 발명왕 나문희 여사가 발명한 물건이 아닌 것은?",
+            "select1" : ["안테나 숟가락", "true"],
+            "select2" : ["혀골무", "false"],
+            "select3" : ["자전거 발전기", "false"],
+            "select4" : ["육손이 고무장갑", "false"]
+        },
+        {
+            "id" : "8",
+            "question" : "8. 해미가 문희에게 운전을 가르쳐 주면서 아련하게 부른사람은 ?",
+            "select1" : ["영기엄마", "false"],
+            "select2" : ["호두과자 아저씨", "true"],
+            "select3" : ["이준하", "false"],
+            "select4" : ["신지", "false"]
+        },
+        {
+            "id" : "9",
+            "question" : "9. 박혜미의 전생은 ?",
+            "select1" : ["선덕여왕", "false"],
+            "select2" : ["허준", "false"],
+            "select3" : ["평강공주", "false"],
+            "select4" : ["주몽", "true"]
+        },
+        {
+            "id" : "10",
+            "question" : "10. 문희가 치매병원에 끌려가기전 순재에게 애교를 떨면서 먹고싶다고 한 과일은?",
+            "select1" : ["포도", "true"],
+            "select2" : ["사과", "false"],
+            "select3" : ["딸기", "false"],
+            "select4" : ["메론", "false"]
+        }
+    ],
+    "result" : [
+         { 
+          "imgSrc" : "./images/overdoseimg1.jpg",
+          "rank" : "Iron",
+          "description1" : "당신은 하이킥 입문자 !!",
+          "description2" : "최소 2000년생으로 추측이 됩니다.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg1.jpg",
+          "rank" : "Bronze",
+          "description1" : "당신은 하이킥 초보자 !!",
+          "description2" : "어디서 하이킥이란 단어를 들어본 정도군요.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg1.jpg",
+          "rank" : "Bronze",
+           "description1" : "당신은 하이킥 초보자 !!",
+          "description2" : "어디서 하이킥이란 단어를 들어본 정도군요.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg2.jpg",
+          "rank" : "Sliver",
+           "description1" : "당신은 하이킥 평민 !!",
+          "description2" : "뇌 구석구석에 하이킥 장면들이 떠돌아 다니시군요.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg2.jpg",
+          "rank" : "Sliver",
+          "description1" : "당신은 하이킥 평민 !!",
+          "description2" : "뇌 구석구석에 하이킥 장면들이 떠돌아 다니시군요.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg3.jpg",
+          "rank" : "Gold",
+           "description1" : "당신은 하이킥 고수 !!",
+          "description2" : "어디가서 하이킥 내용 안다고 할수 있는 수준이군요.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg3.jpg",
+          "rank" : "Gold",
+          "description1" : "당신은 하이킥 고수 !!",
+          "description2" : "어디가서 하이킥 내용 안다고 할수 있는 수준이군요.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg4.jpg",
+          "rank" : "Platinum",
+           "description1" : "당신은 하이킥 초고수 !!",
+          "description2" : "한때 하이킥 본방시청러시군요.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg4.jpg",
+          "rank" : "Platinum",
+          "description1" : "당신은 하이킥 초고수 !!",
+          "description2" : "한때 하이킥 본방시청러시군요.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg5.jpg",
+          "rank" : "Master",
+           "description1" : "당신은 하이킥 마스터 !!",
+          "description2" : "골수에서 하이킥 피가 흐릅니다.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      },
+      { 
+          "imgSrc" : "./images/overdoseimg5.jpg",
+          "rank" : "Master",
+           "description1" : "당신은 하이킥 마스터 !!",
+          "description2" : "골수에서 하이킥 피가 흐릅니다.",
+          "description3" : "이번 기회에 2007년 최고의 빅재미 시트콤 !!",
+          "description4" : "거침없이 하이킥을 정주행 해보는 건 어떠신가요 ?"
+      }
+    ]
+}
