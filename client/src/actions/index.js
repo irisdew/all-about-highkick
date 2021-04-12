@@ -25,3 +25,30 @@ export const gamePage = (payload) => {
     payload, //게임 페이지 현재 페이지 번호
   };
 };
+
+export const testUserName = (name) => {
+  return {
+    type: 'TEST_USERNAME',
+    name,
+  };
+};
+export const testPage = (payload) => {
+  return {
+    type: 'TEST_PAGE',
+    payload,
+  };
+};
+
+export const testOverdoseCount = (number) => {
+  return {
+    type: 'TEST_OVERDOSECOUNT',
+    number,
+  };
+};
+
+export const testSurveyNumber = (number) => {
+  return {
+    type: 'TEST_SURVEYNUMBER',
+    number,
+  };
+};

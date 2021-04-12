@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { testPage, testUserName, testSurveyNumber } from '../../actions';
 import styled from 'styled-components';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { NavLink as Link } from 'react-router-dom';
@@ -6,6 +8,7 @@ import { NavLink as Link } from 'react-router-dom';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => setIsOpen(!isOpen);
+  const dispatch = useDispatch();
 
   return (
     <Nav>
@@ -19,7 +22,15 @@ const Navbar = () => {
         <MenuLink to="/about" activeStyle>
           About
         </MenuLink>
-        <MenuLink to="/test" activeStyle>
+        <MenuLink
+          to="/test"
+          activeStyle
+          onClick={() => {
+            dispatch(testPage(1));
+            dispatch(testUserName(''));
+            dispatch(testSurveyNumber(1));
+          }}
+        >
           Test
         </MenuLink>
         <MenuLink to="/game" activeStyle>

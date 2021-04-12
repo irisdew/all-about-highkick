@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { testPage } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -30,10 +32,9 @@ const ButtonContainer = styled.div`
   margin-top: 2vw;
 `;
 
-function TestSurvey(props) {
-  // qnumber를 통해서, 마지막 설문지(qNumber === N)일 경우, 다음버튼 보여지도록 제어
-  // 이 역시, 리덕스로 관리하는 방향으로 하면 좋을 듯
-  const [qNumber, setQNumber] = useState(1);
+function TestSurvey() {
+  const qNumber = useSelector((state) => state.test.surveyNumber);
+  const dispatch = useDispatch();
 
   const classes = useStyles();
   return (
@@ -52,7 +53,7 @@ function TestSurvey(props) {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <ProgressBar qNumber={qNumber} />
-            <TestRadio qNumber={qNumber} setQNumber={setQNumber} />
+            <TestRadio qNumber={qNumber} />
             <ButtonContainer>
               <Button
                 disabled={qNumber === 10 ? false : true}
@@ -60,7 +61,7 @@ function TestSurvey(props) {
                 variant="contained"
                 color="primary"
                 onClick={() => {
-                  props.setIsStarted(3);
+                  dispatch(testPage(3));
                 }}
               >
                 다음

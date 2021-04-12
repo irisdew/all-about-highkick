@@ -12,8 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ButtonContainer = styled.div``;
-const HomeButtonContainer = styled.div`
+const ButtonContainer = styled.div`
   align-items: center;
 `;
 

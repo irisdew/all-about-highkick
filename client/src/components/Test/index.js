@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { testPage, testUserName } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -34,17 +36,13 @@ const useStyles = makeStyles((theme) => ({
 
 function TestMain(props) {
   // User Name 입력 값 확인 메소드
-  const [userName, setUserName] = useState('');
+  const userName = useSelector((state) => state.test.name);
+  const dispatch = useDispatch();
+
   const classes = useStyles();
 
   const handleChange = (e) => {
-    setUserName(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    // 이름을 입력하고, 시작하기를 누른다.
-    // 이름 state가 리덕스에 저장되어야한다.
-    // 화면 전환을 위해, isStarted 상태를 false -> true로 바껴야한다.
-    console.log('시작버튼 눌림');
+    dispatch(testUserName(e.target.value));
   };
 
   return (
@@ -58,7 +56,11 @@ function TestMain(props) {
         <br />
       </TestParagraph>
       <FormContainer>
-        <form onSubmit={handleSubmit} noValidate autoComplete="off">
+        <form
+          onSubmit={() => console.log('테스트 시작.')}
+          noValidate
+          autoComplete="off"
+        >
           <TextField
             id="outlined-basic"
             label="이름을 입력해주세요."
@@ -75,7 +77,7 @@ function TestMain(props) {
         variant="contained"
         color="primary"
         onClick={() => {
-          props.setIsStarted(6);
+          dispatch(testPage(6));
         }}
       >
         중독성 테스트
@@ -87,7 +89,7 @@ function TestMain(props) {
         variant="contained"
         color="primary"
         onClick={() => {
-          props.setIsStarted(2);
+          dispatch(testPage(2));
         }}
       >
         관련성 테스트

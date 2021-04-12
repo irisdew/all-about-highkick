@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { testPage, testUserName, testSurveyNumber } from '../../actions';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -32,12 +34,13 @@ const HomeButtonLink = styled(Link)`
 
 function TestResult() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   return (
     <ContentContainer>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <ResultTopSector userName={'위영민(임시)'} />
+            <ResultTopSector />
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -67,6 +70,11 @@ function TestResult() {
                 variant="contained"
                 color="secondary"
                 className={classes.button}
+                onClick={() => {
+                  dispatch(testPage(1));
+                  dispatch(testUserName(''));
+                  dispatch(testSurveyNumber(1));
+                }}
               >
                 Home으로 이동
               </Button>

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { testPage, testOverdoseCount } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
@@ -21,12 +23,13 @@ const useStyles = makeStyles((theme) => ({
 
 const PageTitle = styled.h1``;
 
-function TestOverdose(props) {
+function TestOverdose() {
   const classes = useStyles();
 
   const [overdoseQuestion, setOverdoseQuestion] = useState([]);
-  const [isAnswer, setIsAnswer] = useState(0);
+  // 제출버튼 활성화용 일뿐, 다른페이지에서는 이 state를 사용하지 않기에, 굳이 redux로 관리하지 않아도 되나 ?
   const [isChecked, setIsChecked] = useState(0);
+  const dispatch = useDispatch();
 
   function AnswerCounter() {
     let AnswerCount = 0;
@@ -35,9 +38,7 @@ function TestOverdose(props) {
       if (document.querySelector(`input[name='${i}']:checked`).value === 'true')
         AnswerCount += 1;
 
-    // 부모 컴포넌트에서 넘긴 setState로 했는데, 리덕스로 state변경시, 업데이트 값이 바로 반영되고
-    // 결과 페이지 변환 시, 그 값이 적용 되어 있어야 함.
-    props.setOverdoseCountTest(AnswerCount);
+    dispatch(testOverdoseCount(AnswerCount));
   }
   function CheckedCounter() {
     let checkedCount = 0;
@@ -45,6 +46,7 @@ function TestOverdose(props) {
       if (document.querySelectorAll('.select-radio')[i].checked)
         checkedCount += 1;
 
+    // 일단은, useState로 관리하는데, redux를 사용하기 시작했으므로, 사소한 것도, 모두 redux에서 관리해야 한다면, dispatch 할 것
     setIsChecked(checkedCount);
   }
   useEffect(() => {
@@ -111,9 +113,9 @@ function TestOverdose(props) {
               color="primary"
               onClick={() => {
                 AnswerCounter();
-                props.setIsStarted(4);
+                dispatch(testPage(4));
                 setTimeout(function () {
-                  props.setIsStarted(7);
+                  dispatch(testPage(7));
                 }, 3000);
               }}
             >

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const ImgContainer = styled.div`
@@ -11,21 +12,22 @@ const ImgContainer = styled.div`
 `;
 
 function OverdoseContents(props) {
+  const overdoseCount = useSelector((state) => state.test.overdoseCount);
   return (
     <ImgContainer>
       <img
-        src={props.data[props.answerCount].imgSrc}
-        alt={props.data[props.answerCount].rank}
+        src={props.data[overdoseCount].imgSrc}
+        alt={props.data[overdoseCount].rank}
       />
-      <h2>맞은 갯수 : {props.answerCount}/10 개</h2>
-      <h2>{props.data[props.answerCount].rank}</h2>
+      <h2>맞은 갯수 : {overdoseCount}/10 개</h2>
+      <h2>{props.data[overdoseCount].rank}</h2>
       <p>
-        {props.data[props.answerCount].description1} <br />
-        {props.data[props.answerCount].description2}
+        {props.data[overdoseCount].description1} <br />
+        {props.data[overdoseCount].description2}
         <br />
-        {props.data[props.answerCount].description3}
+        {props.data[overdoseCount].description3}
         <br />
-        {props.data[props.answerCount].description4}
+        {props.data[overdoseCount].description4}
         <br />
       </p>
     </ImgContainer>

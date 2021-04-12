@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { testPage, testUserName } from '../../actions';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -30,9 +32,12 @@ const MyALink = styled.a`
   text-decoration: none;
 `;
 
-function TestOverdoseResult(props) {
+function TestOverdoseResult() {
   const classes = useStyles();
   const [overdoseData, setOverdoseData] = useState([]);
+  const userName = useSelector((state) => state.test.name);
+  const overdoseCount = useSelector((state) => state.test.overdoseCount);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch('http://localhost:3000/data/overdose.json')
@@ -50,17 +55,15 @@ function TestOverdoseResult(props) {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <ResultTitle>당신의 하이킥 티어는 ?</ResultTitle>
+              <ResultTitle>{userName}님의 하이킥 티어는 ?</ResultTitle>
             </Paper>
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              {props.overdoseCount !== -1 && (
-                <OverdoseContents
-                  answerCount={props.overdoseCount}
-                  data={overdoseData}
-                />
-              )}
+              <OverdoseContents
+                answerCount={overdoseCount}
+                data={overdoseData}
+              />
             </Paper>
           </Grid>
 
@@ -70,7 +73,9 @@ function TestOverdoseResult(props) {
                 className={classes.button}
                 variant="contained"
                 color="secondary"
-                onClick={() => props.setIsStarted(6)}
+                onClick={() => {
+                  dispatch(testPage(6));
+                }}
               >
                 재도전 하기
               </Button>
@@ -91,7 +96,15 @@ function TestOverdoseResult(props) {
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <MyLink to="/">
-                <Button variant="contained" color="secondary">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => {
+                    dispatch(testUserName(''));
+                    dispatch(testPage(1));
+                    // 맞은 개수 초기화 할 필요가 없어보여서, 초기화 일단 안함.
+                  }}
+                >
                   Home 이동
                 </Button>
               </MyLink>
