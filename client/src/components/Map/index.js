@@ -38,7 +38,7 @@ export default function Map({ isDA }) {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar>
+        <AppBar color="default">
           <Toolbar>
             <IconButton
               edge="start"

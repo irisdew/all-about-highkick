@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { FeelingChart, AmountChart } from './Chart';
+import { FeelingChart, AmountChart, SampleChart } from './Chart';
 import MHwords from './munhee-words-white.png';
 import MH from './munhee.png';
 
