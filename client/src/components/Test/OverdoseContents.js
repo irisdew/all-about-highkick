@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+
 import styled from 'styled-components';
 
 const ImgContainer = styled.div`
@@ -12,22 +12,21 @@ const ImgContainer = styled.div`
 `;
 
 function OverdoseContents(props) {
-  const overdoseCount = useSelector((state) => state.test.overdoseCount);
   return (
     <ImgContainer>
       <img
-        src={props.data[overdoseCount].imgSrc}
-        alt={props.data[overdoseCount].rank}
+        src={props.data[Math.round(props.answerCount / 2)].imgSrc}
+        alt={props.data[Math.round(props.answerCount / 2)].rank}
       />
-      <h2>맞은 갯수 : {overdoseCount}/10 개</h2>
-      <h2>{props.data[overdoseCount].rank}</h2>
+      <h2>맞은 갯수 : {props.answerCount}/10 개</h2>
+      <h2>{props.data[Math.round(props.answerCount / 2)].rank}</h2>
       <p>
-        {props.data[overdoseCount].description1} <br />
-        {props.data[overdoseCount].description2}
+        {props.data[Math.round(props.answerCount / 2)].description[0]} <br />
+        {props.data[Math.round(props.answerCount / 2)].description[1]}
         <br />
-        {props.data[overdoseCount].description3}
+        {props.data[Math.round(props.answerCount / 2)].description[2]}
         <br />
-        {props.data[overdoseCount].description4}
+        {props.data[Math.round(props.answerCount / 2)].description[3]}
         <br />
       </p>
     </ImgContainer>

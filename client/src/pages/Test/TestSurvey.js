@@ -66,8 +66,9 @@ function TestSurvey() {
           <Paper className={classes.paper}>
             <ProgressBar qNumber={qNumber} />
             <TestRadio
-              select1={surveyData[qNumber].select1}
-              select2={surveyData[qNumber].select2}
+              select1={surveyData[qNumber].select[0]}
+              select2={surveyData[qNumber].select[1]}
+              select3={surveyData[qNumber].select[2]}
               qNumber={qNumber}
             />
             {/* <ButtonContainer>

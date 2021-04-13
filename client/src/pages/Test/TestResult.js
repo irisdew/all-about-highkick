@@ -1,6 +1,11 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { testPage, testUserName, testSurveyNumber } from '../../actions';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  testPage,
+  testUserName,
+  testSurveyNumber,
+  testEmotionCount,
+} from '../../actions';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -32,9 +37,28 @@ const HomeButtonLink = styled(Link)`
   text-decoration: none;
 `;
 
+/*
+{characterInfo[0].emotion}
+{userCharacterInfo['기쁨']}
+{userCharacterInfo['슬픔']}
+{userCharacterInfo['화남']}
+*/
 function TestResult() {
   const classes = useStyles();
+  const [characterInfo, setCharacterInfo] = useState({});
+  const userCharacterInfo = useSelector((state) => state.test.emotionCount);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch('http://localhost:3000/data/surveyResult.json')
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.result);
+        setCharacterInfo(res.result);
+      });
+  }, []);
+
+  if (Object.keys(characterInfo).length === 0) return null;
   return (
     <ContentContainer>
       <Grid container spacing={3}>
@@ -55,7 +79,11 @@ function TestResult() {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <ResultGraph />
+            <ResultGraph
+              userCharacterInfo={userCharacterInfo}
+              characterName={characterInfo[0].name}
+              characterEmotion={characterInfo[0].emotion}
+            />
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -74,6 +102,7 @@ function TestResult() {
                   dispatch(testPage(1));
                   dispatch(testUserName(''));
                   dispatch(testSurveyNumber(0));
+                  dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
                 }}
               >
                 Home으로 이동

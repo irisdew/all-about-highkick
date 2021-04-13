@@ -56,7 +56,7 @@ function TestOverdoseResult() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <ResultTitle>{userName}님의 하이킥 티어는 ?</ResultTitle>
+              <ResultTitle>{userName}의 시험결과를 보자꾸나 !</ResultTitle>
             </Paper>
           </Grid>
           <Grid item xs={12}>

@@ -67,16 +67,16 @@ function WordItems() {
           <WordDiv key={index}>
             <WordRadioButton
               key={index}
-              id={`word${word.id}`}
+              id={`word${word[0]}`}
               type="radio"
-              value={word.word[0]}
+              value={word[1]}
               onClick={(event) => {
                 emotionCount[event.target.value] += 1;
                 dispatch(testEmotionCount(emotionCount));
                 console.log(emotionCount);
               }}
             />
-            <WordLabel htmlFor={`word${word.id}`}>{word.word[1]}</WordLabel>
+            <WordLabel htmlFor={`word${word[0]}`}>{word[2]}</WordLabel>
           </WordDiv>
         </Paper>
       </Grid>

@@ -76,6 +76,28 @@ function TestRadio(props) {
           }}
         />
         <TestLabel htmlFor="radio2">{props.select2[1]}</TestLabel>
+        <TestRadioButton
+          type="radio"
+          id="radio3"
+          value={props.select3[0]}
+          name="select-radio"
+          onClick={(event) => {
+            setTimeout(() => (event.target.checked = false), 500);
+            if (props.qNumber < 9) {
+              dispatch(testSurveyNumber(props.qNumber + 1));
+              emotionCount[event.target.value] += 1;
+              dispatch(testEmotionCount(emotionCount));
+              console.log(emotionCount);
+            } else {
+              dispatch(testSurveyNumber(props.qNumber + 1));
+              dispatch(testPage(3));
+              emotionCount[event.target.value] += 1;
+              console.log(emotionCount);
+              dispatch(testEmotionCount(emotionCount));
+            }
+          }}
+        />
+        <TestLabel htmlFor="radio3">{props.select3[1]}</TestLabel>
       </div>
     </TestRadioContainer>
   );

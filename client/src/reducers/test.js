@@ -4,7 +4,7 @@ const testReducer = (
     name: '',
     overdoseCount: 0,
     surveyNumber: 0,
-    emotionCount: { 행복: 0, 슬픔: 0, 놀람: 0, 화남: 0, 평온: 0 },
+    emotionCount: { 기쁨: 0, 슬픔: 0, 화남: 0 },
   },
   action,
 ) => {

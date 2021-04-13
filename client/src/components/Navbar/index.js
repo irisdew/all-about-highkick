@@ -34,9 +34,7 @@ const Navbar = () => {
             dispatch(testPage(1));
             dispatch(testUserName(''));
             dispatch(testSurveyNumber(0));
-            dispatch(
-              testEmotionCount({ 행복: 0, 슬픔: 0, 놀람: 0, 화남: 0, 평온: 0 }),
-            );
+            dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
           }}
         >
           Test

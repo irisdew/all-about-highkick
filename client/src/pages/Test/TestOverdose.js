@@ -64,7 +64,7 @@ function TestOverdose() {
       <Grid container alignItems="center" justify="center" spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <PageTitle>제 1회 하이킥 모의고사</PageTitle>
+            <PageTitle>제 1회 하이킥 순재고사</PageTitle>
           </Paper>
         </Grid>
         <Grid container item xs={12} spacing={2}>
@@ -74,12 +74,12 @@ function TestOverdose() {
                 return (
                   <OverdoseTestQuestion
                     key={index}
-                    id={question.id}
+                    id={question.qnum}
                     question={question.question}
-                    select1={question.select1}
-                    select2={question.select2}
-                    select3={question.select3}
-                    select4={question.select4}
+                    select1={question.select[0]}
+                    select2={question.select[1]}
+                    select3={question.select[2]}
+                    select4={question.select[3]}
                     checkedCounter={CheckedCounter}
                   />
                 );
@@ -92,12 +92,12 @@ function TestOverdose() {
                 return (
                   <OverdoseTestQuestion
                     key={index}
-                    id={question.id}
+                    id={question.qnum}
                     question={question.question}
-                    select1={question.select1}
-                    select2={question.select2}
-                    select3={question.select3}
-                    select4={question.select4}
+                    select1={question.select[0]}
+                    select2={question.select[1]}
+                    select3={question.select[2]}
+                    select4={question.select[3]}
                     checkedCounter={CheckedCounter}
                   />
                 );
