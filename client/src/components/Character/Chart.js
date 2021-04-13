@@ -74,7 +74,7 @@ export const FeelingChart = () => {
       <PieChart
         data={data}
         options={options}
-        style={{ width: '40vw', height: '40vh' }}
+        style={{ width: '30vw', height: '40vh' }}
       />
     </div>
   );
@@ -121,7 +121,7 @@ export const AmountChart = () => {
       <LineChart
         data={data}
         options={options}
-        style={{ width: '40vw', height: '40vh' }}
+        style={{ width: '30vw', height: '40vh' }}
       />
     </>
   );
