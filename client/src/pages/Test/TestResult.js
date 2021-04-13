@@ -73,7 +73,7 @@ function TestResult() {
                 onClick={() => {
                   dispatch(testPage(1));
                   dispatch(testUserName(''));
-                  dispatch(testSurveyNumber(1));
+                  dispatch(testSurveyNumber(0));
                 }}
               >
                 Home으로 이동

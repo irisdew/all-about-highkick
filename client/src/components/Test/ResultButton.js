@@ -27,7 +27,7 @@ function ResultButton() {
           className={classes.button}
           startIcon={<BiShareAlt />}
         >
-          Share
+          공유하기
         </Button>
         <Button
           variant="contained"
@@ -35,7 +35,7 @@ function ResultButton() {
           className={classes.button}
           startIcon={<GoLink />}
         >
-          URL
+          링크복사
         </Button>
         <Button
           variant="contained"
@@ -43,7 +43,7 @@ function ResultButton() {
           className={classes.button}
           startIcon={<GiSaveArrow />}
         >
-          Save
+          저장하기
         </Button>
       </ButtonContainer>
     </>

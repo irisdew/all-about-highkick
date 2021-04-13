@@ -40,7 +40,8 @@ function TestOverdoseResult() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/overdose.json')
+    console.log(overdoseCount);
+    fetch('http://localhost:3000/data/overdoseResult.json')
       .then((res) => res.json())
       .then((res) => {
         console.log(res.result);

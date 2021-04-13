@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { testSurveyNumber } from '../../actions';
+import { testSurveyNumber, testEmotionCount, testPage } from '../../actions';
 
 const TestRadioContainer = styled.div`
   border: 2px solid black;
@@ -24,70 +24,58 @@ const TestRadioButton = styled.input`
 `;
 
 function TestRadio(props) {
-  const selectQuestions = {
-    1: [1, '1.문희는 문희했다. 그래서 문희했다.'],
-    2: [3, '2.문희는 문희했다. 그래서 문희했다.'],
-    3: [4, '1.순재는 순재했다. 그래서 순재했다.'],
-    4: [2, '2.순재는 순재했다. 그래서 순재했다.'],
-    5: [5, '1.혜미는 혜미했다. 그래서 혜미했다.'],
-    6: [2, '2.혜미는 혜미했다. 그래서 혜미했다.'],
-    7: [2, '1.준하는 준하했다. 그래서 준하했다.'],
-    8: [4, '2.준하는 준하했다. 그래서 준하했다.'],
-    9: [3, '1.범이는 범이했다. 그래서 범이했다.'],
-    10: [1, '2.범이는 범이했다. 그래서 범이했다.'],
-    11: [2, '1.민용이는 민용했다. 그래서 민용했다.'],
-    12: [1, '2.민용이는 민용했다. 그래서 민용했다.'],
-    13: [2, '1.서선생은 서선생했다. 그래서 서선생했다.'],
-    14: [1, '2.서선생은 서선생했다. 그래서 서선생했다.'],
-    15: [3, '1.찬성은 찬성했다. 그래서 찬성했다.'],
-    16: [4, '2.찬성은 찬성했다. 그래서 찬성했다.'],
-    17: [2, '1.개성댁은 개성댁했다. 그래서 개성댁했다.'],
-    18: [3, '2.개성댁은 개성댁은했다. 그래서 개성댁했다.'],
-    19: [5, '1.신지는 신지했다. 그래서 신지했다.'],
-    20: [4, '2.신지는 신지했다. 그래서 신지했다.'],
-  };
+  const emotionCount = useSelector((state) => state.test.emotionCount);
   const dispatch = useDispatch();
+
+  useEffect(() => {}, [emotionCount]);
   return (
     <TestRadioContainer>
       <div>
         <TestRadioButton
           type="radio"
           id="radio1"
-          value={selectQuestions[2 * props.qNumber - 1][0]}
+          value={props.select1[0]}
           name="select-radio"
           onClick={(event) => {
             setTimeout(() => (event.target.checked = false), 500);
-            if (props.qNumber !== 10) {
+            if (props.qNumber < 9) {
               dispatch(testSurveyNumber(props.qNumber + 1));
-              // props.setQNumber(props.qNumber + 1);
-              console.log(event.target.value);
+              emotionCount[event.target.value] += 1;
+              dispatch(testEmotionCount(emotionCount));
+              console.log(emotionCount);
             } else {
-              console.log(event.target.value);
+              dispatch(testSurveyNumber(props.qNumber + 1));
+              dispatch(testPage(3));
+              emotionCount[event.target.value] += 1;
+              console.log(emotionCount);
+              dispatch(testEmotionCount(emotionCount));
             }
           }}
         />
-        <TestLabel htmlFor="radio1">
-          {selectQuestions[2 * props.qNumber - 1][1]}
-        </TestLabel>
+        <TestLabel htmlFor="radio1">{props.select1[1]}</TestLabel>
         <TestRadioButton
           type="radio"
           id="radio2"
-          value={selectQuestions[2 * props.qNumber][0]}
+          value={props.select2[0]}
           name="select-radio"
           onClick={(event) => {
             setTimeout(() => (event.target.checked = false), 500);
-            if (props.qNumber !== 10) {
+            if (props.qNumber < 9) {
               dispatch(testSurveyNumber(props.qNumber + 1));
-              // props.setQNumber(props.qNumber + 1);
-              console.log(event.target.value);
+              emotionCount[event.target.value] += 1;
+              dispatch(testEmotionCount(emotionCount));
+
+              console.log(emotionCount);
             } else {
-              console.log(event.target.value);
+              dispatch(testSurveyNumber(props.qNumber + 1));
+              emotionCount[event.target.value] += 1;
+              dispatch(testEmotionCount(emotionCount));
+              console.log(emotionCount);
+              dispatch(testPage(3));
             }
           }}
         />
-        <TestLabel htmlFor="radio2">
-          {selectQuestions[2 * props.qNumber][1]}
-        </TestLabel>
+        <TestLabel htmlFor="radio2">{props.select2[1]}</TestLabel>
       </div>
     </TestRadioContainer>
   );

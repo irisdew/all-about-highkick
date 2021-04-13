@@ -1,5 +1,11 @@
 const testReducer = (
-  state = { page: 1, name: '', overdoseCount: 0, surveyNumber: 1 },
+  state = {
+    page: 1,
+    name: '',
+    overdoseCount: 0,
+    surveyNumber: 0,
+    emotionCount: { 행복: 0, 슬픔: 0, 놀람: 0, 화남: 0, 평온: 0 },
+  },
   action,
 ) => {
   switch (action.type) {
@@ -11,6 +17,8 @@ const testReducer = (
       return { ...state, overdoseCount: action.number };
     case 'TEST_SURVEYNUMBER':
       return { ...state, surveyNumber: action.number };
+    case 'TEST_EMOTION_COUNT':
+      return { ...state, emotionCount: action.emotion };
     default:
       return state;
   }

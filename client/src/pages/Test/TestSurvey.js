@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { testPage } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
@@ -33,30 +33,46 @@ const ButtonContainer = styled.div`
 `;
 
 function TestSurvey() {
+  const [surveyData, setSurveyData] = useState([]);
   const qNumber = useSelector((state) => state.test.surveyNumber);
   const dispatch = useDispatch();
-
   const classes = useStyles();
+
+  useEffect(() => {
+    fetch('http://localhost:3000/data/survey.json')
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data);
+        setSurveyData(res.data);
+      });
+  }, []);
+
+  if (surveyData.length === 0) return null;
+
   return (
     <ContentContainer>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Question qNumber={qNumber} />
+            <Question question={surveyData[qNumber].question} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Image qNumber={qNumber} />
+            <Image imgSrc={surveyData[qNumber].imgSrc} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <ProgressBar qNumber={qNumber} />
-            <TestRadio qNumber={qNumber} />
-            <ButtonContainer>
+            <TestRadio
+              select1={surveyData[qNumber].select1}
+              select2={surveyData[qNumber].select2}
+              qNumber={qNumber}
+            />
+            {/* <ButtonContainer>
               <Button
-                disabled={qNumber === 10 ? false : true}
+                disabled={qNumber === 9 ? false : true}
                 type="submit"
                 variant="contained"
                 color="primary"
@@ -66,7 +82,7 @@ function TestSurvey() {
               >
                 다음
               </Button>
-            </ButtonContainer>
+            </ButtonContainer> */}
           </Paper>
         </Grid>
       </Grid>

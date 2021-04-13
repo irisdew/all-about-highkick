@@ -52,3 +52,10 @@ export const testSurveyNumber = (number) => {
     number,
   };
 };
+
+export const testEmotionCount = (emotion) => {
+  return {
+    type: 'TEST_EMOTION_COUNT',
+    emotion,
+  };
+};

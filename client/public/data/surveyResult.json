@@ -1,0 +1,11 @@
+{
+    "result" : [
+        {
+            "id" : 0,
+            "name" : "나문희",
+            "description" : "나도 알어 !! 호박고무마 !!엉뚱발랄 나문희와 성향이 비슷하시군요 !! 하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다.",
+            "emotion" : ["./images/emotionAbuse.png","./images/emotionAngry.png"],
+            "pair" : ["./images/pair1","./images/pair2"]
+        }
+    ]
+}

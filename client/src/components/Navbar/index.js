@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { testPage, testUserName, testSurveyNumber } from '../../actions';
+import {
+  testPage,
+  testUserName,
+  testSurveyNumber,
+  testEmotionCount,
+} from '../../actions';
 import styled from 'styled-components';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { NavLink as Link } from 'react-router-dom';
@@ -28,7 +33,10 @@ const Navbar = () => {
           onClick={() => {
             dispatch(testPage(1));
             dispatch(testUserName(''));
-            dispatch(testSurveyNumber(1));
+            dispatch(testSurveyNumber(0));
+            dispatch(
+              testEmotionCount({ 행복: 0, 슬픔: 0, 놀람: 0, 화남: 0, 평온: 0 }),
+            );
           }}
         >
           Test

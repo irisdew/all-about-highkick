@@ -44,7 +44,7 @@ function ProgressBar(props) {
     <ProgressContainer>
       <BorderLinearProgress
         variant="determinate"
-        value={props.qNumber !== 1 && ((props.qNumber - 1) / 9) * 100}
+        value={(props.qNumber / 10) * 100}
       />
     </ProgressContainer>
   );
