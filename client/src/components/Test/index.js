@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
@@ -26,16 +25,10 @@ const ContentContainer = styled.div`
   align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
   padding-top: 20vh;
 `;
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
 
 function TestMain(props) {
   // User Name 입력 값 확인 메소드
   const [userName, setUserName] = useState('');
-  const classes = useStyles();
 
   const handleChange = (e) => {
     setUserName(e.target.value);
@@ -49,11 +42,11 @@ function TestMain(props) {
 
   return (
     <ContentContainer>
-      <TestTitle>하이킥 연결고리를 만들어보자.</TestTitle>
+      <TestTitle>내가 하이킥 등장인물이라면 ?</TestTitle>
       <TestParagraph>
-        몇 가지 테스트를 진행해보세요.
+        몇 가지 테스트를 진행해보고
         <br />
-        나의 하이킥 중독성 수준을 알아볼 수 있거나 <br />
+        등장인물의 대사분석을 통해 추출한 성향과 <br />
         본인의 성향과 맞는 하이킥 등장인물을 찾아보세요.
         <br />
       </TestParagraph>
@@ -69,19 +62,6 @@ function TestMain(props) {
         </form>
       </FormContainer>
       <Button
-        className={classes.button}
-        disabled={!userName}
-        type="submit"
-        variant="contained"
-        color="primary"
-        onClick={() => {
-          props.setIsStarted(6);
-        }}
-      >
-        중독성 테스트
-      </Button>
-      <Button
-        className={classes.button}
         disabled={!userName}
         type="submit"
         variant="contained"
@@ -90,7 +70,7 @@ function TestMain(props) {
           props.setIsStarted(2);
         }}
       >
-        관련성 테스트
+        시작하기
       </Button>
     </ContentContainer>
   );

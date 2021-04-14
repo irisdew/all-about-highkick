@@ -42,20 +42,20 @@ const data = [
 
 Cytoscape.use(coseBilkent);
 
-export default function Map({ onClick }) {
-  // const cy_for_rank = Cytoscape({
-  //   elements: data,
-  // });
+export default function Map() {
+  const cy_for_rank = Cytoscape({
+    elements: data,
+  });
 
   // elements들의 rank들입니다.
-  // const pageRank = cy_for_rank.elements().pageRank();
+  const pageRank = cy_for_rank.elements().pageRank();
 
   // node & font 크기 값
   const nodeMaxSize = 50;
-  // const nodeMinSize = 5;
+  const nodeMinSize = 5;
   // const nodeActiveSize = 28;
-  // const fontMaxSize = 8;
-  // const fontMinSize = 5;
+  const fontMaxSize = 8;
+  const fontMinSize = 5;
   // const fontActiveSize = 7;
 
   // edge & arrow 크기값
@@ -67,7 +67,7 @@ export default function Map({ onClick }) {
   // 상위 node & edge color
   // const dimColor = '#dfe4ea';
   const edgeColor = '#ced6e0';
-  // const nodeColor = '#57606f';
+  const nodeColor = '#57606f';
   // const nodeActiveColor = '#ffa502';
   // const successorColor = '#ff6348';
   const familyColor = '#f6b93b';
@@ -108,12 +108,6 @@ export default function Map({ onClick }) {
         'source-arrow-color': edgeColor,
         'source-arrow-shape': 'vee',
         'arrow-scale': arrowScale,
-      },
-    },
-    {
-      selector: 'edge:selected',
-      style: {
-        label: 'data(type)',
       },
     },
     {
@@ -174,7 +168,7 @@ export default function Map({ onClick }) {
     tile: true,
   };
 
-  // let myCyRef;
+  let myCyRef;
 
   return (
     <>
@@ -188,7 +182,7 @@ export default function Map({ onClick }) {
         maxZoom={5}
         minZoom={1}
         cy={(cy) => {
-          // myCyRef = cy;
+          myCyRef = cy;
 
           console.log('EVT', cy);
 
@@ -198,12 +192,10 @@ export default function Map({ onClick }) {
             console.log('TARGET', node.data());
             console.log('TARGET TYPE', typeof node[0]);
 
-            // const url = evt.target.data('url');
-            // if (url && url !== '') {
-            //   window.open(url);
-            // }
-
-            onClick();
+            const url = evt.target.data('url');
+            if (url && url !== '') {
+              window.open(url);
+            }
           });
         }}
       />
