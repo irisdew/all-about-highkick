@@ -4,24 +4,25 @@ import Home from './pages/Home';
 import About from './pages/Intro';
 import Test from './pages/Test';
 import Game from './pages/Game';
-
 import Characters from './pages/Characters';
 import Navbar from './components/Navbar';
 import './App.css';
-
-import Character from './components/Character';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/test" component={Test} />
-        <Route path="/game" component={Game} />
-
-        <Route path="/temp" component={Character} />
+        <Route exact path="/game" component={() => <Game page="main" />} />
+        <Route
+          exact
+          path="/game/result"
+          component={() => <Game page="result" />}
+        />
+        <Route exact path="/game/all" component={() => <Game page="all" />} />
         <Route path="/characters" component={Characters} />
       </Switch>
     </Router>
