@@ -26,6 +26,13 @@ export const gamePage = (payload) => {
   };
 };
 
+export const gameSelected = (payload) => {
+  return {
+    type: 'GAME_SELECTED',
+    payload, //뽑기게임 전체보기 페이지에서 유저가 선택한 사진에 해당하는 정보
+  };
+};
+
 export const testUserName = (name) => {
   return {
     type: 'TEST_USERNAME',
