@@ -52,3 +52,10 @@ export const testSurveyNumber = (number) => {
     number,
   };
 };
+
+export const characterSelected = (payload) => {
+  return {
+    type: 'CHARACTER_SELECTED',
+    payload, //유저가 인물관계도에서 누른 인물 이름
+  };
+};

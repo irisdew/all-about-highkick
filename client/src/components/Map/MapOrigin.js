@@ -1,13 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Cytoscape from 'cytoscape';
 import CytoscapeComponent from 'react-cytoscapejs';
 import coseBilkent from 'cytoscape-cose-bilkent';
+import { characterSelected } from '../../actions';
 
 const data = [
   // node
   { data: { id: '1', label: '나문희' } },
   { data: { id: '2', label: '이순재' } },
-  { data: { id: '3', label: '박해미', url: '/temp' } },
+  { data: { id: '3', label: '박해미' } },
   { data: { id: '4', label: '이준하' } },
   { data: { id: '5', label: '이민호' } },
   { data: { id: '6', label: '이윤호' } },
@@ -43,6 +45,7 @@ const data = [
 Cytoscape.use(coseBilkent);
 
 export default function Map({ onClick }) {
+  const dispatch = useDispatch();
   // const cy_for_rank = Cytoscape({
   //   elements: data,
   // });
@@ -174,8 +177,6 @@ export default function Map({ onClick }) {
     tile: true,
   };
 
-  // let myCyRef;
-
   return (
     <>
       <CytoscapeComponent
@@ -188,22 +189,16 @@ export default function Map({ onClick }) {
         maxZoom={5}
         minZoom={1}
         cy={(cy) => {
-          // myCyRef = cy;
-
           console.log('EVT', cy);
 
           cy.on('tap', 'node', (evt) => {
             var node = evt.target;
             console.log('EVT', evt);
             console.log('TARGET', node.data());
+            console.log('mymymy', node.data().label);
             console.log('TARGET TYPE', typeof node[0]);
-
-            // const url = evt.target.data('url');
-            // if (url && url !== '') {
-            //   window.open(url);
-            // }
-
             onClick();
+            dispatch(characterSelected(node.data().label));
           });
         }}
       />

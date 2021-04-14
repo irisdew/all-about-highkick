@@ -5,12 +5,12 @@
             "name" : "나문희",
             "age" : "68세",
             "job" : "주부", 
-            "quote" : ["호! 박! 고! 구! 마! 호박고구마!!!", "문희는 포도가 먹고시푼뎅"], 
-            "photo" : "./1.jpg",
-            "wordcloud" : "./wordcloud.png",
-            "feelingChart" : [5000, 3000, 5000, 7000, 6000, 4000],
+            "quote" : "호! 박! 고! 구! 마! 호박고구마!!!",
+            "photo" : "images/character/1.png",
+            "wordcloud" : "images/wordcloud/1.png",
+            "feelingChart" : [5000, 3000, 5000],
             "amountChart" : [80, 10, 70, 20, 50, 30, 80, 10, 70, 20, 50, 30, 80, 10, 70, 20, 50, 30, 80, 10, 70, 20, 50, 30, 80, 10, 70, 20, 50, 30, 80, 10, 70, 20, 50, 30],
-            "youtube" : "https://www.youtube.com/embed/uBG3iUHFSHA",
+            "youtube" : "https://www.youtube.com/embed/uBG3iUHFSHA"
         }
 
     ]
