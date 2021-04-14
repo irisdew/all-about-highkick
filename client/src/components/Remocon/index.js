@@ -16,26 +16,26 @@ export default function Remocon() {
     <BottomNavigation value={isSelected} showLabels>
       <BottomNavigationAction
         key={0}
-        label="Home"
+        label="홈"
         onClick={() => dispatch(home(0))}
         icon={<IoHomeOutline />}
       />
 
       <BottomNavigationAction
         key={1}
-        label="Test"
+        label="테스트"
         onClick={() => dispatch(home(1))}
         icon={<BsCardChecklist />}
       />
       <BottomNavigationAction
         key={2}
-        label="Game"
+        label="게임"
         onClick={() => dispatch(home(2))}
         icon={<IoGameControllerOutline />}
       />
       <BottomNavigationAction
         key={3}
-        label="Characters"
+        label="캐릭터"
         onMouseOver={() => dispatch(home(3))}
         icon={<GiOrganigram />}
       />

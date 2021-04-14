@@ -20,7 +20,10 @@ const Navbar = () => {
       )}
       <Menu isOpen={isOpen}>
         <MenuLink to="/about" activeStyle>
-          About
+          소개
+        </MenuLink>
+        <MenuLink to="/game" activeStyle>
+          추억의 뽑기게임
         </MenuLink>
         <MenuLink
           to="/test"
@@ -33,11 +36,11 @@ const Navbar = () => {
         >
           Test
         </MenuLink>
-        <MenuLink to="/game" activeStyle>
-          Game
+        <MenuLink to="/gosa" activeStyle>
+          하이킥 고사
         </MenuLink>
         <MenuLink to="/characters" activeStyle>
-          Characters
+          인물관계도
         </MenuLink>
       </Menu>
     </Nav>
