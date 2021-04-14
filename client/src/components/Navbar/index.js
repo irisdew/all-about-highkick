@@ -34,7 +34,7 @@ const Navbar = () => {
             dispatch(testSurveyNumber(1));
           }}
         >
-          Test
+          나와 닮은 캐릭터
         </MenuLink>
         <MenuLink to="/gosa" activeStyle>
           하이킥 고사
