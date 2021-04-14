@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { testPage } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import Image from '../../components/Test/Image';
-import Question from '../../components/Test/Question';
-
 import TestRadio from '../../components/Test/TestRadio';
 import ProgressBar from '../../components/Test/ProgressBar';
 import Button from '@material-ui/core/Button';
-import styled from 'styled-components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    border: '2px solid black',
   },
   paper: {
     padding: theme.spacing(3),
@@ -30,6 +28,14 @@ const ContentContainer = styled.div`
 `;
 const ButtonContainer = styled.div`
   margin-top: 2vw;
+`;
+const ProcessImageContainer = styled.div`
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
 `;
 
 function TestSurvey() {
@@ -50,28 +56,31 @@ function TestSurvey() {
   if (surveyData.length === 0) return null;
 
   return (
-    <ContentContainer>
+    <ContentContainer className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Question question={surveyData[qNumber].question} />
+           
           </Paper>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <Image imgSrc={surveyData[qNumber].imgSrc} />
-          </Paper>
-        </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <ProgressBar qNumber={qNumber} />
-            <TestRadio
-              select1={surveyData[qNumber].select[0]}
-              select2={surveyData[qNumber].select[1]}
-              select3={surveyData[qNumber].select[2]}
-              qNumber={qNumber}
+          <h1>{surveyData[qNumber].question}</h1>
+          <ProcessImageContainer>
+            <img
+              src={surveyData[qNumber].imgSrc}
+              alt={surveyData[qNumber].imgSrc}
             />
-            {/* <ButtonContainer>
+          </ProcessImageContainer>
+        </Grid>
+        <Grid item xs={12}>
+          <ProgressBar qNumber={qNumber} />
+          <TestRadio
+            select1={surveyData[qNumber].select[0]}
+            select2={surveyData[qNumber].select[1]}
+            select3={surveyData[qNumber].select[2]}
+            qNumber={qNumber}
+          />
+          {/* <ButtonContainer>
               <Button
                 disabled={qNumber === 9 ? false : true}
                 type="submit"
@@ -84,7 +93,6 @@ function TestSurvey() {
                 다음
               </Button>
             </ButtonContainer> */}
-          </Paper>
         </Grid>
       </Grid>
     </ContentContainer>

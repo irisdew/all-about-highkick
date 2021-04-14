@@ -18,6 +18,7 @@ import ResultEmotionSector from '../../components/Test/ResultEmotionSector';
 import ResultMate from '../../components/Test/ResultMate';
 import ResultGraph from '../../components/Test/ResultGraph';
 import ResultButtons from '../../components/Test/ResultButton';
+import { Divider } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -60,7 +61,7 @@ function TestResult() {
 
   if (Object.keys(characterInfo).length === 0) return null;
   return (
-    <ContentContainer>
+    <div>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
@@ -111,7 +112,7 @@ function TestResult() {
           </Paper>
         </Grid>
       </Grid>
-    </ContentContainer>
+    </div>
   );
 }
 
