@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { testPage, testOverdoseCount } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,6 +21,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// 페이지 레이아웃 컨테이너
+const Container = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  text-align: center;
+  background-color: white;
+  align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
+  justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
+
+  margin-left: 20vw;
+  margin-right: 20vw;
+`;
 const PageTitle = styled.h1`
   color: black;
   margin-top: 0;
@@ -36,7 +49,7 @@ function TestOverdose() {
   // 제출버튼 활성화용 일뿐, 다른페이지에서는 이 state를 사용하지 않기에, 굳이 redux로 관리하지 않아도 되나 ?
   const [isChecked, setIsChecked] = useState(0);
   const dispatch = useDispatch();
-
+  const history = useHistory();
   function AnswerCounter() {
     let AnswerCount = 0;
 
@@ -66,9 +79,9 @@ function TestOverdose() {
 
   if (!overdoseQuestion.length) return null;
   return (
-    <div
+    <Container
       style={{
-        backgroundImage: `url(${'./images/examimg1.jpg'})`,
+        backgroundImage: `url(${'/images/examimg1.jpg'})`,
         backgroundSize: 'cover',
         // height: '100vh',
         // display: 'flex',
@@ -135,9 +148,11 @@ function TestOverdose() {
               color="primary"
               onClick={() => {
                 AnswerCounter();
-                dispatch(testPage(4));
+                history.push('/roading');
+                //dispatch(testPage(4));
                 setTimeout(function () {
-                  dispatch(testPage(7));
+                  history.push('/overdose/result');
+                  //dispatch(testPage(7));
                 }, 3000);
               }}
             >
@@ -146,7 +161,7 @@ function TestOverdose() {
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </Container>
   );
 }
 
