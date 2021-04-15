@@ -4,22 +4,22 @@ import { Television } from '../../components/Television';
 import { Article } from '../../components/Article';
 import Remocon from '../../components/Remocon';
 
+const Container = styled.div`
+  top: 10vh;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-basis: auto;
+  margin-bottom: 5vh;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
 function Home() {
-  const Container = styled.div`
-    top: 10vh;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-basis: auto;
-    margin-bottom: 5vh;
-
-    @media screen and (max-width: 768px) {
-      flex-direction: column;
-    }
-  `;
-
   return (
     <>
       <Container>
