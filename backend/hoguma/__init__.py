@@ -9,6 +9,15 @@ import config
 db = SQLAlchemy()
 migrate = Migrate()
 
+from hoguma.models.character import Character
+from hoguma.models.connection import Connection
+from hoguma.models.emotion import Emotion
+from hoguma.models.gacha import Gacha
+from hoguma.models.overdose import Overdose, OverdoseResult
+from hoguma.models.stock import Stock
+from hoguma.models.survey import Survey, SurveyResult
+from hoguma.models.word import Word
+
 
 def create_app():
     app = Flask(__name__)

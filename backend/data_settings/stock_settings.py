@@ -3,6 +3,10 @@ from hoguma.models.stock import Stock
 from hoguma.models.character import Character
 
 import json
+from hoguma import create_app
+
+
+app = create_app()
 
 character_set = [
     ("문희", "나문희"),
@@ -17,7 +21,7 @@ character_set = [
     ("찬성", "황찬성"),
     ("개성댁", "개성댁"),
     ("신지", "신지"),
-    ("민정", "민정"),
+    ("민정", "서민정"),
     ("교감", "홍순창(교감)"),
 ]
 
@@ -27,16 +31,17 @@ with open(
     stock_dict = json.load(json_file)
 
     for ch in character_set:
-        charater_id = (
-            db.session.query(Character.id)
-            .filter(Character.name == ch[1])
-            .all()[0]
-        )
-        stock_set = stock_dict[ch[0]]
-        for episode, weight in stock_set.items():
-            stock = Stock(
-                episode=episode, weight=weight, charater_id=charater_id
+        with app.app_context():
+            character_id = (
+                db.session.query(Character.id)
+                .filter(Character.name == ch[1])
+                .all()[0][0]
             )
-            db.session.add(stock)
-            db.session.commit()
+            stock_set = stock_dict[ch[0]]
+            for episode, weight in stock_set.items():
+                stock = Stock(
+                    episode=episode, weight=weight, character_id=character_id
+                )
+                db.session.add(stock)
+                db.session.commit()
 

@@ -12,7 +12,7 @@ class Stock(db.Model):
         nullable=False,
     )
     character = db.relationship(
-        "Character", backref=db.backref("emotions", lazy=True)
+        "Character", backref=db.backref("stocks", lazy=True)
     )
 
     def __repr__(self):
