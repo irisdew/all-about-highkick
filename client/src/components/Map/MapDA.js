@@ -174,8 +174,6 @@ export default function Map({ onClick }) {
     tile: true,
   };
 
-  // let myCyRef;
-
   return (
     <>
       <CytoscapeComponent
@@ -188,8 +186,6 @@ export default function Map({ onClick }) {
         maxZoom={5}
         minZoom={1}
         cy={(cy) => {
-          // myCyRef = cy;
-
           console.log('EVT', cy);
 
           cy.on('tap', 'node', (evt) => {

@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import { FeelingChart, AmountChart } from './Chart';
-import MHwords from './munhee-words-white.png';
-import MH from './munhee.png';
 
 const Character = () => {
   const selectedName = useSelector((state) => state.character.name);

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Grid from '@material-ui/core/Grid';
 import { Television } from '../../components/Television';
 import { Article } from '../../components/Article';
 import Remocon from '../../components/Remocon';
