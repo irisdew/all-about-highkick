@@ -1,21 +1,25 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { gameSelected, gameNumber } from '../../actions';
 import Slider from 'react-slick';
 import './carousel.css';
 
-const Photo = (key) => {
+const Photo = ({ id }) => {
   const dispatch = useDispatch();
 
+  const response = 0;
+
   return (
-    <div style={{ width: '30%' }}>
+    <div>
       <img
-        alt={`gacha_${key}`}
-        src={`/images/game/gacha_${key}.png`}
+        alt={`gacha_${id}`}
+        src={`/images/game/gacha_${id}.png`}
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         onClick={() => {
-          console.log(key);
-          // key와 매칭되는 데이터뭉치 API에 GET 요청 후 response 저장
-          dispatch(gameSelected(response));
+          console.log(id);
+          // id와 매칭되는 데이터뭉치 API에 GET 요청 후 response 저장
+          // dispatch(gameSelected(response));
+          dispatch(gameNumber(id));
         }}
       />
     </div>
@@ -58,14 +62,17 @@ export default function Carousel({ data }) {
       },
     ],
   };
+
+  console.log('data', data);
+
   return (
     <div
       className="container"
       style={{ padding: '50px', background: '#fff', dispaly: 'flex' }}
     >
       <Slider {...settings}>
-        {data.map((d) => {
-          return <Photo number={d.number} />;
+        {[...Array(20).keys()].map((i) => {
+          return <Photo id={i + 1} />;
         })}
       </Slider>
     </div>
