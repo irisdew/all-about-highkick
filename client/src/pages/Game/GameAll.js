@@ -1,98 +1,82 @@
-import React from 'react';
-import Slider from 'react-slick';
-import './GameAll.css';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import Carousel from '../../components/Carousel';
+import Button from '@material-ui/core/Button';
 
-export default function SimpleSlider() {
-  const settings = {
-    dots: true,
-    arrows: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 2000,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
-    ],
-  };
+export default function GameAll() {
+  const [show, setShow] = useState(false);
+  const selected = useSelector((state) => state.game.selected);
+  const number = useSelector((state) => state.game.number);
+
   return (
-    <div
-      className="container"
-      style={{ padding: '50px', background: '#fff', dispaly: 'flex' }}
-    >
-      <Slider {...settings}>
-        <div style={{ width: '30%' }}>
-          <img
-            src="/images/game/gacha_1.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            onClick={() => {
-              console.log('1!');
-            }}
-          />
+    <div style={{ width: '80vw', margin: 'auto', textAlign: 'center' }}>
+      <Carousel />
+
+      {number === 0 && (
+        <div
+          style={{
+            width: '80%',
+            height: '25vh',
+            margin: 'auto',
+            padding: 'auto',
+            border: 'solid 0.2rem black',
+            borderRadius: '1rem',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <h2>사진을 클릭해 하이킥 추억을 꺼내보세요!</h2>
+          <h4>
+            거침없이 하이킥의 명장면을 살펴보고 <br />
+            데이터 분석으로 도출된 하이킥의 재밌는 사실들을 알아보세요
+          </h4>
         </div>
-        <div style={{ width: '30%' }}>
-          <img
-            src="/images/game/gacha_2.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
+      )}
+
+      {number !== 0 && (
+        <div
+          style={{
+            width: '80%',
+            height: '25vh',
+            margin: 'auto',
+            padding: 'auto',
+            border: 'solid 0.2rem black',
+            borderRadius: '1rem',
+          }}
+        >
+          {!show && (
+            <>
+              <h2>어이구 사람 정말 볼수록 굿굿굿이예요~</h2>
+              <p>
+                희대의 꼰대 ! 반어법 달인 ! <br />
+                인간꽈베기 교감이 사람들에게 외친 '굿'은 몇 번일까요 ?
+              </p>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  setShow(true);
+                }}
+              >
+                정답 보기
+              </Button>
+            </>
+          )}
+
+          {show && (
+            <>
+              {/* <h1>{selected.number}번</h1>
+          <p>{selected.description}</p> */}
+              <h1>364번</h1>
+              <p>
+                홍순창 교감이 <b>굿~</b>을 외친 횟수는 364번 입니다
+              </p>
+              <h4>다른 사진도 클릭해보세요!</h4>
+            </>
+          )}
         </div>
-        <div style={{ width: '30%' }}>
-          <img
-            src="/images/game/gacha_3.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </div>
-        <div style={{ width: '30%' }}>
-          <img
-            src="/images/game/gacha_4.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </div>
-        <div style={{ width: '30%' }}>
-          <img
-            src="/images/game/gacha_5.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </div>
-        <div style={{ width: '30%' }}>
-          <img
-            src="/images/game/gacha_6.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </div>
-        <div style={{ width: '30%' }}>
-          <img
-            src="/images/game/gacha_7.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </div>
-      </Slider>
+      )}
     </div>
   );
 }

@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.1.10",
     "@toast-ui/chart": "^4.3.0",
     "@toast-ui/react-chart": "^4.3.0",
+    "chokidar": "^2.1.8",
     "cytoscape": "^3.18.2",
     "cytoscape-cose-bilkent": "^4.1.0",
     "disqus-react": "^1.0.11",

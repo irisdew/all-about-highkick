@@ -26,6 +26,32 @@ export const gamePage = (payload) => {
   };
 };
 
+export const gameSelected = (payload) => {
+  return {
+    type: 'GAME_SELECTED',
+    payload, //뽑기게임 전체보기 페이지에서 유저가 선택한 사진에 해당하는 정보
+  };
+};
+
+export const gameOpen = () => {
+  return {
+    type: 'GAME_OPEN', //뽑기게임 공 결과 페이지에서 공을 클릭하면 Dialog 열림
+  };
+};
+
+export const gameClose = () => {
+  return {
+    type: 'GAME_CLOSE', //뽑기게임 공 결과 페이지에서 Dialog 닫힘
+  };
+};
+
+export const gameBall = (payload) => {
+  return {
+    type: 'GAME_BALL',
+    payload, //랜덤으로 나온 공 번호, 관련 내용
+  };
+};
+
 export const testUserName = (name) => {
   return {
     type: 'TEST_USERNAME',
