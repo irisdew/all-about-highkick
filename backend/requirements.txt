@@ -17,6 +17,7 @@ lazy-object-proxy==1.6.0
 Mako==1.1.4
 MarkupSafe==1.1.1
 mccabe==0.6.1
+mysql-connector==2.2.9
 pathspec==0.8.1
 pylint==2.7.4
 PyMySQL==1.0.2
