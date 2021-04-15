@@ -8,7 +8,6 @@ import GameDialog from '../../components/Dialog/GameDialog';
 
 export default function GameResult() {
   const history = useHistory();
-  const description = useSelector((state) => state.game.description);
 
   return (
     <div

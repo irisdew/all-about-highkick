@@ -1,6 +1,7 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { gameClose } from '../../actions';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -46,20 +47,16 @@ const DialogContent = withStyles((theme) => ({
 }))(MuiDialogContent);
 
 export default function GameDialog() {
-  const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const open = useSelector((state) => state.game.open);
+  const ball = useSelector((state) => state.game.ball);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
   const handleClose = () => {
-    setOpen(false);
+    dispatch(gameClose());
   };
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open dialog
-      </Button>
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -70,19 +67,23 @@ export default function GameDialog() {
         </DialogTitle>
         <DialogContent dividers style={{ textAlign: 'center' }}>
           <img
+            // 이미지 번호는 ball.key
             alt="gacha_1"
             src="/images/game/gacha_1.png"
             style={{ width: '80%' }}
           />
-          <h2>"얏옹~ 나와라~"</h2>
-          <h4>당신의 추억은 "야동순재"입니다</h4>
+          <h2>{ball.quote}</h2>
+          <h4>당신의 추억은 "nickname"입니다</h4>
+          {/* 나중에 ball.nickname으로 넣을 것임 */}
           <Typography gutterBottom>
-            시리와 빅스비를 앞서간 음성인식 노트북! <br />
-            순재가 노트북에 외친 ‘얏옹~’은 총 몇 번일까요 ?
+            {ball.question.map((line) => {
+              return <p>{line}</p>;
+            })}
           </Typography>
           <Typography gutterBottom>
             <p>
-              순재가 노트북에 <b>얏옹~</b>을 외친 횟수는 <b>14번</b> 입니다.
+              {ball.description}
+              {/* 순재가 노트북에 <b>얏옹~</b>을 외친 횟수는 <b>14번</b> 입니다. */}
             </p>
           </Typography>
         </DialogContent>

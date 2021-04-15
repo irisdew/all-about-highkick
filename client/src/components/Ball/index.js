@@ -1,13 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { gameOpen } from '../../actions';
 import './ball.css';
 
 const Ball = () => {
+  const dispatch = useDispatch();
   const number = useSelector((state) => state.game.number);
+  const ball = useSelector((state) => state.game.ball);
+
+  console.log('#####', ball);
 
   return (
     <div class="stage">
-      <figure class="ball">
+      <figure
+        class="ball"
+        onClick={() => {
+          console.log('공을 클릭했다!');
+          dispatch(gameOpen());
+        }}
+      >
         <span class="number" data-number={number}>
           &nbsp;&nbsp;&nbsp;
         </span>
