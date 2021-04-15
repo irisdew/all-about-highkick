@@ -2,23 +2,6 @@ from hoguma import db
 from hoguma.models.character import Character
 import csv
 
-character_set = [
-    "문희",
-    "순재",
-    "준하",
-    "민용",
-    "민호",
-    "윤호",
-    "해미",
-    "범",
-    "유미",
-    "찬성",
-    "개성댁",
-    "신지",
-    "민정",
-    "교감",
-]
-
 with open(
     "data_settings/dataset/highkick_character_data.csv", "r", encoding="utf-8",
 ) as file:

@@ -4,7 +4,7 @@ from hoguma import db
 class Emotion(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    happy = db.Column(db.Integer, nullable=False)
+    joy = db.Column(db.Integer, nullable=False)
     anger = db.Column(db.Integer, nullable=False)
     sadness = db.Column(db.Integer, nullable=False)
     character_id = db.Column(

@@ -4,9 +4,9 @@ from hoguma import db
 class Gacha(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     gacha_number = db.Column(db.Integer, nullable=False)
-    quote = db.Column(db.String(200), nullable=False)
-    question = db.Column(db.String(500), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
+    quote = db.Column(db.Text, nullable=False)
+    question = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text, nullable=False)
     character_id = db.Column(
         db.Integer,
         db.ForeignKey("character.id", ondelete="CASCADE"),

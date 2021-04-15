@@ -5,7 +5,7 @@ class Stock(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     episode = db.Column(db.Integer, nullable=False)
-    weight = db.Column(db.Integer, nullabel=False)
+    weight = db.Column(db.Integer, nullable=False)
     character_id = db.Column(
         db.Integer,
         db.ForeignKey("character.id", ondelete="CASCADE"),

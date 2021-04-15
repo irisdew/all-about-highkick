@@ -1,2 +1,2 @@
-__all__ = ["data_settings", "hoguma"]
+__all__ = ["data_settings", "hoguma", "config"]
 

@@ -13,7 +13,6 @@ class Connection(db.Model):
         db.ForeignKey("character.id", ondelete="CASCADE"),
         nullable=False,
     )
-    origin_flag = db.Column(db.String(10), nullable=False)
     origin_type = db.Column(db.String(50))
     connection_weight = db.Column(db.Integer)
 

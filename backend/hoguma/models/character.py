@@ -6,7 +6,7 @@ class Character(db.Model):
     name = db.Column(db.String(50), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     job = db.Column(db.String(50), nullable=False)
-    quote = db.Column(db.String(200), nullable=False)
+    quote = db.Column(db.Text, nullable=False)
     word_cloud = db.Column(db.String(200), nullable=False)
     youtube = db.Column(db.String(200), nullable=False)
 
