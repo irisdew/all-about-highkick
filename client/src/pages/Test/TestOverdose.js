@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { testPage, testOverdoseCount } from '../../actions';
+import { testOverdoseCount } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
@@ -83,10 +83,6 @@ function TestOverdose() {
       style={{
         backgroundImage: `url(${'/images/examimg1.jpg'})`,
         backgroundSize: 'cover',
-        // height: '100vh',
-        // display: 'flex',
-        // alignItems: 'center',
-        // justifyContent: 'center',
       }}
     >
       <Grid container alignItems="center" justify="center" spacing={0}>
@@ -149,10 +145,8 @@ function TestOverdose() {
               onClick={() => {
                 AnswerCounter();
                 history.push('/roading');
-                //dispatch(testPage(4));
                 setTimeout(function () {
                   history.push('/overdose/result');
-                  //dispatch(testPage(7));
                 }, 3000);
               }}
             >

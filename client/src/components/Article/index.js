@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  testUserName,
+  testSurveyNumber,
+  testEmotionCount,
+  testWordCount,
+} from '../../actions';
 import { useHistory } from 'react-router-dom';
 
 const Container = styled.div`
@@ -23,6 +29,7 @@ const Container = styled.div`
 
 export const Article = () => {
   const isSelected = useSelector((state) => state.homeSelect);
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const ArticleData = [
@@ -51,7 +58,7 @@ export const Article = () => {
       keyword: '데이터 분석',
       description2: '에 기반한 <br /> 테스트로 한번 알아봅시다.',
       button: '검사하기',
-      url: '/test',
+      url: '/survey',
     },
     {
       id: 3,
@@ -60,7 +67,7 @@ export const Article = () => {
       keyword: '하이킥 고사',
       description2: '를 풀어보고 <br /> 나의 등급을 알아보세요',
       button: '응시하기',
-      url: '/gosa',
+      url: '/overdose',
     },
 
     {
@@ -106,6 +113,10 @@ export const Article = () => {
         color="primary"
         style={{ width: '45%', marginLeft: '20%', marginTop: '5%' }}
         onClick={() => {
+          dispatch(testUserName(''));
+          dispatch(testWordCount(0));
+          dispatch(testSurveyNumber(0));
+          dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
           history.push(ArticleData[isSelected].url);
         }}
       >

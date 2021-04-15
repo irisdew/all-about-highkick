@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { testPage, testUserName } from '../../actions';
+import { testUserName } from '../../actions';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-
 import OverdoseContents from '../../components/Test/OverdoseContents';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,11 +45,9 @@ const ResultPhargraph = styled.p`
   font-size: 5vh;
   display: inline-block;
   margin: 0 2vw;
+  cursor: pointer;
 `;
 const MyLink = styled(Link)`
-  text-decoration: none;
-`;
-const MyALink = styled.a`
   text-decoration: none;
 `;
 
@@ -62,6 +58,7 @@ function TestOverdoseResult() {
   const overdoseCount = useSelector((state) => state.test.overdoseCount);
   const dispatch = useDispatch();
   const history = useHistory();
+
   useEffect(() => {
     console.log(overdoseCount);
     fetch('http://localhost:3000/data/overdoseResult.json')
@@ -98,26 +95,15 @@ function TestOverdoseResult() {
                 <ResultPhargraph
                   onClick={() => {
                     history.push('/overdose/process');
-                    //dispatch(testPage(6));
                   }}
                 >
                   재도전 하기
                 </ResultPhargraph>
-
-                {/* <MyALink
-                href="https://www.youtube.com/watch?v=45nLn4kHxmY&list=PL1FPDVeoyuPeQF67xCTaoMfC0QeBVsxa8&index=1"
-                target="_blank"
-              >
-                <ResultPhargraph>티어 올리러가기</ResultPhargraph>
-              </MyALink> */}
-
                 <MyLink to="/">
                   <ResultPhargraph
                     onClick={() => {
                       history.push('/');
                       dispatch(testUserName(''));
-                      //dispatch(testPage(1));
-                      // 맞은 개수 초기화 할 필요가 없어보여서, 초기화 일단 안함.
                     }}
                   >
                     홈으로 이동
