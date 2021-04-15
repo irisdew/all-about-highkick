@@ -1,5 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import Disqus from 'disqus-react';
+
+const chatContainer = styled.div`
+  align-items: center;
+  width: 70px;
+`;
+
 function IntroChat() {
   const disqusShortname = 'hoguma';
   const disqusConfig = {
@@ -9,12 +16,18 @@ function IntroChat() {
     title: '하이킥 완전정복',
   };
   return (
-    <>
+    <div
+      style={{
+        margin: '0 auto',
+        textAlign: 'center',
+        alignItems: 'center',
+      }}
+    >
       <Disqus.DiscussionEmbed
         shortname={disqusShortname}
         config={disqusConfig}
       />
-    </>
+    </div>
   );
 }
 

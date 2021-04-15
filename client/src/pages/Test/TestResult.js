@@ -1,6 +1,11 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { testPage, testUserName, testSurveyNumber } from '../../actions';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  testPage,
+  testUserName,
+  testSurveyNumber,
+  testEmotionCount,
+} from '../../actions';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -13,15 +18,16 @@ import ResultEmotionSector from '../../components/Test/ResultEmotionSector';
 import ResultMate from '../../components/Test/ResultMate';
 import ResultGraph from '../../components/Test/ResultGraph';
 import ResultButtons from '../../components/Test/ResultButton';
+import { Divider } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    border: '2px solid black',
+    border: '4px solid black',
   },
 }));
 
@@ -30,17 +36,49 @@ const ContentContainer = styled.div`
 `;
 const HomeButtonLink = styled(Link)`
   text-decoration: none;
+  color: black;
+`;
+const ResultPhargraph = styled.p`
+  color: black;
+  font-size: 5vh;
+  display: inline-block;
+  margin: 0 2vw;
 `;
 
+/*
+{characterInfo[0].emotion}
+{userCharacterInfo['기쁨']}
+{userCharacterInfo['슬픔']}
+{userCharacterInfo['화남']}
+*/
 function TestResult() {
   const classes = useStyles();
+  const [characterInfo, setCharacterInfo] = useState({});
+  const userCharacterInfo = useSelector((state) => state.test.emotionCount);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch('http://localhost:3000/data/surveyResult.json')
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.result);
+        setCharacterInfo(res.result);
+      });
+  }, []);
+
+  if (Object.keys(characterInfo).length === 0) return null;
+  // characterInfo = 매칭 캐릭터 하나 정보 객체로 올것임 => 수정 필요
   return (
-    <ContentContainer>
-      <Grid container spacing={3}>
+    <div>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <ResultTopSector />
+            <ResultTopSector
+              name={characterInfo[0].name}
+              nickName={characterInfo[0].nickName}
+              img={characterInfo[0].imgSrc}
+              desc={characterInfo[0].description}
+            />
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -55,7 +93,11 @@ function TestResult() {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <ResultGraph />
+            <ResultGraph
+              userCharacterInfo={userCharacterInfo}
+              characterName={characterInfo[0].name}
+              characterEmotion={characterInfo[0].emotion}
+            />
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -65,24 +107,29 @@ function TestResult() {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <HomeButtonLink to="/">
-              <Button
+            <ResultPhargraph
+              onClick={() => {
+                dispatch(testPage(1));
+                dispatch(testUserName(''));
+                dispatch(testSurveyNumber(0));
+                dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
+              }}
+            >
+              <HomeButtonLink to="/"> 홈 이동</HomeButtonLink>
+            </ResultPhargraph>
+
+            {/* <Button
                 variant="contained"
                 color="secondary"
                 className={classes.button}
-                onClick={() => {
-                  dispatch(testPage(1));
-                  dispatch(testUserName(''));
-                  dispatch(testSurveyNumber(1));
-                }}
+               
               >
-                Home으로 이동
-              </Button>
-            </HomeButtonLink>
+              
+              </Button> */}
           </Paper>
         </Grid>
       </Grid>
-    </ContentContainer>
+    </div>
   );
 }
 

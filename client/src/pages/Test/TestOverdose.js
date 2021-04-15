@@ -16,12 +16,18 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    color: theme.palette.text.secondary,
-    border: '2px solid black',
+    background: 'none',
   },
 }));
 
-const PageTitle = styled.h1``;
+const PageTitle = styled.h1`
+  color: black;
+  margin-top: 0;
+`;
+const PageSubTitle = styled.h2`
+  color: black;
+  margin-bottom: 0;
+`;
 
 function TestOverdose() {
   const classes = useStyles();
@@ -60,26 +66,38 @@ function TestOverdose() {
 
   if (!overdoseQuestion.length) return null;
   return (
-    <div className={classes.root}>
-      <Grid container alignItems="center" justify="center" spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <PageTitle>제 1회 하이킥 모의고사</PageTitle>
-          </Paper>
+    <div
+      style={{
+        backgroundImage: `url(${'./images/examimg1.jpg'})`,
+        backgroundSize: 'cover',
+        // height: '100vh',
+        // display: 'flex',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+      }}
+    >
+      <Grid container alignItems="center" justify="center" spacing={0}>
+        <Grid
+          item
+          xs={12}
+          style={{ margin: '0 2vw', borderBottom: '3px solid black' }}
+        >
+          <PageSubTitle>2021년도 제 1회 하이킥 고사</PageSubTitle>
+          <PageTitle>하이킥 중독성 영역</PageTitle>
         </Grid>
-        <Grid container item xs={12} spacing={2}>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
+        <Grid style={{ margin: '1vh 0' }} container item xs={12} spacing={0}>
+          <Grid item xs={6} style={{ borderRight: '2px solid black' }}>
+            <Paper elevation={0} className={classes.paper}>
               {overdoseQuestion.slice(0, 5).map((question, index) => {
                 return (
                   <OverdoseTestQuestion
                     key={index}
-                    id={question.id}
+                    id={question.qnum}
                     question={question.question}
-                    select1={question.select1}
-                    select2={question.select2}
-                    select3={question.select3}
-                    select4={question.select4}
+                    select1={question.select[0]}
+                    select2={question.select[1]}
+                    select3={question.select[2]}
+                    select4={question.select[3]}
                     checkedCounter={CheckedCounter}
                   />
                 );
@@ -87,17 +105,17 @@ function TestOverdose() {
             </Paper>
           </Grid>
           <Grid item xs={6}>
-            <Paper className={classes.paper}>
+            <Paper elevation={0} className={classes.paper}>
               {overdoseQuestion.slice(5, 10).map((question, index) => {
                 return (
                   <OverdoseTestQuestion
                     key={index}
-                    id={question.id}
+                    id={question.qnum}
                     question={question.question}
-                    select1={question.select1}
-                    select2={question.select2}
-                    select3={question.select3}
-                    select4={question.select4}
+                    select1={question.select[0]}
+                    select2={question.select[1]}
+                    select3={question.select[2]}
+                    select4={question.select[3]}
                     checkedCounter={CheckedCounter}
                   />
                 );
@@ -105,8 +123,12 @@ function TestOverdose() {
             </Paper>
           </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
+        <Grid
+          item
+          xs={12}
+          style={{ margin: '0 2vw', borderTop: '3px solid black' }}
+        >
+          <Paper elevation={0} className={classes.paper}>
             <Button
               disabled={isChecked === 10 ? false : true}
               variant="contained"

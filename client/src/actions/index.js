@@ -85,3 +85,17 @@ export const characterSelected = (payload) => {
     payload, //유저가 인물관계도에서 누른 인물 이름
   };
 };
+
+export const testWordCount = (number) => {
+  return {
+    type: 'TEST_WORD_COUNT',
+    number,
+  };
+};
+
+export const testEmotionCount = (emotion) => {
+  return {
+    type: 'TEST_EMOTION_COUNT',
+    emotion,
+  };
+};

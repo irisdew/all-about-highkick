@@ -16,7 +16,7 @@ const TestTitle = styled.h1`
 `;
 // 제목 설명 컴포넌트
 const TestParagraph = styled.p`
-  font-size: 2vw;
+  font-size: 1.5vw;
 `;
 // 사용자 정보 & 버튼 컨테이너
 const FormContainer = styled.div`
@@ -49,11 +49,16 @@ function TestMain(props) {
     <ContentContainer>
       <TestTitle>하이킥 연결고리를 만들어보자.</TestTitle>
       <TestParagraph>
-        몇 가지 테스트를 진행해보세요.
+        {/* 몇 가지 테스트를 진행해보세요.
         <br />
         나의 하이킥 중독성 수준을 알아볼 수 있거나 <br />
         본인의 성향과 맞는 하이킥 등장인물을 찾아보세요.
+        <br /> */}
+        여러분들이 사용하는 일상언어에는 모두 감정이 포함되어 있습니다.
         <br />
+        본인의 감정언어와 가장 비슷한 하이킥 캐릭터가 궁금하시다면
+        <br />
+        아래 테스트를 진행해보세요.
       </TestParagraph>
       <FormContainer>
         <form

@@ -5,8 +5,9 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
-    height: 10,
-    borderRadius: 5,
+    height: 20,
+    borderRadius: 20,
+    margin: '0 1vw',
   },
   colorPrimary: {
     backgroundColor:
@@ -14,7 +15,7 @@ const BorderLinearProgress = withStyles((theme) => ({
   },
   bar: {
     borderRadius: 5,
-    backgroundColor: '#1a90ff',
+    backgroundColor: '#a16ef5',
   },
 }))(LinearProgress);
 
@@ -44,7 +45,7 @@ function ProgressBar(props) {
     <ProgressContainer>
       <BorderLinearProgress
         variant="determinate"
-        value={props.qNumber !== 1 && ((props.qNumber - 1) / 9) * 100}
+        value={(props.qNumber / 10) * 100}
       />
     </ProgressContainer>
   );
