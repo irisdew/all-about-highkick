@@ -1,26 +1,19 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import { BiShareAlt } from 'react-icons/bi';
-import { GiSaveArrow } from 'react-icons/gi';
-import { GoLink } from 'react-icons/go';
-
-const useStyles = makeStyles((theme) => ({
-  svg: {
-    margin: '0 0.5vw',
-  },
-}));
+import * as htmlToImage from 'html-to-image';
+import { toPng } from 'html-to-image';
+import download from 'downloadjs';
 
 const ButtonContainer = styled.div`
-  display: inline-block;
+  display: block;
 `;
 
-const ResultPhargraph = styled.p`
+const ResultPhargraph = styled.h1`
   color: black;
-  font-size: 4vh;
+  font-size: 5vh;
   display: inline-block;
-  margin: 0 2vw;
+  margin: auto 2vw;
+  cursor: pointer;
 `;
 
 const callKakaoBtn = () => {
@@ -80,47 +73,26 @@ function onClickKakao() {
   window.open('http://localhost:3000/survey/result');
 }
 
-function ResultButton() {
-  const classes = useStyles();
+function makeImg() {
+  htmlToImage
+    .toPng(document.getElementById('result-img'))
+    .then(function (dataUrl) {
+      download(dataUrl, 'test-result.png');
+    });
+}
 
+function ResultButton() {
   useEffect(() => {
     callKakaoBtn();
   }, []);
   return (
-    <>
-      <ButtonContainer>
-        <ResultPhargraph id="kakao-link-btn" onClick={onClickKakao}>
-          <BiShareAlt className={classes.svg} />
-          공유하기
-        </ResultPhargraph>
-        <ResultPhargraph>
-          <GoLink className={classes.svg} />
-          링크복사
-        </ResultPhargraph>
-        <ResultPhargraph>
-          <GiSaveArrow className={classes.svg} />
-          저장하기
-        </ResultPhargraph>
-        {/* <Button
-          variant="contained"
-          color="secondary"
-          className={classes.button}
-          startIcon={}
-        ></Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.button}
-          startIcon={}
-        ></Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.button}
-          startIcon={}
-        ></Button> */}
-      </ButtonContainer>
-    </>
+    <ButtonContainer>
+      <ResultPhargraph id="kakao-link-btn" onClick={onClickKakao}>
+        공유하자
+      </ResultPhargraph>
+      <ResultPhargraph>복사하자</ResultPhargraph>{' '}
+      <ResultPhargraph onClick={() => makeImg()}>저장하자</ResultPhargraph>
+    </ButtonContainer>
   );
 }
 

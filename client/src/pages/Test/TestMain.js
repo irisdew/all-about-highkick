@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { testPage, testUserName } from '../../actions';
+import { testUserName } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -37,7 +37,6 @@ const Container = styled.div`
   background-color: white;
   align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
   justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
-
   margin-left: 20vw;
   margin-right: 20vw;
 `;
@@ -49,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function TestMain(props) {
-  // User Name 입력 값 확인 메소드
   const userName = useSelector((state) => state.test.name);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -65,11 +63,6 @@ function TestMain(props) {
       <ContentContainer>
         <TestTitle>나의 성향과 비슷한 등장인물은 ?</TestTitle>
         <TestParagraph>
-          {/* 몇 가지 테스트를 진행해보세요.
-        <br />
-        나의 하이킥 중독성 수준을 알아볼 수 있거나 <br />
-        본인의 성향과 맞는 하이킥 등장인물을 찾아보세요.
-        <br /> */}
           여러분들이 사용하는 일상언어에는 모두 감정이 포함되어 있습니다.
           <br />
           본인의 감정언어와 가장 비슷한 하이킥 캐릭터가 궁금하시다면
