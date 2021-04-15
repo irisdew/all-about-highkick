@@ -2,7 +2,7 @@ const gameReducer = (
   state = {
     number: 0,
     description: '',
-    page: 0,
+    page: 'main',
     selected: {
       key: '0',
       number: '0',
@@ -13,6 +13,8 @@ const gameReducer = (
         '데이터 분석으로 도출된 하이킥의 재밌는 사실들을 알아보세요',
       ],
     },
+    open: false,
+    ball: {},
   },
   action,
 ) => {
@@ -23,9 +25,14 @@ const gameReducer = (
       return { ...state, description: action.payload };
     case 'GAME_PAGE':
       return { ...state, page: action.payload };
-
     case 'GAME_SELECTED':
       return { ...state, selected: action.payload };
+    case 'GAME_OPEN':
+      return { ...state, open: true };
+    case 'GAME_CLOSE':
+      return { ...state, open: false };
+    case 'GAME_BALL':
+      return { ...state, ball: action.payload };
     default:
       return state;
   }
