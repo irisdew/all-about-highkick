@@ -13,9 +13,13 @@ const MiddlesectorEmotionContainer = styled.div`
   display: block;
   margin: 0 2vw;
 `;
-const MiddleSectorTitle = styled.h1``;
+const MiddleSectorTitle = styled.h1`
+  color: black;
+`;
 const MiddleMateSectorImage = styled.img``;
-const MiddleMateSectorName = styled.p``;
+const MiddleMateSectorName = styled.p`
+  color: black;
+`;
 
 // 변해야할 것들 : 캐릭터 이미지주소, 캐릭터설명,캐릭터이름
 

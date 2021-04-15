@@ -70,6 +70,10 @@ function TestOverdose() {
       style={{
         backgroundImage: `url(${'./images/examimg1.jpg'})`,
         backgroundSize: 'cover',
+        // height: '100vh',
+        // display: 'flex',
+        // alignItems: 'center',
+        // justifyContent: 'center',
       }}
     >
       <Grid container alignItems="center" justify="center" spacing={0}>
@@ -78,7 +82,7 @@ function TestOverdose() {
           xs={12}
           style={{ margin: '0 2vw', borderBottom: '3px solid black' }}
         >
-          <PageSubTitle>2021년도 제 1회 하이킥 이순재고사</PageSubTitle>
+          <PageSubTitle>2021년도 제 1회 하이킥 고사</PageSubTitle>
           <PageTitle>하이킥 중독성 영역</PageTitle>
         </Grid>
         <Grid style={{ margin: '1vh 0' }} container item xs={12} spacing={0}>

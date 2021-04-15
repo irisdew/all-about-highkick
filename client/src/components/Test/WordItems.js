@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { testEmotionCount } from '../../actions';
+import { testEmotionCount, testWordCount } from '../../actions';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -19,17 +19,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const WordDiv = styled.div`
-  width: 10vw;
-  height: 7vh;
   margin: auto;
   align-items: center;
   border: 10px solid black;
   transition: all ease 1s;
   cursor: pointer;
 
-  :hover {
+  /* :hover {
     border: 10px solid red;
-  }
+  } */
 `;
 const WordLabel = styled.label`
   /* display: block;
@@ -37,18 +35,15 @@ const WordLabel = styled.label`
   margin: 0 5vh;
   border-radius: 30px;
   background-color: skyblue; */
+  width: 100%;
 `;
-const WordRadioButton = styled.input`
-  /* display: none;
-  &:checked + ${WordLabel} {
-    border: 10px solid red;
-  } */
-`;
+const WordRadioButton = styled.input``;
 
 function WordItems() {
   const classes = useStyles();
   const [words, setWords] = useState([]);
   const emotionCount = useSelector((state) => state.test.emotionCount);
+  const wordCount = useSelector((state) => state.test.wordCount);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,7 +53,13 @@ function WordItems() {
         console.log(res.words);
         setWords(res.words);
       });
-  }, [emotionCount]);
+  }, [emotionCount, wordCount]);
+
+  function changeDivCss(idx) {
+    var parent = document.querySelector(`#word${idx}`).parentElement;
+    parent.style.border = '10px solid blue';
+    parent.style.opacity = 0;
+  }
 
   function FormRow() {
     const wordList = words.map((word, index) => (
@@ -71,8 +72,19 @@ function WordItems() {
               type="radio"
               value={word[1]}
               onClick={(event) => {
-                emotionCount[event.target.value] += 1;
-                dispatch(testEmotionCount(emotionCount));
+                // 선택한 radio버튼 박스는 사라지고, 버튼활성화 카운터 1증가 하고 싶음
+                // 아래 처럼 작동시키면, changeDivCss 가 먹힌다. => 대신 버튼활성화 카운트가 안된다. => 당연히 안됨, 조건을 봐라.
+                // 그러자고, 저 if문을 제거해서 실행하면, changeDivCss만 안먹힌다. ㅠ
+                event.preventDefault();
+                changeDivCss(word[0]);
+                if (event.target.checked === false) {
+                  emotionCount[event.target.value] += 1;
+                  dispatch(testEmotionCount(emotionCount));
+                  event.target.checked = true;
+                }
+                dispatch(testWordCount(wordCount + 1));
+                //dispatch(testWordCount(wordCount + 1));
+
                 console.log(emotionCount);
               }}
             />

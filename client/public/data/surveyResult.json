@@ -2,81 +2,91 @@
     "result" : [
         {
             "idx" : 0,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "나문희",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알아 !! 호박고구마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         },
         {
             "idx" : 1,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "박혜미",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알아 !! 호박고구마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         },
         {
             "idx" : 2,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "이순재",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         },
         {
             "idx" : 3,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "이준하",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         },
         {
             "idx" : 4,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "이민용",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         },
         {
             "idx" : 5,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "신지",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         },
         {
             "idx" : 6,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "김범",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알어 !! 호박고구마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         },
         {
             "idx" : 7,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "찬성",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         },
         {
             "idx" : 8,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "개성댁",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         },
         {
             "idx" : 9,
-            "imgSrc" : "./images/moonhee.png",
+            "nickName" : "엉뚱발랄",
+            "imgSrc" : "./images/testSurveyResult/1.png",
             "name" : "이민호",
-            "description" : ["나도 알어 !! 호박고무마 !!", "엉뚱발랄 나문희와 성향이 비슷하시군요 !!", "하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다."],
+            "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
             "pair" : ["./images/Heymi.jpg","./images/Soonjae.jpg"]
         }

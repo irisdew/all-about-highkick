@@ -11,7 +11,9 @@ const BottomSectorContainer = styled.div`
   width: auto;
   height: auto;
 `;
-const BottomSectorTitle = styled.h1``;
+const BottomSectorTitle = styled.h1`
+  color: black;
+`;
 const BottomGraphDiv = styled.div`
   display: block;
   justify-content: center;

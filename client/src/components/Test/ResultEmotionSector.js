@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MiddleSectorTitle = styled.h1``;
+const MiddleSectorTitle = styled.h1`
+  color: black;
+`;
 const MiddleSectorContainer = styled.div`
   overflow: hidden;
   display: flex;
@@ -17,7 +19,9 @@ const MiddlesectorEmotionContainer = styled.div`
 const MiddleSectorImage = styled.img`
   width: 100px;
 `;
-const MiddleSectorDescription = styled.p``;
+const MiddleSectorDescription = styled.p`
+  color: black;
+`;
 
 // 변해야 할 것 : 매핑되는 감정이미지, 이미지 설명도 매핑시켜 저장해놔야 할듯
 function ResultEmotionSector() {
@@ -26,11 +30,16 @@ function ResultEmotionSector() {
       <MiddleSectorTitle>대표성격 분석결과</MiddleSectorTitle>
       <MiddleSectorContainer>
         <MiddlesectorEmotionContainer>
-          <MiddleSectorImage src="/images/emotionAngry.png" alt={'폭발적'} />
-          <MiddleSectorDescription>화남</MiddleSectorDescription>
+          <MiddleSectorImage src="/images/emotionHappy.png" alt={'기쁨'} />
+          <MiddleSectorDescription>기쁨</MiddleSectorDescription>
+        </MiddlesectorEmotionContainer>
+
+        <MiddlesectorEmotionContainer>
+          <MiddleSectorImage src="/images/emotionSad.png" alt={'슬픔'} />
+          <MiddleSectorDescription>슬픔</MiddleSectorDescription>
         </MiddlesectorEmotionContainer>
         <MiddlesectorEmotionContainer>
-          <MiddleSectorImage src="/images/emotionUnfair.png" alt={'억울함'} />
+          <MiddleSectorImage src="/images/emotionAngry.png" alt={'화남'} />
           <MiddleSectorDescription>화남</MiddleSectorDescription>
         </MiddlesectorEmotionContainer>
       </MiddleSectorContainer>

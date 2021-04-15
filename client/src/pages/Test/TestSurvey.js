@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    border: '2px solid black',
+    border: '3px solid black',
   },
   paper: {
     padding: theme.spacing(3),
@@ -64,7 +64,16 @@ function TestSurvey() {
           </Paper>
         </Grid> */}
         <Grid item xs={12}>
-          <h1>{surveyData[qNumber].question}</h1>
+          <h1 style={{ marginBottom: 0 }}>
+            Q{surveyData[qNumber].qnum}.{' '}
+            {surveyData[qNumber].question.split('<br />')[0].length !== 0 &&
+              surveyData[qNumber].question.split('<br />')[0]}
+          </h1>
+          <h1 style={{ marginTop: '1vh' }}>
+            {surveyData[qNumber].question.split('<br />')[1].length !== 0 &&
+              surveyData[qNumber].question.split('<br />')[1]}
+          </h1>
+
           <ProcessImageContainer>
             <img
               src={surveyData[qNumber].imgSrc}

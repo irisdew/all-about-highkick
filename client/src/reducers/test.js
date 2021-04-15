@@ -3,6 +3,7 @@ const testReducer = (
     page: 1,
     name: '',
     overdoseCount: 0,
+    wordCount: 0,
     surveyNumber: 0,
     emotionCount: { 기쁨: 0, 슬픔: 0, 화남: 0 },
   },
@@ -17,6 +18,8 @@ const testReducer = (
       return { ...state, overdoseCount: action.number };
     case 'TEST_SURVEYNUMBER':
       return { ...state, surveyNumber: action.number };
+    case 'TEST_WORD_COUNT':
+      return { ...state, wordCount: action.number };
     case 'TEST_EMOTION_COUNT':
       return { ...state, emotionCount: action.emotion };
     default:

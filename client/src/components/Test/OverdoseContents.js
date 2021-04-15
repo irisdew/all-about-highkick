@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styled from 'styled-components';
 
 const ImgContainer = styled.div`
@@ -11,24 +10,54 @@ const ImgContainer = styled.div`
   height: auto;
 `;
 
+const ScoreDiv = styled.div`
+  padding-top: 1vh;
+`;
+const Score = styled.h1`
+  color: black;
+  display: inline-block;
+  margin: 0 1vw;
+  font-size: 7vh;
+`;
+const ScoreText = styled.h1`
+  color: black;
+  display: inline-block;
+`;
+const ContentsDescription = styled.p`
+  color: black;
+  font-size: 3vh;
+  margin-top: 0;
+`;
+
 function OverdoseContents(props) {
   return (
     <ImgContainer>
+      <ScoreDiv>
+        <ScoreText>점수</ScoreText>
+        <Score>{props.answerCount * 10}</Score>
+        <ScoreText>점</ScoreText>
+      </ScoreDiv>
+
       <img
         src={props.data[Math.round(props.answerCount / 2)].imgSrc}
         alt={props.data[Math.round(props.answerCount / 2)].rank}
       />
-      <h2>맞은 갯수 : {props.answerCount}/10 개</h2>
-      <h2>{props.data[Math.round(props.answerCount / 2)].rank}</h2>
-      <p>
-        {props.data[Math.round(props.answerCount / 2)].description[0]} <br />
-        {props.data[Math.round(props.answerCount / 2)].description[1]}
+      <ContentsDescription>
+        성적표야? 어디보자~
         <br />
-        {props.data[Math.round(props.answerCount / 2)].description[2]}
+        {
+          props.data[Math.round(props.answerCount / 2)].description.split(
+            '<br />',
+          )[0]
+        }
         <br />
-        {props.data[Math.round(props.answerCount / 2)].description[3]}
+        {
+          props.data[Math.round(props.answerCount / 2)].description.split(
+            '<br />',
+          )[1]
+        }
         <br />
-      </p>
+      </ContentsDescription>
     </ImgContainer>
   );
 }

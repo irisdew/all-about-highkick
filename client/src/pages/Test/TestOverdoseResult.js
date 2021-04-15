@@ -18,13 +18,22 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    border: '2px solid black',
+    border: '4px solid black',
   },
   button: {
     margin: theme.spacing(1),
   },
 }));
-const ResultTitle = styled.h1``;
+const ResultTitle = styled.h1`
+  color: black;
+  font-size: 5vh;
+`;
+const ResultPhargraph = styled.p`
+  color: black;
+  font-size: 5vh;
+  display: inline-block;
+  margin: 0 2vw;
+`;
 const MyLink = styled(Link)`
   text-decoration: none;
 `;
@@ -53,15 +62,16 @@ function TestOverdoseResult() {
   return (
     <div className={classes.root}>
       {overdoseData.length && (
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <ResultTitle>{userName}의 시험결과를 보자꾸나 !</ResultTitle>
+              <ResultTitle>{userName}님의 시험결과</ResultTitle>
             </Paper>
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <OverdoseContents
+                name={userName}
                 answerCount={overdoseCount}
                 data={overdoseData}
               />
@@ -69,45 +79,32 @@ function TestOverdoseResult() {
           </Grid>
 
           <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              <Button
-                className={classes.button}
-                variant="contained"
-                color="secondary"
+            <Paper className={classes.paper} style={{ paddingTop: '2.2vh' }}>
+              <ResultPhargraph
                 onClick={() => {
                   dispatch(testPage(6));
                 }}
               >
                 재도전 하기
-              </Button>
-              <MyALink
+              </ResultPhargraph>
+
+              {/* <MyALink
                 href="https://www.youtube.com/watch?v=45nLn4kHxmY&list=PL1FPDVeoyuPeQF67xCTaoMfC0QeBVsxa8&index=1"
                 target="_blank"
               >
-                <Button
-                  className={classes.button}
-                  variant="contained"
-                  color="secondary"
-                >
-                  티어 올리러가기
-                </Button>
-              </MyALink>
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>
+                <ResultPhargraph>티어 올리러가기</ResultPhargraph>
+              </MyALink> */}
+
               <MyLink to="/">
-                <Button
-                  variant="contained"
-                  color="secondary"
+                <ResultPhargraph
                   onClick={() => {
                     dispatch(testUserName(''));
                     dispatch(testPage(1));
                     // 맞은 개수 초기화 할 필요가 없어보여서, 초기화 일단 안함.
                   }}
                 >
-                  Home 이동
-                </Button>
+                  홈으로 이동
+                </ResultPhargraph>
               </MyLink>
             </Paper>
           </Grid>

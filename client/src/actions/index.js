@@ -53,6 +53,13 @@ export const testSurveyNumber = (number) => {
   };
 };
 
+export const testWordCount = (number) => {
+  return {
+    type: 'TEST_WORD_COUNT',
+    number,
+  };
+};
+
 export const testEmotionCount = (emotion) => {
   return {
     type: 'TEST_EMOTION_COUNT',

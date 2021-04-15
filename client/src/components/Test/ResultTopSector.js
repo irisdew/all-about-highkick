@@ -2,7 +2,12 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
-const TopSectorTitle = styled.h1``;
+const TopSectorTitle = styled.h1`
+  color: black;
+  font-size: 5.5vh;
+  margin-top: 1vh;
+  margin-bottom: 2vh;
+`;
 const TopSectorImageContainer = styled.div`
   overflow: hidden;
   display: flex;
@@ -12,34 +17,34 @@ const TopSectorImageContainer = styled.div`
   height: auto;
 `;
 const TopSectorImage = styled.img`
-  width: 400px;
-  height: 300px;
+  width: 25vw;
+  height: 30vh;
 `;
-const TopSectorDescription = styled.p``;
+const TopSectorDescription = styled.p`
+  color: black;
+  font-size: 4vh;
+  margin-top: 3vh;
+  margin-bottom: 0;
+`;
 
 // API : 매칭 캐릭터 정보 객체 ( 캐릭터 매핑정보 )
 // => 캐릭터 이름, 캐릭터이미지경로, 결과멘트
 // 매칭 캐릭터별
 // 변해야 할 것들 : 캐릭터 형용사, 캐릭터 이름, 캐릭터 이미지, 캐릭터 설명 멘트
 
-function ResultTopSector() {
+function ResultTopSector(props) {
   const userName = useSelector((state) => state.test.name);
 
   useEffect(() => {}, []);
   return (
     <>
       <TopSectorTitle>
-        {userName}님은 {'엉뚱발랄'} {'나문희'}
+        {userName}님은 {props.nickName} {props.name}
       </TopSectorTitle>
       <TopSectorImageContainer>
-        <TopSectorImage src="/images/moonhee.png" alt={'나문희'} />
+        <TopSectorImage src={props.img} alt={props.name} />
       </TopSectorImageContainer>
-      <TopSectorDescription>
-        {/* 결과멘트 */}
-        "나도 알어 !! 호박고무마 !!" <br />
-        엉뚱발랄 나문희와 성향이 비슷하시군요 !! <br />
-        하이킥 가족들중에서 억울하면서도 귀여운 면이 많은 캐릭터입니다. <br />
-      </TopSectorDescription>
+      <TopSectorDescription>{props.desc}</TopSectorDescription>
     </>
   );
 }
