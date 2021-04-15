@@ -51,9 +51,6 @@ const ResultPhargraph = styled.p`
 const MyLink = styled(Link)`
   text-decoration: none;
 `;
-const MyALink = styled.a`
-  text-decoration: none;
-`;
 
 function TestOverdoseResult() {
   const classes = useStyles();
@@ -62,6 +59,7 @@ function TestOverdoseResult() {
   const overdoseCount = useSelector((state) => state.test.overdoseCount);
   const dispatch = useDispatch();
   const history = useHistory();
+
   useEffect(() => {
     console.log(overdoseCount);
     fetch('http://localhost:3000/data/overdoseResult.json')
@@ -97,7 +95,6 @@ function TestOverdoseResult() {
               <Paper className={classes.paper} style={{ paddingTop: '2.2vh' }}>
                 <ResultPhargraph
                   onClick={() => {
-                    history.push('/overdose/process');
                     //dispatch(testPage(6));
                   }}
                 >

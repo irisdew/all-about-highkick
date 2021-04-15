@@ -62,16 +62,16 @@ function TestOverdoseMain(props) {
   return (
     <Container>
       <ContentContainer>
-        <TestTitle>나의 하이킥 마스터수치를 매겨보자.</TestTitle>
+        <TestTitle>나의 하이킥 인지능력은 ?</TestTitle>
         <TestParagraph>
           {/* 몇 가지 테스트를 진행해보세요.
         <br />
         나의 하이킥 중독성 수준을 알아볼 수 있거나 <br />
         본인의 성향과 맞는 하이킥 등장인물을 찾아보세요.
         <br /> */}
-          여러분들이 사용하는 일상언어에는 모두 감정이 포함되어 있습니다.
+          소싯적 거침없이 하이킥을 시청해보셨나요 ?
           <br />
-          본인의 감정언어와 가장 비슷한 하이킥 캐릭터가 궁금하시다면
+          본인의 하이킥내용을 얼마나 알고있는지 알고 싶다면
           <br />
           아래 테스트를 진행해보세요.
         </TestParagraph>
