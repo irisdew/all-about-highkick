@@ -76,3 +76,34 @@ for key, value in connection_weight.items():
         )
         db.session.add(connection)
         db.session.commit()
+
+with open(
+    "data_settings/dataset/origin_connection_data.json", "r", encoding="utf-8"
+) as json_file:
+    json_data = json.load(json_file)
+    character_labels = dict()
+    labels = json_data["node"]
+    for label in labels:
+        character_labels[label["data"]["id"]] = label["data"]["label"]
+    character_labels["12"] = "홍순창(교감)"
+    for con_data in json_data["edge_origin"]:
+        data = con_data["data"]
+        with app.app_context():
+            target_id = (
+                db.session.query(Character.id)
+                .filter(Character.name == character_labels[data["target"]])
+                .all()[0][0]
+            )
+            source_id = (
+                db.session.query(Character.id)
+                .filter(Character.name == character_labels[data["source"]])
+                .all()[0][0]
+            )
+            origin_type = data["type"]
+
+            connection = Connection(
+                target=target_id, source=source_id, origin_type=origin_type,
+            )
+            db.session.add(connection)
+            db.session.commit()
+
