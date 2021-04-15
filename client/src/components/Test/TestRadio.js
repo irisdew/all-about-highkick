@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { testSurveyNumber, testEmotionCount, testPage } from '../../actions';
@@ -25,6 +26,7 @@ const TestRadioButton = styled.input`
 
 function TestRadio(props) {
   const emotionCount = useSelector((state) => state.test.emotionCount);
+  const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {}, [emotionCount]);
@@ -44,10 +46,11 @@ function TestRadio(props) {
             console.log(emotionCount);
           } else {
             dispatch(testSurveyNumber(props.qNumber + 1));
-            dispatch(testPage(3));
             emotionCount[event.target.value] += 1;
-            console.log(emotionCount);
             dispatch(testEmotionCount(emotionCount));
+            console.log(emotionCount);
+            //dispatch(testPage(3));
+            history.push('/survey/word');
           }
         }}
       />
@@ -63,14 +66,14 @@ function TestRadio(props) {
             dispatch(testSurveyNumber(props.qNumber + 1));
             emotionCount[event.target.value] += 1;
             dispatch(testEmotionCount(emotionCount));
-
             console.log(emotionCount);
           } else {
             dispatch(testSurveyNumber(props.qNumber + 1));
             emotionCount[event.target.value] += 1;
             dispatch(testEmotionCount(emotionCount));
             console.log(emotionCount);
-            dispatch(testPage(3));
+            //dispatch(testPage(3));
+            history.push('/survey/word');
           }
         }}
       />

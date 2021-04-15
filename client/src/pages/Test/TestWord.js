@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { testPage } from '../../actions';
 import styled from 'styled-components';
@@ -21,6 +22,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// 페이지 레이아웃 컨테이너
+const Container = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  text-align: center;
+  background-color: white;
+  align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
+  justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
+
+  margin-left: 20vw;
+  margin-right: 20vw;
+`;
 const WordTestTitle = styled.h1`
   color: black;
 `;
@@ -36,8 +49,9 @@ function TestWord() {
   const classes = useStyles();
   const wordCounter = useSelector((state) => state.test.wordCount);
   const dispatch = useDispatch();
+  const history = useHistory();
   return (
-    <div>
+    <Container>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
@@ -62,10 +76,12 @@ function TestWord() {
             <WordSubmit
               style={{ display: wordCounter < 10 && 'none' }}
               onClick={() => {
-                dispatch(testPage(4));
+                history.push('/roading');
+                //dispatch(testPage(4));
                 // props.setIsStarted(4);
                 setTimeout(function () {
-                  dispatch(testPage(5));
+                  history.push('/survey/result');
+                  //dispatch(testPage(5));
                   // props.setIsStarted(5);
                 }, 3000);
               }}
@@ -90,7 +106,7 @@ function TestWord() {
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </Container>
   );
 }
 

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   testPage,
   testUserName,
   testSurveyNumber,
   testEmotionCount,
+  testWordCount,
 } from '../../actions';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,6 +33,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// 페이지 레이아웃 컨테이너
+const Container = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  text-align: center;
+  background-color: white;
+  align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
+  justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
+
+  margin-left: 20vw;
+  margin-right: 20vw;
+`;
 const ContentContainer = styled.div`
   align-items: center;
 `;
@@ -56,6 +70,7 @@ function TestResult() {
   const [characterInfo, setCharacterInfo] = useState({});
   const userCharacterInfo = useSelector((state) => state.test.emotionCount);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     fetch('http://localhost:3000/data/surveyResult.json')
@@ -69,7 +84,7 @@ function TestResult() {
   if (Object.keys(characterInfo).length === 0) return null;
   // characterInfo = 매칭 캐릭터 하나 정보 객체로 올것임 => 수정 필요
   return (
-    <div>
+    <Container>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
@@ -109,10 +124,12 @@ function TestResult() {
           <Paper className={classes.paper}>
             <ResultPhargraph
               onClick={() => {
-                dispatch(testPage(1));
+                history.push('/');
+                //dispatch(testPage(1));
                 dispatch(testUserName(''));
                 dispatch(testSurveyNumber(0));
                 dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
+                dispatch(testWordCount(0));
               }}
             >
               <HomeButtonLink to="/"> 홈 이동</HomeButtonLink>
@@ -129,7 +146,7 @@ function TestResult() {
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </Container>
   );
 }
 

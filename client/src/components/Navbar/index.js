@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  testPage,
   testUserName,
   testSurveyNumber,
   testEmotionCount,
+  testWordCount,
 } from '../../actions';
 import styled from 'styled-components';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
@@ -31,18 +31,27 @@ const Navbar = () => {
           추억의 뽑기게임
         </MenuLink>
         <MenuLink
-          to="/test"
+          to="/survey"
           activeStyle
           onClick={() => {
-            dispatch(testPage(1));
             dispatch(testUserName(''));
+            dispatch(testWordCount(0));
             dispatch(testSurveyNumber(0));
             dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
           }}
         >
           나와 닮은 캐릭터
         </MenuLink>
-        <MenuLink to="/gosa" activeStyle>
+        <MenuLink
+          to="/overdose"
+          activeStyle
+          onClick={() => {
+            dispatch(testUserName(''));
+            dispatch(testWordCount(0));
+            dispatch(testSurveyNumber(0));
+            dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
+          }}
+        >
           하이킥 고사
         </MenuLink>
         <MenuLink to="/characters" activeStyle>

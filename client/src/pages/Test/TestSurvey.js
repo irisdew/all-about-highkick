@@ -22,6 +22,18 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid black',
   },
 }));
+// 페이지 레이아웃 컨테이너
+const Container = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  text-align: center;
+  background-color: white;
+  align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
+  justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
+
+  margin-left: 20vw;
+  margin-right: 20vw;
+`;
 
 const ContentContainer = styled.div`
   align-items: center;
@@ -56,40 +68,41 @@ function TestSurvey() {
   if (surveyData.length === 0) return null;
 
   return (
-    <ContentContainer className={classes.root}>
-      <Grid container spacing={3}>
-        {/* <Grid item xs={12}>
+    <Container>
+      <ContentContainer className={classes.root}>
+        <Grid container spacing={3}>
+          {/* <Grid item xs={12}>
           <Paper className={classes.paper}>
            
           </Paper>
         </Grid> */}
-        <Grid item xs={12}>
-          <h1 style={{ marginBottom: 0 }}>
-            Q{surveyData[qNumber].qnum}.{' '}
-            {surveyData[qNumber].question.split('<br />')[0].length !== 0 &&
-              surveyData[qNumber].question.split('<br />')[0]}
-          </h1>
-          <h1 style={{ marginTop: '1vh' }}>
-            {surveyData[qNumber].question.split('<br />')[1].length !== 0 &&
-              surveyData[qNumber].question.split('<br />')[1]}
-          </h1>
+          <Grid item xs={12}>
+            <h1 style={{ marginBottom: 0 }}>
+              Q{surveyData[qNumber].qnum}.{' '}
+              {surveyData[qNumber].question.split('<br />')[0].length !== 0 &&
+                surveyData[qNumber].question.split('<br />')[0]}
+            </h1>
+            <h1 style={{ marginTop: '1vh' }}>
+              {surveyData[qNumber].question.split('<br />')[1].length !== 0 &&
+                surveyData[qNumber].question.split('<br />')[1]}
+            </h1>
 
-          <ProcessImageContainer>
-            <img
-              src={surveyData[qNumber].imgSrc}
-              alt={surveyData[qNumber].imgSrc}
+            <ProcessImageContainer>
+              <img
+                src={surveyData[qNumber].imgSrc}
+                alt={surveyData[qNumber].imgSrc}
+              />
+            </ProcessImageContainer>
+          </Grid>
+          <Grid item xs={12}>
+            <ProgressBar qNumber={qNumber} />
+            <TestRadio
+              select1={surveyData[qNumber].select[0]}
+              select2={surveyData[qNumber].select[1]}
+              select3={surveyData[qNumber].select[2]}
+              qNumber={qNumber}
             />
-          </ProcessImageContainer>
-        </Grid>
-        <Grid item xs={12}>
-          <ProgressBar qNumber={qNumber} />
-          <TestRadio
-            select1={surveyData[qNumber].select[0]}
-            select2={surveyData[qNumber].select[1]}
-            select3={surveyData[qNumber].select[2]}
-            qNumber={qNumber}
-          />
-          {/* <ButtonContainer>
+            {/* <ButtonContainer>
               <Button
                 disabled={qNumber === 9 ? false : true}
                 type="submit"
@@ -102,9 +115,10 @@ function TestSurvey() {
                 다음
               </Button>
             </ButtonContainer> */}
+          </Grid>
         </Grid>
-      </Grid>
-    </ContentContainer>
+      </ContentContainer>
+    </Container>
   );
 }
 

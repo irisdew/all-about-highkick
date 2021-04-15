@@ -3,7 +3,7 @@
         {
             "idx" : 0,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "나문희",
             "description" : "나도 알아 !! 호박고구마 !!",
             "emotion" : [6,5,7],
@@ -12,7 +12,7 @@
         {
             "idx" : 1,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "박혜미",
             "description" : "나도 알아 !! 호박고구마 !!",
             "emotion" : [6,5,7],
@@ -21,7 +21,7 @@
         {
             "idx" : 2,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "이순재",
             "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
@@ -30,7 +30,7 @@
         {
             "idx" : 3,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "이준하",
             "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
@@ -39,7 +39,7 @@
         {
             "idx" : 4,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "이민용",
             "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
@@ -48,7 +48,7 @@
         {
             "idx" : 5,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "신지",
             "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
@@ -57,7 +57,7 @@
         {
             "idx" : 6,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "김범",
             "description" : "나도 알어 !! 호박고구마 !!",
             "emotion" : [6,5,7],
@@ -66,7 +66,7 @@
         {
             "idx" : 7,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "찬성",
             "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
@@ -75,7 +75,7 @@
         {
             "idx" : 8,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "개성댁",
             "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
@@ -84,7 +84,7 @@
         {
             "idx" : 9,
             "nickName" : "엉뚱발랄",
-            "imgSrc" : "./images/testSurveyResult/1.png",
+            "imgSrc" : "/images/testSurveyResult/1.png",
             "name" : "이민호",
             "description" : "나도 알어 !! 호박고무마 !!",
             "emotion" : [6,5,7],
