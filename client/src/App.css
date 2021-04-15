@@ -7,16 +7,18 @@
   font-style: normal;
 }
 body {
-  /* background-color: #d9cfc5; */
+  font-family: yangjin, Noto Sans KR, dotum, sans-serif;
   padding: 0;
   margin: 0;
 }
 h1,
 h2,
-h3,
+h3 {
+  font-family: yangjin, dotum, sans-serif;
+}
 h4,
 h5,
 h6,
 p {
-  font-family: yangjin, dotum, sans-serif;
+  font-family: Noto Sans KR, dotum, sans-serif;
 }
