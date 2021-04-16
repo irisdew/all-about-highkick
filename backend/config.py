@@ -1,6 +1,6 @@
 db_info = {
-    "user": "root",
-    "password": "",
+    "user": "backend",
+    "password": "backend",
     "host": "localhost",
     "port": 3306,
     "database": "hoguma",
