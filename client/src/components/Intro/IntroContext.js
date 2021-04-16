@@ -22,9 +22,6 @@ function IntroContext() {
         <ContextStrong>‘문의주세요’</ContextStrong> 라는 말에
         <ContextStrong>‘문희는 포도가 먹고시푼데에~’</ContextStrong> 를 대답하고
         싶었던 적이 있나요? <br />
-        컴퓨터 앞에서
-        <ContextStrong>‘얏옹. 야아도옹~ 야. 한. 동. 영. 상.’</ContextStrong>을
-        외치던 <ContextStrong>‘얏옹순재’</ContextStrong>가 기억나시나요 ? <br />
         그럼 제대로 찾아오셨습니다.
         <br /> 방영 15주년을 맞이한 대한민국 레전드 시트콤 ‘거침없이 <br />그
         모든 것을 분석했습니다. <br />
