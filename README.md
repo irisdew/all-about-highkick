@@ -39,7 +39,7 @@
 
 **2. 프로젝트 메인부분인 감정분석 해결을 위한 방법 및 방향**
 
-[Project_Hoguma_감정분석.pdf](uploads/544278bf100b57a605701c1f34e42955/Project_Hoguma_감정분석.pdf)
+[Project_Hoguma_감정분석.pdf](Project_Hoguma.pdf)
 
 **3. 데이터를 통해 탐색하려는 문제를 구체적으로 작성**
 
@@ -75,7 +75,7 @@
 
 ## 4. 프로젝트 구성도
 + 스토리보드/제안서
-[hoguma_스토리보드_ver2.6.pdf](uploads/c3ba88dbd679c096fb2b4727740fa34e/hoguma_스토리보드_ver2.6.pdf)
+[hoguma_스토리보드_ver2.7.pdf](hoguma___ver2.7.pdf)
 + 와이프레임
 https://www.figma.com/file/vCEKQsMqQHvSZV35DZzyuo/ver1?node-id=11%3A0
   
