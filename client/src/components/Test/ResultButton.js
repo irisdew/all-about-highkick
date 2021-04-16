@@ -4,7 +4,6 @@ import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useSnackbar } from 'notistack';
-import { toPng } from 'html-to-image';
 
 const ButtonContainer = styled.div`
   display: block;
@@ -96,15 +95,15 @@ function ResultButton() {
   return (
     <ButtonContainer>
       <ResultPhargraph id="kakao-link-btn" onClick={onClickKakao}>
-        공유해
+        공유하자
       </ResultPhargraph>
       <React.Fragment>
         <CopyToClipboard text={url}>
-          <ResultPhargraph onClick={copyClick}>복사해</ResultPhargraph>
+          <ResultPhargraph onClick={copyClick}>복사하자</ResultPhargraph>
         </CopyToClipboard>
       </React.Fragment>
 
-      <ResultPhargraph onClick={() => makeImg()}>저장해</ResultPhargraph>
+      <ResultPhargraph onClick={() => makeImg()}>저장하자</ResultPhargraph>
     </ButtonContainer>
   );
 }

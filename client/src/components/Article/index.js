@@ -116,7 +116,7 @@ export const Article = () => {
           dispatch(testUserName(''));
           dispatch(testWordCount(0));
           dispatch(testSurveyNumber(0));
-          dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
+          dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 분노: 0 }));
           history.push(ArticleData[isSelected].url);
         }}
       >

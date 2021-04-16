@@ -7,6 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useSnackbar } from 'notistack';
 import OverdoseContents from '../../components/Test/OverdoseContents';
 import axios from 'axios';
 import baseUrl from '../../url/http';
@@ -61,24 +63,21 @@ function TestOverdoseResult() {
   const overdoseCount = useSelector((state) => state.test.overdoseCount);
   const dispatch = useDispatch();
   const history = useHistory();
+  const { enqueueSnackbar } = useSnackbar();
+  const url = window.location.href;
 
   useEffect(() => {
-    console.log(overdoseCount);
     try {
       axios.get(baseUrl + `overdose/${overdoseCount}`).then((response) => {
-        console.log(response.data.data);
-        setOverdoseData(response.data.data);
+        setOverdoseData([response.data.data]);
       });
     } catch (error) {
       console.log(error);
     }
-    // fetch('http://localhost:3000/data/overdoseResult.json')
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     console.log(res.result);
-    //     setOverdoseData(res.result);
-    //   });
-  }, []);
+  }, [overdoseCount]);
+  const copyClick = () => {
+    enqueueSnackbar('URL이 복사되었습니다.');
+  };
 
   if (!overdoseData.length) return null;
   return (
@@ -110,6 +109,11 @@ function TestOverdoseResult() {
                 >
                   재도전 하기
                 </ResultPhargraph>
+                <CopyToClipboard text={url}>
+                  <ResultPhargraph onClick={copyClick}>
+                    복사하기
+                  </ResultPhargraph>
+                </CopyToClipboard>
                 <MyLink to="/">
                   <ResultPhargraph
                     onClick={() => {

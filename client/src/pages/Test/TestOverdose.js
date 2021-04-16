@@ -72,18 +72,11 @@ function TestOverdose() {
   useEffect(() => {
     try {
       axios.get(baseUrl + 'overdose').then((response) => {
-        console.log(response.data.test);
         setOverdoseQuestion(response.data.test);
       });
     } catch (error) {
       console.log(error);
     }
-    // fetch('http://localhost:3000/data/overdose.json')
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     console.log(res.test);
-    //     setOverdoseQuestion(res.test);
-    //   });
   }, []);
 
   if (!overdoseQuestion.length) return null;

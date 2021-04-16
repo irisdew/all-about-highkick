@@ -25,7 +25,7 @@ const Navbar = () => {
             dispatch(testUserName(''));
             dispatch(testWordCount(0));
             dispatch(testSurveyNumber(0));
-            dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
+            dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 분노: 0 }));
           }}
         >
           나와 닮은 캐릭터
@@ -37,7 +37,7 @@ const Navbar = () => {
             dispatch(testUserName(''));
             dispatch(testWordCount(0));
             dispatch(testSurveyNumber(0));
-            dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
+            dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 분노: 0 }));
           }}
         >
           하이킥 고사
