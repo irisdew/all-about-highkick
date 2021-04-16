@@ -28,6 +28,7 @@ with open(
 
             gacha = Gacha(
                 gacha_number=gacha_number,
+                nickname=nickname,
                 quote=quote,
                 question=question,
                 description=description,
