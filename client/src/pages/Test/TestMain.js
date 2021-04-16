@@ -61,7 +61,7 @@ function TestMain(props) {
   return (
     <Container>
       <ContentContainer>
-        <TestTitle>나의 성향과 비슷한 등장인물은 ?</TestTitle>
+        <TestTitle>나와 가장 닮은 캐릭터는 ?</TestTitle>
         <TestParagraph>
           여러분들이 사용하는 일상언어에는 모두 감정이 포함되어 있습니다.
           <br />

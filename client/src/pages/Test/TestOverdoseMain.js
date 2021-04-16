@@ -62,12 +62,10 @@ function TestOverdoseMain(props) {
   return (
     <Container>
       <ContentContainer>
-        <TestTitle>나의 하이킥 인지능력은 ?</TestTitle>
+        <TestTitle>2021년도 제 1회 하이킥 고사</TestTitle>
         <TestParagraph>
-          소싯적 거침없이 하이킥을 시청해보셨나요 ?<br />
-          본인의 하이킥내용을 얼마나 알고있는지 알고 싶다면
+          <h3>하이킥 중독성 영역</h3>
           <br />
-          아래 테스트를 진행해보세요.
         </TestParagraph>
         <FormContainer>
           <form
