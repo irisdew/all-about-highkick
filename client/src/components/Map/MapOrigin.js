@@ -46,40 +46,9 @@ const data = [
 
 Cytoscape.use(coseBilkent);
 
-<<<<<<< HEAD
 export default function MapOrigin() {
   const dispatch = useDispatch();
 
-=======
-export default function Map() {
-  const cy_for_rank = Cytoscape({
-    elements: data,
-  });
-
-  // elements들의 rank들입니다.
-  const pageRank = cy_for_rank.elements().pageRank();
-
-  // node & font 크기 값
-  const nodeMaxSize = 50;
-  const nodeMinSize = 5;
-  // const nodeActiveSize = 28;
-  const fontMaxSize = 8;
-  const fontMinSize = 5;
-  // const fontActiveSize = 7;
-
-  // edge & arrow 크기값
-  const edgeWidth = '1.5px';
-  // var edgeActiveWidth = '4px';
-  const arrowScale = 1;
-  // const arrowActiveScale = 1.2;
-
-  // 상위 node & edge color
-  // const dimColor = '#dfe4ea';
-  const edgeColor = '#ced6e0';
-  const nodeColor = '#57606f';
-  // const nodeActiveColor = '#ffa502';
-  // const successorColor = '#ff6348';
->>>>>>> bc336aa5b0817620cf07f74a5afbb13ead767908
   const familyColor = '#f6b93b';
   const schoolColor = '#82ccdd';
   const friendColor = '#badc58';
