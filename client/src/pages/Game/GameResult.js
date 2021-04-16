@@ -20,7 +20,7 @@ export default function GameResult() {
     >
       <Ball />
       <>
-        <h4>무슨 숫자일까요?</h4>
+        <h3>무슨 숫자일까요?</h3>
         <span>공을 클릭해 확인해보세요!</span>
       </>
 

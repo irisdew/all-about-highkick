@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { characterOpen, characterSelected } from '../../actions';
 import Cytoscape from 'cytoscape';
 import CytoscapeComponent from 'react-cytoscapejs';
 import coseBilkent from 'cytoscape-cose-bilkent';
-import { characterSelected } from '../../actions';
 
 const data = [
   // node
@@ -20,6 +20,7 @@ const data = [
   { data: { id: '11', label: '김범' } },
   { data: { id: '12', label: '홍순창' } },
   { data: { id: '13', label: '개성댁' } },
+  { data: { id: '14', label: '황찬성' } },
 
   // edge
   { data: { id: '102', target: '1', source: '2', type: 'family' } },
@@ -40,77 +41,41 @@ const data = [
   { data: { id: '9012', target: '9', source: '12', type: 'school' } },
   { data: { id: '1013', target: '1', source: '13', type: 'friend' } },
   { data: { id: '809', target: '8', source: '9', type: 'friend' } },
+  { data: { id: '6014', target: '6', source: '14', type: 'school' } },
 ];
 
 Cytoscape.use(coseBilkent);
 
-export default function Map({ onClick }) {
+export default function MapOrigin() {
   const dispatch = useDispatch();
-  // const cy_for_rank = Cytoscape({
-  //   elements: data,
-  // });
 
-  // elements들의 rank들입니다.
-  // const pageRank = cy_for_rank.elements().pageRank();
-
-  // node & font 크기 값
-  const nodeMaxSize = 50;
-  // const nodeMinSize = 5;
-  // const nodeActiveSize = 28;
-  // const fontMaxSize = 8;
-  // const fontMinSize = 5;
-  // const fontActiveSize = 7;
-
-  // edge & arrow 크기값
-  const edgeWidth = '1.5px';
-  // var edgeActiveWidth = '4px';
-  const arrowScale = 1;
-  // const arrowActiveScale = 1.2;
-
-  // 상위 node & edge color
-  // const dimColor = '#dfe4ea';
-  const edgeColor = '#ced6e0';
-  // const nodeColor = '#57606f';
-  // const nodeActiveColor = '#ffa502';
-  // const successorColor = '#ff6348';
   const familyColor = '#f6b93b';
   const schoolColor = '#82ccdd';
   const friendColor = '#badc58';
 
   const style = [
-    // the stylesheet for the graph
     {
       selector: 'node',
       style: {
         'background-color': '#666',
         label: 'data(label)',
-        width: nodeMaxSize,
-        height: nodeMaxSize,
+        width: 50,
+        height: 50,
         'font-size': 10,
-        // width: function (ele) {
-        //   return nodeMaxSize * pageRank.rank('#' + ele.id()) + nodeMinSize;
-        // },
-        // height: function (ele) {
-        //   return nodeMaxSize * pageRank.rank('#' + ele.id()) + nodeMinSize;
-        // },
-        // 'font-size': function (ele) {
-        //   return fontMaxSize * pageRank.rank('#' + ele.id()) + fontMinSize;
-        // },
-        // color: nodeColor,
       },
     },
 
     {
       selector: 'edge',
       style: {
-        width: edgeWidth,
+        width: '1.5px',
         'curve-style': 'bezier',
-        'line-color': edgeColor,
-        'target-arrow-color': edgeColor,
+        'line-color': '#ced6e0',
+        'target-arrow-color': '#ced6e0',
         'target-arrow-shape': 'vee',
-        'source-arrow-color': edgeColor,
+        'source-arrow-color': '#ced6e0',
         'source-arrow-shape': 'vee',
-        'arrow-scale': arrowScale,
+        'arrow-scale': 1,
       },
     },
     {
@@ -128,9 +93,6 @@ export default function Map({ onClick }) {
         'background-color': '#77828C',
         width: 50,
         height: 50,
-        //text props
-        // 'text-outline-color': '#77828C',
-        // 'text-outline-width': 8,
       },
     },
     {
@@ -197,7 +159,8 @@ export default function Map({ onClick }) {
             console.log('TARGET', node.data());
             console.log('mymymy', node.data().label);
             console.log('TARGET TYPE', typeof node[0]);
-            onClick();
+
+            dispatch(characterOpen());
             dispatch(characterSelected(node.data().label));
           });
         }}

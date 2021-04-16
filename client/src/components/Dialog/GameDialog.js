@@ -73,7 +73,7 @@ export default function GameDialog() {
             style={{ width: '80%' }}
           />
           <h2>{ball.quote}</h2>
-          <h4>당신의 추억은 "nickname"입니다</h4>
+          <h3>당신의 추억은 "nickname"입니다</h3>
           {/* 나중에 ball.nickname으로 넣을 것임 */}
           <Typography gutterBottom>
             {ball.question.map((line) => {
@@ -81,10 +81,10 @@ export default function GameDialog() {
             })}
           </Typography>
           <Typography gutterBottom>
-            <p>
+            <h3>
               {ball.description}
               {/* 순재가 노트북에 <b>얏옹~</b>을 외친 횟수는 <b>14번</b> 입니다. */}
-            </p>
+            </h3>
           </Typography>
         </DialogContent>
       </Dialog>

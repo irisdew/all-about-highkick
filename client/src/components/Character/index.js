@@ -32,45 +32,47 @@ const Character = () => {
         alignItems: 'start',
       }}
     >
-      <Grid
+      <div
         container
         alignItems="flex-start"
         style={{ alignItems: 'start' }}
         spacing={3}
       >
-        <Grid item xs={12} style={{ textAlign: 'center' }}>
+        <div item xs={12} style={{ textAlign: 'center' }}>
           <img alt={data.name} src={data.photo} style={{ width: '40%' }} />
           <h1>{selectedName}</h1>
           <Chip label={data.age} clickable color="primary" />
           <Chip label={data.job} clickable color="secondary" />
           <Chip label={data.quote} clickable color="default" />
-        </Grid>
-        <Grid item xs={6}>
+        </div>
+        <div item xs={6}>
           <div>
             <h2>주요 감정</h2>
             <p>기쁨, 슬픔, 분노 감정 분석 결과입니다.</p>
             <FeelingChart data={data.feelingChart} />
           </div>
-        </Grid>
-        <Grid item xs={6}>
+        </div>
+        <div item xs={6}>
           <div>
             <h2>회차별 분량 변화</h2>
             <p>한 회차에서 대사량이 가장 많았던 인물은 119회 말했습니다.</p>
             <AmountChart data={data.amountChart} />
           </div>
-        </Grid>
-        <Grid item xs={6} style={{ margin: 'auto' }}>
+        </div>
+        <div item xs={6} style={{ margin: 'auto' }}>
           <div style={{ width: '100%' }}>
             <h2>사용 단어</h2>
             <p>인물이 가장 많이 사용한 단어의 워드클라우드입니다.</p>
-            <img
-              alt={data.name}
-              src={data.wordcloud}
-              style={{ width: '80%' }}
-            />
+            <div style={{ textAlign: 'center', margin: 'auto' }}>
+              <img
+                alt={data.name}
+                src={data.wordcloud}
+                style={{ width: '80%' }}
+              />
+            </div>
           </div>
-        </Grid>
-        <Grid item xs={6}>
+        </div>
+        <div item xs={6}>
           <div>
             <h2>오분순삭</h2>
             <p>유튜브에서 하이킥을 즐겨보세요!</p>
@@ -100,8 +102,8 @@ const Character = () => {
               ></iframe>
             </div>
           </div>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 };

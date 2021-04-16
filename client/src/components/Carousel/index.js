@@ -26,15 +26,15 @@ const Photo = ({ id }) => {
   );
 };
 
-export default function Carousel({ data }) {
+export default function Carousel({ onClick }) {
   const settings = {
-    dots: true,
+    dots: false,
     arrows: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
       {
@@ -63,8 +63,6 @@ export default function Carousel({ data }) {
     ],
   };
 
-  console.log('data', data);
-
   return (
     <div
       className="container"
@@ -72,7 +70,7 @@ export default function Carousel({ data }) {
     >
       <Slider {...settings}>
         {[...Array(20).keys()].map((i) => {
-          return <Photo id={i + 1} />;
+          return <Photo id={i + 1} onClick={onClick} />;
         })}
       </Slider>
     </div>

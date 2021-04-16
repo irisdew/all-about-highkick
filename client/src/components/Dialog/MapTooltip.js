@@ -28,20 +28,16 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">인물관계도 도움말</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            - Data Analysis 스위치로 두가지 버전의 인물관계도를 즐겨보세요.
+            <br />
+            <br /> - 사진을 클릭하시면 각 인물의 상세 정보를 확인할 수 있습니다.
+            <br />
+            <br /> - 간선을 클릭하시면 각 인물의 관계 정보나 함께 등장한 씬의
+            횟수를 <br /> &nbsp; 알 수 있습니다.
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-          />
         </DialogContent>
       </Dialog>
     </div>
