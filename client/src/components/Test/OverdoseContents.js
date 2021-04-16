@@ -27,6 +27,7 @@ const ContentsDescription = styled.p`
   color: black;
   font-size: 3vh;
   margin-top: 0;
+  font-family: 'yangjin';
 `;
 
 function OverdoseContents(props) {

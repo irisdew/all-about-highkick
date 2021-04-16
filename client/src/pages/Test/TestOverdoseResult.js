@@ -46,6 +46,7 @@ const ResultPhargraph = styled.p`
   display: inline-block;
   margin: 0 2vw;
   cursor: pointer;
+  font-family: 'yangjin';
 `;
 const MyLink = styled(Link)`
   text-decoration: none;
