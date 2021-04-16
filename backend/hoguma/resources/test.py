@@ -54,12 +54,17 @@ class Test(Resource):
             user_joy = round(int(args["joy"]) / user_total * 100)
             user_sadness = round(int(args["sadness"]) / user_total * 100)
             user_anger = round(int(args["anger"]) / user_total * 100)
+            user_emotion = sorted(
+                [
+                    ["anger", user_anger],
+                    ["joy", user_joy],
+                    ["sadness", user_sadness],
+                ],
+                key=lambda x: x[1],
+                reverse=True,
+            )
             emotions = db.session.query(Emotion).all()
-            minV = float("INF")
-            min_character = 0
-            min_joy = 0
-            min_sadness = 0
-            min_anger = 0
+            character_emotion_arr = []
             banned_character = {8, 12, 13, 14}
             for emotion in emotions:
                 character_id = emotion.character_id
@@ -68,21 +73,21 @@ class Test(Resource):
                 joy = emotion.joy
                 anger = emotion.anger
                 sadness = emotion.sadness
-
-                temp = sum(
-                    [
-                        round(abs(joy - user_joy) / joy * 100),
-                        round(abs(anger - user_anger) / anger * 100),
-                        round(abs(sadness - user_sadness) / sadness * 100),
-                    ]
+                ch_emotion_dict = {
+                    "joy": joy,
+                    "anger": anger,
+                    "sadness": sadness,
+                }
+                character_emotion = [character_id, ch_emotion_dict]
+                character_emotion_arr.append(character_emotion)
+            character_emotion_arr.sort(
+                key=lambda x: (
+                    abs(x[1][user_emotion[0][0]] - user_emotion[0][1]),
+                    abs(x[1][user_emotion[1][0]] - user_emotion[1][1]),
+                    abs(x[1][user_emotion[2][0]] - user_emotion[2][1]),
                 )
-                if minV > temp:
-                    minV = temp
-                    min_character = character_id
-                    min_joy = joy
-                    min_sadness = anger
-                    min_anger = sadness
-
+            )
+            min_character = character_emotion_arr[0][0]
             target_character = (
                 db.session.query(Character.name)
                 .filter(Character.id == min_character)
@@ -97,7 +102,11 @@ class Test(Resource):
                 "id": survey_result.id,
                 "image": survey_result.image,
                 "nick_name": survey_result.nick_name,
-                "emotion": {"기쁨": min_joy, "슬픔": min_sadness, "분노": min_anger},
+                "emotion": {
+                    "기쁨": character_emotion_arr[0][1]["joy"],
+                    "슬픔": character_emotion_arr[0][1]["sadness"],
+                    "분노": character_emotion_arr[0][1]["anger"],
+                },
                 "name": survey_result.name,
                 "description": survey_result.description,
                 "pair": survey_result.pair.split("\n"),
