@@ -41,7 +41,7 @@ export const FeelingChart = () => {
     legend: {
       visible: true,
       showCheckbox: false,
-      align: 'bottom',
+      align: 'right',
     },
     exportMenu: {
       visible: false,
@@ -66,7 +66,7 @@ export const FeelingChart = () => {
       <PieChart
         data={data}
         options={options}
-        style={{ width: '30vw', height: '40vh' }}
+        style={{ width: '60vw', height: '40vh' }}
       />
     </div>
   );
@@ -437,6 +437,9 @@ export const AmountChart = () => {
       visible: false,
       showCheckbox: false,
     },
+    exportMenu: {
+      visible: false,
+    },
   };
 
   return (
@@ -444,7 +447,7 @@ export const AmountChart = () => {
       <LineChart
         data={data}
         options={options}
-        style={{ width: '30vw', height: '40vh' }}
+        style={{ width: '60vw', height: '40vh' }}
       />
     </>
   );

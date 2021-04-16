@@ -6,13 +6,17 @@ import Button from '@material-ui/core/Button';
 export default function GameAll() {
   const [show, setShow] = useState(false);
   const selected = useSelector((state) => state.game.selected);
-  const number = useSelector((state) => state.game.number);
+  const [click, setClick] = useState(false);
+
+  function clickHandler() {
+    setClick(true);
+  }
 
   return (
     <div style={{ width: '80vw', margin: 'auto', textAlign: 'center' }}>
-      <Carousel />
+      <Carousel onClick={clickHandler} />
 
-      {number === 0 && (
+      {!click && (
         <div
           style={{
             width: '80%',
@@ -34,7 +38,7 @@ export default function GameAll() {
         </div>
       )}
 
-      {number !== 0 && (
+      {click && (
         <div
           style={{
             width: '80%',

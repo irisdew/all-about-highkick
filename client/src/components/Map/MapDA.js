@@ -1,119 +1,101 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { characterOpen, characterSelected } from '../../actions';
 import Cytoscape from 'cytoscape';
 import CytoscapeComponent from 'react-cytoscapejs';
 import coseBilkent from 'cytoscape-cose-bilkent';
 
-const data = [
-  // node
-  { data: { id: '1', label: '나문희' } },
-  { data: { id: '2', label: '이순재' } },
-  { data: { id: '3', label: '박해미' } },
-  { data: { id: '4', label: '이준하' } },
-  { data: { id: '5', label: '이민호' } },
-  { data: { id: '6', label: '이윤호' } },
-  { data: { id: '7', label: '이민용' } },
-  { data: { id: '8', label: '신지' } },
-  { data: { id: '9', label: '서민정' } },
-  { data: { id: '10', label: '강유미' } },
-  { data: { id: '11', label: '김범' } },
-  { data: { id: '12', label: '홍순창' } },
-  { data: { id: '13', label: '개성댁' } },
-
-  // edge
-  { data: { id: '102', target: '1', source: '2', type: 'family' } },
-  { data: { id: '304', target: '3', source: '4', type: 'family' } },
-  { data: { id: '204', target: '2', source: '4', type: 'family' } },
-  { data: { id: '104', target: '1', source: '4', type: 'family' } },
-  { data: { id: '305', target: '3', source: '5', type: 'family' } },
-  { data: { id: '306', target: '3', source: '6', type: 'family' } },
-  { data: { id: '405', target: '4', source: '5', type: 'family' } },
-  { data: { id: '406', target: '4', source: '6', type: 'family' } },
-  { data: { id: '107', target: '1', source: '7', type: 'family' } },
-  { data: { id: '207', target: '2', source: '7', type: 'family' } },
-  { data: { id: '609', target: '6', source: '9', type: 'school' } },
-  { data: { id: '709', target: '7', source: '9', type: 'school' } },
-  { data: { id: '7012', target: '7', source: '12', type: 'school' } },
-  { data: { id: '5010', target: '5', source: '10', type: 'school' } },
-  { data: { id: '5011', target: '5', source: '11', type: 'school' } },
-  { data: { id: '9012', target: '9', source: '12', type: 'school' } },
-  { data: { id: '1013', target: '1', source: '13', type: 'friend' } },
-  { data: { id: '809', target: '8', source: '9', type: 'friend' } },
-];
-
 Cytoscape.use(coseBilkent);
 
-export default function Map({ onClick }) {
-  // const cy_for_rank = Cytoscape({
-  //   elements: data,
-  // });
+export default function MapDA() {
+  const dispatch = useDispatch();
 
-  // elements들의 rank들입니다.
-  // const pageRank = cy_for_rank.elements().pageRank();
+  const [element, setElement] = useState();
+  const [shape, setShape] = useState('grid');
 
-  // node & font 크기 값
-  const nodeMaxSize = 50;
-  // const nodeMinSize = 5;
-  // const nodeActiveSize = 28;
-  // const fontMaxSize = 8;
-  // const fontMinSize = 5;
-  // const fontActiveSize = 7;
+  const data = [
+    { data: { id: '1', label: '나문희' } },
+    { data: { id: '2', label: '이순재' } },
+    { data: { id: '3', label: '박해미' } },
+    { data: { id: '4', label: '이준하' } },
+    { data: { id: '5', label: '이민호' } },
+    { data: { id: '6', label: '이윤호' } },
+    { data: { id: '7', label: '이민용' } },
+    { data: { id: '8', label: '신지' } },
+    { data: { id: '9', label: '서민정' } },
+    { data: { id: '10', label: '강유미' } },
+    { data: { id: '11', label: '김범' } },
+    { data: { id: '12', label: '홍순창' } },
+    { data: { id: '13', label: '개성댁' } },
+    { data: { id: '14', label: '황찬성' } },
+  ];
 
-  // edge & arrow 크기값
-  const edgeWidth = '1.5px';
-  // var edgeActiveWidth = '4px';
-  const arrowScale = 1;
-  // const arrowActiveScale = 1.2;
+  useEffect(() => {
+    fetch('http://localhost:3000/data/character_map_da.json')
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response.data);
+        response.data.forEach((x) => {
+          data.push({
+            data: {
+              id: String(x.target) + '0' + String(x.source),
+              target: String(x.target),
+              source: String(x.source),
+              type: String(x.connection_weight),
+            },
+          });
+        });
+        setElement(data);
+      });
+  }, []);
 
-  // 상위 node & edge color
-  // const dimColor = '#dfe4ea';
-  const edgeColor = '#ced6e0';
-  // const nodeColor = '#57606f';
-  // const nodeActiveColor = '#ffa502';
-  // const successorColor = '#ff6348';
-  const familyColor = '#f6b93b';
-  const schoolColor = '#82ccdd';
-  const friendColor = '#badc58';
+  useEffect(() => {
+    setTimeout(() => {
+      setShape('circle');
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/data/character_map_da.json')
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response.data);
+        response.data.forEach((x) => {
+          data.push({
+            data: {
+              id: String(x.target) + '0' + String(x.source),
+              target: String(x.target),
+              source: String(x.source),
+              type: String(x.connection_weight),
+            },
+          });
+        });
+        setElement(data);
+      });
+  }, []);
 
   const style = [
-    // the stylesheet for the graph
     {
       selector: 'node',
       style: {
-        'background-color': '#666',
+        'background-color': '#000',
         label: 'data(label)',
-        width: nodeMaxSize,
-        height: nodeMaxSize,
+        width: 50,
+        height: 50,
         'font-size': 10,
-        // width: function (ele) {
-        //   return nodeMaxSize * pageRank.rank('#' + ele.id()) + nodeMinSize;
-        // },
-        // height: function (ele) {
-        //   return nodeMaxSize * pageRank.rank('#' + ele.id()) + nodeMinSize;
-        // },
-        // 'font-size': function (ele) {
-        //   return fontMaxSize * pageRank.rank('#' + ele.id()) + fontMinSize;
-        // },
-        // color: nodeColor,
       },
     },
-
     {
       selector: 'edge',
       style: {
-        width: edgeWidth,
+        width: '1.5px',
         'curve-style': 'bezier',
-        'line-color': edgeColor,
-        'target-arrow-color': edgeColor,
+        'line-color': '#ced6e0',
+        'target-arrow-color': '#ced6e0',
         'target-arrow-shape': 'vee',
-        'source-arrow-color': edgeColor,
+        'source-arrow-color': '#ced6e0',
         'source-arrow-shape': 'vee',
-        'arrow-scale': arrowScale,
-      },
-    },
-    {
-      selector: 'edge:selected',
-      style: {
-        label: 'data(type)',
+        'arrow-scale': 1,
       },
     },
     {
@@ -125,33 +107,15 @@ export default function Map({ onClick }) {
         'background-color': '#77828C',
         width: 50,
         height: 50,
-        //text props
-        // 'text-outline-color': '#77828C',
-        // 'text-outline-width': 8,
       },
     },
     {
-      selector: "edge[type='family']",
+      selector: 'edge:selected',
       style: {
-        'line-color': familyColor,
-        'target-arrow-color': familyColor,
-        'source-arrow-color': familyColor,
-      },
-    },
-    {
-      selector: "edge[type='school']",
-      style: {
-        'line-color': schoolColor,
-        'target-arrow-color': schoolColor,
-        'source-arrow-color': schoolColor,
-      },
-    },
-    {
-      selector: "edge[type='friend']",
-      style: {
-        'line-color': friendColor,
-        'target-arrow-color': friendColor,
-        'source-arrow-color': friendColor,
+        label: 'data(type)',
+        'line-color': 'blue',
+        'text-outline-color': '#fffa65',
+        'text-outline-width': 8,
       },
     },
   ];
@@ -167,8 +131,8 @@ export default function Map({ onClick }) {
   }
 
   const layout = {
-    name: 'cose-bilkent',
-    animate: false,
+    name: shape,
+    animate: true,
     gravityRangeCompound: 1.5,
     fit: true,
     tile: true,
@@ -177,7 +141,7 @@ export default function Map({ onClick }) {
   return (
     <>
       <CytoscapeComponent
-        elements={data}
+        elements={element}
         style={{ width: '100%', height: '100%' }}
         stylesheet={style}
         layout={layout}
@@ -194,12 +158,8 @@ export default function Map({ onClick }) {
             console.log('TARGET', node.data());
             console.log('TARGET TYPE', typeof node[0]);
 
-            // const url = evt.target.data('url');
-            // if (url && url !== '') {
-            //   window.open(url);
-            // }
-
-            onClick();
+            dispatch(characterOpen());
+            dispatch(characterSelected(node.data().label));
           });
         }}
       />

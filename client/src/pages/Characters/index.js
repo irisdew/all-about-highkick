@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { characterClose } from '../../actions';
+import styled from 'styled-components';
 
 import MapOrigin from '../../components/Map/MapOrigin';
 import MapDA from '../../components/Map/MapDA';
@@ -14,13 +16,27 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
-
 import { MdClose } from 'react-icons/md';
 
-function Characters() {
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 70vw;
+  margin: auto;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: 'column';
+  }
+`;
+
+export default function Characters() {
+  const dispatch = useDispatch();
   const selectedName = useSelector((state) => state.character.name);
+  const open = useSelector((state) => state.character.open);
+  const [isDA, setIsDA] = useState(false);
   const [data, setData] = useState({});
 
+  // 백엔드에서 selectedName에 맞는 인물상세페이지 데이터 받아오기
   useEffect(() => {
     fetch('http://localhost:3000/data/character_detail.json')
       .then((response) => response.json())
@@ -30,20 +46,12 @@ function Characters() {
       });
   }, []);
 
-  const [isDA, setIsDA] = useState(false);
-
   function handleChange() {
     setIsDA(!isDA);
   }
 
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
-    setOpen(false);
+    dispatch(characterClose());
   };
 
   const Transition = React.forwardRef(function Transition(props, ref) {
@@ -53,8 +61,6 @@ function Characters() {
   return (
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         width: '90vw',
@@ -62,15 +68,7 @@ function Characters() {
         margin: 'auto',
       }}
     >
-      <div
-        style={{
-          width: '70%',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          marginTop: '1vw',
-        }}
-      >
+      <Container>
         {!isDA && <p>우리가 익히 알고 있는 하이킥의 인물 관계입니다.</p>}
         {isDA && (
           <p>
@@ -78,7 +76,7 @@ function Characters() {
             관계입니다.
           </p>
         )}
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ display: 'flex', justifySelf: 'right' }}>
           <FormControlLabel
             control={
               <Switch
@@ -92,9 +90,9 @@ function Characters() {
           />
           <MapToolTip />
         </div>
-      </div>
+      </Container>
       <>
-        {!isDA && <MapOrigin onClick={handleClickOpen} />}
+        {!isDA && <MapOrigin />}
         {isDA && <MapDA />}
 
         {open && (
@@ -126,5 +124,3 @@ function Characters() {
     </div>
   );
 }
-
-export default Characters;

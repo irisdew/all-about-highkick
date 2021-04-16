@@ -79,13 +79,6 @@ export const testSurveyNumber = (number) => {
   };
 };
 
-export const characterSelected = (payload) => {
-  return {
-    type: 'CHARACTER_SELECTED',
-    payload, //유저가 인물관계도에서 누른 인물 이름
-  };
-};
-
 export const testWordCount = (number) => {
   return {
     type: 'TEST_WORD_COUNT',
@@ -97,5 +90,24 @@ export const testEmotionCount = (emotion) => {
   return {
     type: 'TEST_EMOTION_COUNT',
     emotion,
+  };
+};
+
+export const characterSelected = (payload) => {
+  return {
+    type: 'CHARACTER_SELECTED',
+    payload, //유저가 인물관계도에서 누른 인물 이름
+  };
+};
+
+export const characterOpen = () => {
+  return {
+    type: 'CHARACTER_OPEN', //캐릭터 상세페이지 Dialog 열림
+  };
+};
+
+export const characterClose = () => {
+  return {
+    type: 'CHARACTER_CLOSE', //캐릭터 상세페이지 Dialog 닫힘
   };
 };
