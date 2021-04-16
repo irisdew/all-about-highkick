@@ -4,6 +4,7 @@ from hoguma import db
 class Gacha(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     gacha_number = db.Column(db.Integer, nullable=False)
+    nickname = db.Column(db.Text, nullable=False)
     quote = db.Column(db.Text, nullable=False)
     question = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text, nullable=False)
@@ -19,6 +20,7 @@ class Gacha(db.Model):
     def __repr__(self):
         return f"""
             Gacha id: {self.id}
+            nickname: {self.nickname}
             quote: {self.quote}
             question: {self.question}
             description: {self.description}
