@@ -34,7 +34,7 @@ function ResultTopSector(props) {
   return (
     <>
       <TopSectorTitle>
-        {userName}님은 {props.nickName} {props.name}
+        {userName}님은 「{props.nickName}」 {props.name}
       </TopSectorTitle>
       <TopSectorImageContainer>
         <TopSectorImage
@@ -42,6 +42,7 @@ function ResultTopSector(props) {
           alt={props.name}
         />
       </TopSectorImageContainer>
+      <TopSectorDescription>- 명대사 -</TopSectorDescription>
       <TopSectorDescription>{props.desc}</TopSectorDescription>
     </>
   );

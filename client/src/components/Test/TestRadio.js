@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { testSurveyNumber, testEmotionCount, testPage } from '../../actions';
+import { testSurveyNumber, testEmotionCount } from '../../actions';
 
 const TestRadioContainer = styled.div`
   margin-bottom: 0;
@@ -43,12 +43,12 @@ function TestRadio(props) {
             dispatch(testSurveyNumber(props.qNumber + 1));
             emotionCount[event.target.value] += 1;
             dispatch(testEmotionCount(emotionCount));
-            console.log(emotionCount);
+            // console.log(emotionCount);
           } else {
             dispatch(testSurveyNumber(props.qNumber + 1));
             emotionCount[event.target.value] += 1;
             dispatch(testEmotionCount(emotionCount));
-            console.log(emotionCount);
+            // console.log(emotionCount);
             history.push('/survey/word');
           }
         }}
@@ -65,12 +65,12 @@ function TestRadio(props) {
             dispatch(testSurveyNumber(props.qNumber + 1));
             emotionCount[event.target.value] += 1;
             dispatch(testEmotionCount(emotionCount));
-            console.log(emotionCount);
+            // console.log(emotionCount);
           } else {
             dispatch(testSurveyNumber(props.qNumber + 1));
             emotionCount[event.target.value] += 1;
             dispatch(testEmotionCount(emotionCount));
-            console.log(emotionCount);
+            // console.log(emotionCount);
             history.push('/survey/word');
           }
         }}
@@ -87,13 +87,13 @@ function TestRadio(props) {
             dispatch(testSurveyNumber(props.qNumber + 1));
             emotionCount[event.target.value] += 1;
             dispatch(testEmotionCount(emotionCount));
-            console.log(emotionCount);
+            // console.log(emotionCount);
           } else {
             dispatch(testSurveyNumber(props.qNumber + 1));
-            dispatch(testPage(3));
             emotionCount[event.target.value] += 1;
-            console.log(emotionCount);
             dispatch(testEmotionCount(emotionCount));
+            // console.log(emotionCount);
+            history.push('/survey/word');
           }
         }}
       />

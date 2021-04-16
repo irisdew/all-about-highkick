@@ -52,7 +52,7 @@ export default function SimpleBottomNavigation() {
       <BottomNavigationAction
         key={4}
         label="관계도"
-        onMouseOver={() => dispatch(home(4))}
+        onClick={() => dispatch(home(4))}
         icon={<GiOrganigram />}
       />
     </BottomNavigation>

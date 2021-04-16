@@ -43,6 +43,7 @@ const WordSubmit = styled.h1`
 function TestWord() {
   const classes = useStyles();
   const wordCounter = useSelector((state) => state.test.wordCount);
+  const qNumber = useSelector((state) => state.test.surveyNumber);
   const history = useHistory();
   return (
     <Container>
@@ -56,14 +57,14 @@ function TestWord() {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <WordItems />
+            <WordItems qNumber={qNumber} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper
-            elevation={0}
+            elevation={1}
             className={classes.paper}
-            style={{ border: 'none' }}
+            style={{ display: wordCounter < 8 && 'none' }}
           >
             <WordSubmit
               style={{ display: wordCounter < 8 && 'none' }}

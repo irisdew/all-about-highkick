@@ -21,18 +21,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const WordDiv = styled.div`
-  margin: auto;
   align-items: center;
-  border: 10px solid black;
-  transition: all ease 1s;
-  cursor: pointer;
+  border: 5px solid black;
 `;
-const WordLabel = styled.label`
-  width: 100%;
+const StyledButton = styled.button`
+  background-color: #a16ef5;
+  background-size: auto;
+  &:active {
+    background-color: yellow;
+  }
 `;
-const WordRadioButton = styled.input``;
-
-function WordItems() {
+function WordItems(props) {
   const classes = useStyles();
   const [words, setWords] = useState([]);
   const emotionCount = useSelector((state) => state.test.emotionCount);
@@ -51,30 +50,54 @@ function WordItems() {
 
   // function changeDivCss(idx) {
   //   var parent = document.querySelector(`#word${idx}`).parentElement;
-  //   parent.style.opacity = 0;
+  //   console.log('111');
+  //   parent.style.opacity = '0';
   // }
 
-  function FormRow() {
+  function FormRow(props) {
     const wordList = words.map((word, index) => (
       <Grid key={index} item xs={3}>
         <Paper key={index} className={classes.paper}>
           <WordDiv key={index}>
-            <WordRadioButton
+            <StyledButton
+              type="button"
               key={index}
               id={`word${word[0]}`}
-              type="radio"
               value={word[1]}
               onClick={(event) => {
-                dispatch(testEmotionCount(emotionCount));
+                // console.log(event.target.value);
                 emotionCount[event.target.value] += 1;
+                dispatch(testEmotionCount(emotionCount));
                 dispatch(testWordCount(wordCount + 1));
-                console.log(emotionCount);
+                // console.log(emotionCount);
               }}
-            />
-            <WordLabel htmlFor={`word${word[0]}`}>{word[2]}</WordLabel>
+            >
+              <h2>{word[2]}</h2>
+            </StyledButton>
           </WordDiv>
         </Paper>
       </Grid>
+      // <Grid key={index} item xs={3}>
+      //   <Paper key={index} className={classes.paper}>
+      //     <WordDiv key={index}>
+      //       <WordRadioButton
+      //         key={index}
+      //         id={`word${word[0]}`}
+      //         type="radio"
+      //         value={word[1]}
+      //         onClick={(event) => {
+      //           changeDivCss(word[0]);
+      //           dispatch(testEmotionCount(emotionCount));
+      //           emotionCount[event.target.value] += 1;
+      //           dispatch(testWordCount(count));
+      //           setCount(count + 1);
+      //           console.log(emotionCount);
+      //         }}
+      //       />
+      //       <WordLabel htmlFor={`word${word[0]}`}>{word[2]}</WordLabel>
+      //     </WordDiv>
+      //   </Paper>
+      // </Grid>
     ));
     return <React.Fragment>{wordList}</React.Fragment>;
   }
@@ -83,7 +106,7 @@ function WordItems() {
     <div>
       <Grid container spacing={1}>
         <Grid container item xs={12} spacing={3}>
-          <FormRow />
+          <FormRow qNumber={props.qNumber} />
         </Grid>
       </Grid>
     </div>

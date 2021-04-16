@@ -65,10 +65,10 @@ function ResultGraph(props) {
     },
     yAxis: {
       title: {
-        text: '측정 수',
+        text: '백분율',
       },
       min: 0,
-      max: 5,
+      max: 10,
     },
     xAxis: {
       title: {
