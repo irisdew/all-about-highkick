@@ -3,6 +3,8 @@ from flask_restful import Resource
 from hoguma.models.overdose import Overdose
 from hoguma import db
 
+import random
+
 
 class OverdoseTest(Resource):
     def get(self):
@@ -35,15 +37,19 @@ class OverdoseTest(Resource):
             else:
                 select_4_TF = False
 
+            select = [
+                [select_1, select_1_TF],
+                [select_2, select_2_TF],
+                [select_3, select_3_TF],
+                [select_4, select_4_TF],
+            ]
+
+            random.shuffle(select)
+
             data = {
                 "qnum": qnum,
                 "question": question,
-                "select": [
-                    [select_1, select_1_TF],
-                    [select_2, select_2_TF],
-                    [select_3, select_3_TF],
-                    [select_4, select_4_TF],
-                ],
+                "select": select,
             }
 
             result.append(data)
