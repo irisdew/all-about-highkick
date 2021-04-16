@@ -34,9 +34,9 @@ with open(
                 .filter(Character.name == character_dict[key])
                 .all()[0][0]
             )
-            joy = round(value["기쁨"], 1)
-            sadness = round(value["슬픔"], 1)
-            anger = round(value["분노"], 1)
+            joy = round(value["기쁨"])
+            sadness = round(value["슬픔"])
+            anger = round(value["분노"])
 
             emotion = Emotion(
                 joy=joy,

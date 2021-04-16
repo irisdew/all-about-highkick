@@ -16,10 +16,11 @@ with open(
         with app.app_context():
             character = Character(
                 name=row[2],
+                image=f"{row[2]}.png",
                 age=row[4],
                 job=row[3],
                 quote=row[5],
-                word_cloud=f"../static/word_cloud/{row[2]}.png",
+                word_cloud=f"{row[2]}.png",
                 youtube=row[6],
             )
             db.session.add(character)

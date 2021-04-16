@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -21,10 +21,16 @@ from hoguma.models.word import Word
 
 # api
 from hoguma.resources.test import Test
+from hoguma.resources.character_detail import CharacterDetail
+from hoguma.resources.character_connection import CharacterConnection
+from hoguma.resources.overdose_result import Virtuoso
 
 
 def set_api_resources(api):
     api.add_resource(Test, "/test/<category>")
+    api.add_resource(CharacterDetail, "/character/<character_id>")
+    api.add_resource(CharacterConnection, "/connection")
+    api.add_resource(Virtuoso, "/overdose/<int:user_score>")
 
 
 def create_app():
@@ -41,5 +47,19 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
+
+    @app.route("/image/<category>/<file_name>")
+    def send_image(category, file_name):
+        if category == "character":
+            uri = app.config["CHARACTER_DETAIL_URI"]
+        elif category == "overdose":
+            uri = app.config["OVERDOSE_URI"]
+        elif category == "question":
+            uri = app.config["SURVEY_QUESTION_URI"]
+        elif category == "result":
+            uri = app.config["SURVEY_RESULT_URI"]
+        elif category == "word":
+            uri = app.config["WORD_CLOUD_URI"]
+        return send_from_directory(uri, file_name)
 
     return app
