@@ -24,6 +24,8 @@ from hoguma.resources.test import Test
 from hoguma.resources.character_detail import CharacterDetail
 from hoguma.resources.character_connection import CharacterConnection
 from hoguma.resources.overdose_result import Virtuoso
+from hoguma.resources.overdose_question import OverdoseTest
+from hoguma.resources.game import Game
 
 
 def set_api_resources(api):
@@ -31,6 +33,8 @@ def set_api_resources(api):
     api.add_resource(CharacterDetail, "/character/<character_id>")
     api.add_resource(CharacterConnection, "/connection")
     api.add_resource(Virtuoso, "/overdose/<int:user_score>")
+    api.add_resource(OverdoseTest, "/overdose")
+    api.add_resource(Game, "/game/", "/game/<gacha_id>")
 
 
 def create_app():
