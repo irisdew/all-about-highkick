@@ -1,13 +1,26 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { gameSelected, gameNumber } from '../../actions';
+import { gameSelected, gameClick, gameShow } from '../../actions';
 import Slider from 'react-slick';
 import './carousel.css';
+import axios from 'axios';
+import baseUrl from '../../url/http';
 
 const Photo = ({ id }) => {
   const dispatch = useDispatch();
 
-  const response = 0;
+  function selectedDataHandler(gacha_id) {
+    try {
+      axios.get(baseUrl + 'game/' + gacha_id).then((response) => {
+        console.log(response.data.data[0]);
+        dispatch(gameSelected(response.data.data[0]));
+        dispatch(gameClick(true));
+        dispatch(gameShow(false));
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div>
@@ -17,9 +30,7 @@ const Photo = ({ id }) => {
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         onClick={() => {
           console.log(id);
-          // id와 매칭되는 데이터뭉치 API에 GET 요청 후 response 저장
-          // dispatch(gameSelected(response));
-          dispatch(gameNumber(id));
+          selectedDataHandler(id);
         }}
       />
     </div>

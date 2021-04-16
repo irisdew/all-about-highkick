@@ -5,10 +5,7 @@ import './ball.css';
 
 const Ball = () => {
   const dispatch = useDispatch();
-  const number = useSelector((state) => state.game.number);
-  const ball = useSelector((state) => state.game.ball);
-
-  console.log('#####', ball);
+  const number = useSelector((state) => state.game.random.number);
 
   return (
     <div class="stage">

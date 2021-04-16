@@ -5,6 +5,9 @@ import Cytoscape from 'cytoscape';
 import CytoscapeComponent from 'react-cytoscapejs';
 import coseBilkent from 'cytoscape-cose-bilkent';
 
+import axios from 'axios';
+import baseUrl from '../../url/http';
+
 Cytoscape.use(coseBilkent);
 
 export default function MapDA() {
@@ -31,47 +34,31 @@ export default function MapDA() {
   ];
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/character_map_da.json')
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response.data);
-        response.data.forEach((x) => {
+    try {
+      axios.get(baseUrl + 'connection').then((response) => {
+        console.log(response.data.data.edge_DA);
+        response.data.data.edge_DA.forEach((x) => {
           data.push({
             data: {
               id: String(x.target) + '0' + String(x.source),
               target: String(x.target),
               source: String(x.source),
-              type: String(x.connection_weight),
+              number: String(x.connection_weight),
+              type: String(x.weight_tag),
             },
           });
         });
         setElement(data);
       });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   useEffect(() => {
     setTimeout(() => {
       setShape('circle');
     }, 1000);
-  }, []);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/data/character_map_da.json')
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response.data);
-        response.data.forEach((x) => {
-          data.push({
-            data: {
-              id: String(x.target) + '0' + String(x.source),
-              target: String(x.target),
-              source: String(x.source),
-              type: String(x.connection_weight),
-            },
-          });
-        });
-        setElement(data);
-      });
   }, []);
 
   const style = [
@@ -91,6 +78,7 @@ export default function MapDA() {
         width: '1.5px',
         'curve-style': 'bezier',
         'line-color': '#ced6e0',
+        'line-opacity': '0.5',
         'target-arrow-color': '#ced6e0',
         'target-arrow-shape': 'vee',
         'source-arrow-color': '#ced6e0',
@@ -103,7 +91,7 @@ export default function MapDA() {
       style: {
         'border-width': '6px',
         'border-color': '#AAD8FF',
-        'border-opacity': '0.5',
+        // 'border-opacity': '0.8',
         'background-color': '#77828C',
         width: 50,
         height: 50,
@@ -112,10 +100,40 @@ export default function MapDA() {
     {
       selector: 'edge:selected',
       style: {
-        label: 'data(type)',
+        label: 'data(number)',
         'line-color': 'blue',
         'text-outline-color': '#fffa65',
         'text-outline-width': 8,
+      },
+    },
+    {
+      selector: "edge[type='extreme']",
+      style: {
+        width: '10px',
+      },
+    },
+    {
+      selector: "edge[type='hard']",
+      style: {
+        width: '7px',
+      },
+    },
+    {
+      selector: "edge[type='normal']",
+      style: {
+        width: '4px',
+      },
+    },
+    {
+      selector: "edge[type='light']",
+      style: {
+        width: '2.5px',
+      },
+    },
+    {
+      selector: "edge[type='none']",
+      style: {
+        width: '0.9px',
       },
     },
   ];
@@ -124,7 +142,7 @@ export default function MapDA() {
     style.push({
       selector: `#${i}`,
       style: {
-        'background-image': `images/${i}.jpg`,
+        'background-image': `images/map/${i}.jpg`,
         'background-fit': 'cover',
       },
     });
@@ -153,11 +171,7 @@ export default function MapDA() {
           console.log('EVT', cy);
 
           cy.on('tap', 'node', (evt) => {
-            var node = evt.target;
-            console.log('EVT', evt);
-            console.log('TARGET', node.data());
-            console.log('TARGET TYPE', typeof node[0]);
-
+            const node = evt.target;
             dispatch(characterOpen());
             dispatch(characterSelected(node.data().id));
           });

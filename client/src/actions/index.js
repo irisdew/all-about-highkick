@@ -5,24 +5,10 @@ export const home = (selected) => {
   };
 };
 
-export const gameNumber = (payload) => {
+export const gameRandom = (payload) => {
   return {
-    type: 'GAME_NUMBER',
-    payload, // 유저가 뽑은 뽑기게임 숫자
-  };
-};
-
-export const gameDescription = (payload) => {
-  return {
-    type: 'GAME_DESCRIPTION',
-    payload, // 유저가 뽑은 뽑기게임 숫자 관련 설명
-  };
-};
-
-export const gamePage = (payload) => {
-  return {
-    type: 'GAME_PAGE',
-    payload, //게임 페이지 현재 페이지 번호
+    type: 'GAME_RANDOM',
+    payload, // API로 받아온 랜덤 숫자와 데이터 전체
   };
 };
 
@@ -45,10 +31,17 @@ export const gameClose = () => {
   };
 };
 
-export const gameBall = (payload) => {
+export const gameClick = (payload) => {
   return {
-    type: 'GAME_BALL',
-    payload, //랜덤으로 나온 공 번호, 관련 내용
+    type: 'GAME_CLICK',
+    payload, //뽑기게임 전체보기 페이지에서 사진을 한번이라도 클릭함
+  };
+};
+
+export const gameShow = (payload) => {
+  return {
+    type: 'GAME_SHOW',
+    payload, //뽑기게임 전체보기 페이지에서 정답보기/초기화
   };
 };
 
@@ -109,5 +102,19 @@ export const characterOpen = () => {
 export const characterClose = () => {
   return {
     type: 'CHARACTER_CLOSE', //캐릭터 상세페이지 Dialog 닫힘
+  };
+};
+
+export const feelingChart = (payload) => {
+  return {
+    type: 'FEELING_CHART',
+    payload, //캐릭터별 기쁨, 슬픔, 분노
+  };
+};
+
+export const amountChart = (payload) => {
+  return {
+    type: 'AMOUNT_CHART',
+    payload, //캐릭터별 회차별 분량
   };
 };

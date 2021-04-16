@@ -49,7 +49,7 @@ const DialogContent = withStyles((theme) => ({
 export default function GameDialog() {
   const dispatch = useDispatch();
   const open = useSelector((state) => state.game.open);
-  const ball = useSelector((state) => state.game.ball);
+  const random = useSelector((state) => state.game.random);
 
   const handleClose = () => {
     dispatch(gameClose());
@@ -67,24 +67,19 @@ export default function GameDialog() {
         </DialogTitle>
         <DialogContent dividers style={{ textAlign: 'center' }}>
           <img
-            // 이미지 번호는 ball.key
-            alt="gacha_1"
-            src="/images/game/gacha_1.png"
+            alt={`gacha_${random.id}`}
+            src={`/images/game/gacha_${random.id}.png`}
             style={{ width: '80%' }}
           />
-          <h2>{ball.quote}</h2>
-          <h3>당신의 추억은 "nickname"입니다</h3>
-          {/* 나중에 ball.nickname으로 넣을 것임 */}
+          <h2>{random.quote}</h2>
+          <h3>당신의 추억은 "{random.nickname}"입니다</h3>
           <Typography gutterBottom>
-            {ball.question.map((line) => {
+            {random.question.map((line) => {
               return <p>{line}</p>;
             })}
           </Typography>
           <Typography gutterBottom>
-            <h3>
-              {ball.description}
-              {/* 순재가 노트북에 <b>얏옹~</b>을 외친 횟수는 <b>14번</b> 입니다. */}
-            </h3>
+            <h3>{random.description}</h3>
           </Typography>
         </DialogContent>
       </Dialog>
