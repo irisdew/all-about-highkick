@@ -159,7 +159,7 @@ export default function MapDA() {
             console.log('TARGET TYPE', typeof node[0]);
 
             dispatch(characterOpen());
-            dispatch(characterSelected(node.data().label));
+            dispatch(characterSelected(node.data().id));
           });
         }}
       />

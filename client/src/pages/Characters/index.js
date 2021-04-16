@@ -18,6 +18,9 @@ import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import { MdClose } from 'react-icons/md';
 
+import axios from 'axios';
+import baseUrl from '../../url/http';
+
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -31,19 +34,29 @@ const Container = styled.div`
 
 export default function Characters() {
   const dispatch = useDispatch();
-  const selectedName = useSelector((state) => state.character.name);
+  const selectedId = useSelector((state) => state.character.id);
   const open = useSelector((state) => state.character.open);
   const [isDA, setIsDA] = useState(false);
   const [data, setData] = useState({});
 
   // 백엔드에서 selectedName에 맞는 인물상세페이지 데이터 받아오기
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/data/character_detail.json')
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       console.log(response.data[0]);
+  //       setData(response.data[0]);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch('http://localhost:3000/data/character_detail.json')
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response.data[0]);
-        setData(response.data[0]);
+    try {
+      axios.get(baseUrl + 'character/' + selectedId).then((response) => {
+        console.log('3333', response.data);
       });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   function handleChange() {

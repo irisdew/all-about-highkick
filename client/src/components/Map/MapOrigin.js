@@ -157,11 +157,11 @@ export default function MapOrigin() {
             var node = evt.target;
             console.log('EVT', evt);
             console.log('TARGET', node.data());
-            console.log('mymymy', node.data().label);
+            console.log('mymymy', node.data().id);
             console.log('TARGET TYPE', typeof node[0]);
 
             dispatch(characterOpen());
-            dispatch(characterSelected(node.data().label));
+            dispatch(characterSelected(node.data().id));
           });
         }}
       />

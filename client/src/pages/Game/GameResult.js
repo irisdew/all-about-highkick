@@ -5,6 +5,9 @@ import Button from '@material-ui/core/Button';
 import Ball from '../../components/Ball';
 import GameDialog from '../../components/Dialog/GameDialog';
 
+import axios from 'axios';
+import baseUrl from '../../url/http';
+
 export default function GameResult() {
   const history = useHistory();
 

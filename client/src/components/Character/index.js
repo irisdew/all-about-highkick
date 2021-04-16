@@ -4,18 +4,23 @@ import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import { FeelingChart, AmountChart } from './Chart';
 
+import axios from 'axios';
+import baseUrl from '../../url/http';
+
 const Character = () => {
-  const selectedName = useSelector((state) => state.character.name);
+  const selectedId = useSelector((state) => state.character.id);
   const [data, setData] = useState([]);
 
   //selectedName 가지고 백엔드에 캐릭터 전체 정보 요청 후 받아오기
   useEffect(() => {
-    fetch('http://localhost:3000/data/character_detail.json')
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response.data);
-        setData(response.data[0]);
+    try {
+      axios.get(baseUrl + 'character/' + selectedId).then((response) => {
+        console.log('character-detail', response.data.data);
+        setData(response.data.data);
       });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
@@ -40,23 +45,23 @@ const Character = () => {
       >
         <div item xs={12} style={{ textAlign: 'center' }}>
           <img alt={data.name} src={data.photo} style={{ width: '40%' }} />
-          <h1>{selectedName}</h1>
+          <h1>{data.name}</h1>
           <Chip label={data.age} clickable color="primary" />
           <Chip label={data.job} clickable color="secondary" />
-          <Chip label={data.quote} clickable color="default" />
+          <Chip label={data.qoute} clickable color="default" />
         </div>
         <div item xs={6}>
           <div>
             <h2>주요 감정</h2>
             <p>기쁨, 슬픔, 분노 감정 분석 결과입니다.</p>
-            <FeelingChart data={data.feelingChart} />
+            <FeelingChart data={data.emotion_dict} />
           </div>
         </div>
         <div item xs={6}>
           <div>
             <h2>회차별 분량 변화</h2>
             <p>한 회차에서 대사량이 가장 많았던 인물은 119회 말했습니다.</p>
-            <AmountChart data={data.amountChart} />
+            <AmountChart data={data.stock_arr} />
           </div>
         </div>
         <div item xs={6} style={{ margin: 'auto' }}>
@@ -66,7 +71,7 @@ const Character = () => {
             <div style={{ textAlign: 'center', margin: 'auto' }}>
               <img
                 alt={data.name}
-                src={data.wordcloud}
+                src={baseUrl + `image/word/${data.word_cloud}`}
                 style={{ width: '80%' }}
               />
             </div>
@@ -94,7 +99,7 @@ const Character = () => {
                 }}
                 width="600"
                 height="400"
-                src={data.youtube}
+                src="https://www.youtube.com/embed/7HWuemesz14"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
