@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import * as htmlToImage from 'html-to-image';
-import { toPng } from 'html-to-image';
 import download from 'downloadjs';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useSnackbar } from 'notistack';
 
 const ButtonContainer = styled.div`
   display: block;
@@ -82,16 +83,27 @@ function makeImg() {
 }
 
 function ResultButton() {
+  const { enqueueSnackbar } = useSnackbar();
+  const url = window.location.href; // 현재 url 복사
+
+  const copyClick = () => {
+    enqueueSnackbar('URL이 복사되었습니다.');
+  };
   useEffect(() => {
     callKakaoBtn();
   }, []);
   return (
     <ButtonContainer>
       <ResultPhargraph id="kakao-link-btn" onClick={onClickKakao}>
-        공유하자
+        공유해
       </ResultPhargraph>
-      <ResultPhargraph>복사하자</ResultPhargraph>{' '}
-      <ResultPhargraph onClick={() => makeImg()}>저장하자</ResultPhargraph>
+      <React.Fragment>
+        <CopyToClipboard text={url}>
+          <ResultPhargraph onClick={copyClick}>복사해</ResultPhargraph>
+        </CopyToClipboard>
+      </React.Fragment>
+
+      <ResultPhargraph onClick={() => makeImg()}>저장해</ResultPhargraph>
     </ButtonContainer>
   );
 }

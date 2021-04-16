@@ -41,6 +41,7 @@ const Container = styled.div`
   margin-left: 20vw;
   margin-right: 20vw;
 `;
+
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
@@ -48,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function TestOverdoseMain(props) {
+  // User Name 입력 값 확인 메소드
   const userName = useSelector((state) => state.test.name);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -62,8 +64,7 @@ function TestOverdoseMain(props) {
       <ContentContainer>
         <TestTitle>나의 하이킥 인지능력은 ?</TestTitle>
         <TestParagraph>
-          소싯적 거침없이 하이킥을 시청해보셨나요 ?
-          <br />
+          소싯적 거침없이 하이킥을 시청해보셨나요 ?<br />
           본인의 하이킥내용을 얼마나 알고있는지 알고 싶다면
           <br />
           아래 테스트를 진행해보세요.
@@ -91,9 +92,10 @@ function TestOverdoseMain(props) {
           color="primary"
           onClick={() => {
             history.push('/overdose/process');
+            //dispatch(testPage(6));
           }}
         >
-          중독성 테스트
+          응시하기
         </Button>
       </ContentContainer>
     </Container>

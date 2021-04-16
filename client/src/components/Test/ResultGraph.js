@@ -18,6 +18,7 @@ const BottomGraphDiv = styled.div`
   display: block;
   justify-content: center;
 `;
+
 function ResultGraph(props) {
   const userName = useSelector((state) => state.test.name);
   const data = {
@@ -92,7 +93,6 @@ function ResultGraph(props) {
     <BottomSectorContainer>
       <BottomSectorTitle>3대 감정 측정결과</BottomSectorTitle>
       <BottomGraphDiv>
-        {/* <PieChart data={data} options={options} /> */}
         <ColumnChart data={data} options={options} />
       </BottomGraphDiv>
     </BottomSectorContainer>

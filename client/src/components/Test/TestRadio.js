@@ -49,7 +49,6 @@ function TestRadio(props) {
             emotionCount[event.target.value] += 1;
             dispatch(testEmotionCount(emotionCount));
             console.log(emotionCount);
-            //dispatch(testPage(3));
             history.push('/survey/word');
           }
         }}
@@ -72,7 +71,6 @@ function TestRadio(props) {
             emotionCount[event.target.value] += 1;
             dispatch(testEmotionCount(emotionCount));
             console.log(emotionCount);
-            //dispatch(testPage(3));
             history.push('/survey/word');
           }
         }}
