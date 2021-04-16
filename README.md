@@ -39,7 +39,7 @@
 
 **2. 프로젝트 메인부분인 감정분석 해결을 위한 방법 및 방향**
 
-[Project_Hoguma_감정분석.pdf](docs/Project_Hoguma_QA_.pdf)
+[Project_Hoguma_감정분석.pdf](docs/Project_Hoguma_.pdf)
 
 **3. 데이터를 통해 탐색하려는 문제를 구체적으로 작성**
 
