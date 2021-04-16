@@ -21,23 +21,28 @@ const BottomGraphDiv = styled.div`
 
 function ResultGraph(props) {
   const userName = useSelector((state) => state.test.name);
+
+  var total =
+    props.userCharacterInfo['기쁨'] +
+    props.userCharacterInfo['슬픔'] +
+    props.userCharacterInfo['분노'];
+  var happy = Math.round((props.userCharacterInfo['기쁨'] / total) * 100);
+  var sadness = Math.round((props.userCharacterInfo['슬픔'] / total) * 100);
+  var angry = Math.round((props.userCharacterInfo['분노'] / total) * 100);
+
   const data = {
-    categories: ['기쁨', '슬픔', '화남'],
+    categories: ['기쁨', '슬픔', '분노'],
     series: [
       {
         name: `${userName}님`,
-        data: [
-          props.userCharacterInfo['기쁨'],
-          props.userCharacterInfo['슬픔'],
-          props.userCharacterInfo['화남'],
-        ],
+        data: [happy, sadness, angry],
       },
       {
         name: props.characterName,
         data: [
-          props.characterEmotion[0],
-          props.characterEmotion[1],
-          props.characterEmotion[2],
+          props.characterEmotion['기쁨'],
+          props.characterEmotion['분노'],
+          props.characterEmotion['슬픔'],
         ],
       },
     ],

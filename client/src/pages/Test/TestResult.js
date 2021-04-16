@@ -19,6 +19,7 @@ import ResultEmotionSector from '../../components/Test/ResultEmotionSector';
 import ResultMate from '../../components/Test/ResultMate';
 import ResultGraph from '../../components/Test/ResultGraph';
 import ResultButtons from '../../components/Test/ResultButton';
+import axios from 'axios';
 import baseUrl from '../../url/http';
 
 const useStyles = makeStyles((theme) => ({
@@ -36,21 +37,17 @@ const useStyles = makeStyles((theme) => ({
 // 페이지 레이아웃 컨테이너
 const Container = styled.div`
   display: flex;
-  /* flex-direction: column; */
   text-align: center;
   background-color: white;
-  align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
-  justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
-
+  align-items: center;
+  justify-content: center;
   padding: 0 20vw;
-  /* margin-left: 20vw;
-  margin-right: 20vw; */
 `;
 const HomeButtonLink = styled(Link)`
   text-decoration: none;
   color: black;
 `;
-const ResultPhargraph = styled.p`
+const ResultPhargraph = styled.h1`
   color: black;
   font-size: 5vh;
   display: inline-block;
@@ -65,45 +62,54 @@ function TestResult() {
   const history = useHistory();
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/surveyResult.json')
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.result);
-        setCharacterInfo(res.result);
-      });
-  }, []);
+    try {
+      axios
+        .get(baseUrl + 'test/result', {
+          params: {
+            joy: userCharacterInfo['기쁨'],
+            sadness: userCharacterInfo['슬픔'],
+            anger: userCharacterInfo['분노'],
+          },
+        })
+        .then((response) => {
+          console.log(response.data.data);
+          setCharacterInfo(response.data.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [userCharacterInfo]);
 
   if (Object.keys(characterInfo).length === 0) return null;
-  // characterInfo = 매칭 캐릭터 하나 정보 객체로 올것임 => 수정 필요
   return (
     <Container id="result-img">
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <ResultTopSector
-              name={characterInfo[0].name}
-              nickName={characterInfo[0].nickName}
-              img={characterInfo[0].imgSrc}
-              desc={characterInfo[0].description}
+              name={characterInfo.name}
+              nickName={characterInfo.nick_name}
+              image={characterInfo.image}
+              desc={characterInfo.description}
             />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <ResultEmotionSector />
+            <ResultEmotionSector emotion={characterInfo.emotion} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <ResultMate />
+            <ResultMate pair={characterInfo.pair} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <ResultGraph
               userCharacterInfo={userCharacterInfo}
-              characterName={characterInfo[0].name}
-              characterEmotion={characterInfo[0].emotion}
+              characterName={characterInfo.name}
+              characterEmotion={characterInfo.emotion}
             />
           </Paper>
         </Grid>
@@ -117,24 +123,14 @@ function TestResult() {
             <ResultPhargraph
               onClick={() => {
                 history.push('/');
-                //dispatch(testPage(1));
                 dispatch(testUserName(''));
                 dispatch(testSurveyNumber(0));
-                dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
+                dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 분노: 0 }));
                 dispatch(testWordCount(0));
               }}
             >
               <HomeButtonLink to="/"> 홈 이동</HomeButtonLink>
             </ResultPhargraph>
-
-            {/* <Button
-                variant="contained"
-                color="secondary"
-                className={classes.button}
-               
-              >
-              
-              </Button> */}
           </Paper>
         </Grid>
       </Grid>

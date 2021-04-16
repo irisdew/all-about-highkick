@@ -41,15 +41,15 @@ function OverdoseContents(props) {
       </ScoreDiv>
 
       <img
-        src={`${baseUrl}/image/overdose/${props.data.image}`}
-        alt={props.data.image}
+        src={`${baseUrl}/image/overdose/${props.data[0].image}`}
+        alt={props.data[0].image}
       />
       <ContentsDescription>
         성적표야? 어디보자~
         <br />
-        {props.data.description.split('<br />')[0]}
+        {props.data[0].description[0].split('<br />')[0]}
         <br />
-        {props.data.description.split('<br />')[1]}
+        {props.data[0].description[0].split('<br />')[1]}
         <br />
       </ContentsDescription>
     </ImgContainer>

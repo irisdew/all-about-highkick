@@ -26,17 +26,16 @@ const FormContainer = styled.div`
 `;
 // 콘텐츠 컨테이너
 const ContentContainer = styled.div`
-  align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
+  align-items: center;
   padding-top: 20vh;
 `;
 // 페이지 레이아웃 컨테이너
 const Container = styled.div`
   display: flex;
-  /* flex-direction: column; */
   text-align: center;
   background-color: white;
-  align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
-  justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
+  align-items: center;
+  justify-content: center;
 
   margin-left: 20vw;
   margin-right: 20vw;
@@ -49,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function TestOverdoseMain(props) {
-  // User Name 입력 값 확인 메소드
   const userName = useSelector((state) => state.test.name);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -63,10 +61,9 @@ function TestOverdoseMain(props) {
     <Container>
       <ContentContainer>
         <TestTitle>2021년도 제 1회 하이킥 고사</TestTitle>
-        <TestParagraph>
-          <h3>하이킥 중독성 영역</h3>
-          <br />
-        </TestParagraph>
+
+        <TestParagraph>하이킥 중독성 영역</TestParagraph>
+
         <FormContainer>
           <form
             onSubmit={() => console.log('테스트 시작.')}
@@ -90,7 +87,6 @@ function TestOverdoseMain(props) {
           color="primary"
           onClick={() => {
             history.push('/overdose/process');
-            //dispatch(testPage(6));
           }}
         >
           응시하기

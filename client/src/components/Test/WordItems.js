@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import axios from 'axios';
+import baseUrl from '../../url/http';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,17 +26,8 @@ const WordDiv = styled.div`
   border: 10px solid black;
   transition: all ease 1s;
   cursor: pointer;
-
-  /* :hover {
-    border: 10px solid red;
-  } */
 `;
 const WordLabel = styled.label`
-  /* display: block;
-  height: 7vh;
-  margin: 0 5vh;
-  border-radius: 30px;
-  background-color: skyblue; */
   width: 100%;
 `;
 const WordRadioButton = styled.input``;
@@ -47,13 +40,14 @@ function WordItems() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/word.json')
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.words);
-        setWords(res.words);
+    try {
+      axios.get(baseUrl + 'test/word').then((response) => {
+        setWords(response.data.data);
       });
-  }, [emotionCount, wordCount]);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   function changeDivCss(idx) {
     var parent = document.querySelector(`#word${idx}`).parentElement;
@@ -71,15 +65,9 @@ function WordItems() {
               type="radio"
               value={word[1]}
               onClick={(event) => {
-                // 선택한 radio버튼 박스는 사라지고, 버튼활성화 카운터 1증가 하고 싶음
-                // 아래 처럼 작동시키면, changeDivCss 가 먹힌다. => 대신 버튼활성화 카운트가 안된다. => 당연히 안됨, 조건을 봐라.
-                // 그러자고, 저 if문을 제거해서 실행하면, changeDivCss만 안먹힌다. ㅠ
-                // changeDivCss(word[0]);
                 dispatch(testEmotionCount(emotionCount));
                 emotionCount[event.target.value] += 1;
                 dispatch(testWordCount(wordCount + 1));
-                //dispatch(testWordCount(wordCount + 1));
-
                 console.log(emotionCount);
               }}
             />

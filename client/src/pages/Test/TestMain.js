@@ -96,7 +96,7 @@ function TestMain(props) {
             //dispatch(testPage(2));
           }}
         >
-          관련성 테스트
+          검사진행
         </Button>
       </ContentContainer>
     </Container>

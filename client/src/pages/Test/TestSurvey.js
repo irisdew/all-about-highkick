@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TestRadio from '../../components/Test/TestRadio';
 import ProgressBar from '../../components/Test/ProgressBar';
+import axios from 'axios';
+import baseUrl from '../../url/http';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,12 +44,20 @@ function TestSurvey() {
   const classes = useStyles();
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/survey.json')
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.data);
-        setSurveyData(res.data);
+    try {
+      axios.get(baseUrl + 'test/survey').then((response) => {
+        console.log(response.data.data);
+        setSurveyData(response.data.data);
       });
+    } catch (error) {
+      console.log(error);
+    }
+    // fetch('http://localhost:3000/data/survey.json')
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setSurveyData(res.data);
+    //   });
   }, []);
 
   if (surveyData.length === 0) return null;
@@ -57,7 +67,7 @@ function TestSurvey() {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <h1 style={{ marginBottom: 0 }}>
-              Q{surveyData[qNumber].qnum}.{' '}
+              Q{surveyData[qNumber].q_num}.{' '}
               {surveyData[qNumber].question.split('<br />')[0].length !== 0 &&
                 surveyData[qNumber].question.split('<br />')[0]}
             </h1>
@@ -68,8 +78,8 @@ function TestSurvey() {
 
             <ProcessImageContainer>
               <img
-                src={surveyData[qNumber].imgSrc}
-                alt={surveyData[qNumber].imgSrc}
+                src={`${baseUrl}/image/question/${surveyData[qNumber].image_url}`}
+                alt={surveyData[qNumber].image_url}
               />
             </ProcessImageContainer>
           </Grid>

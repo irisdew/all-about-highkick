@@ -35,7 +35,7 @@ function TestRadio(props) {
       <TestRadioButton
         type="radio"
         id="radio1"
-        value={props.select1[0]}
+        value={props.select1[1]}
         name="select-radio"
         onClick={(event) => {
           setTimeout(() => (event.target.checked = false), 500);
@@ -53,11 +53,11 @@ function TestRadio(props) {
           }
         }}
       />
-      <TestLabel htmlFor="radio1">{props.select1[1]}</TestLabel>
+      <TestLabel htmlFor="radio1">{props.select1[0]}</TestLabel>
       <TestRadioButton
         type="radio"
         id="radio2"
-        value={props.select2[0]}
+        value={props.select2[1]}
         name="select-radio"
         onClick={(event) => {
           setTimeout(() => (event.target.checked = false), 500);
@@ -75,11 +75,11 @@ function TestRadio(props) {
           }
         }}
       />
-      <TestLabel htmlFor="radio2">{props.select2[1]}</TestLabel>
+      <TestLabel htmlFor="radio2">{props.select2[0]}</TestLabel>
       <TestRadioButton
         type="radio"
         id="radio3"
-        value={props.select3[0]}
+        value={props.select3[1]}
         name="select-radio"
         onClick={(event) => {
           setTimeout(() => (event.target.checked = false), 500);
@@ -97,7 +97,7 @@ function TestRadio(props) {
           }
         }}
       />
-      <TestLabel htmlFor="radio3">{props.select3[1]}</TestLabel>
+      <TestLabel htmlFor="radio3">{props.select3[0]}</TestLabel>
     </TestRadioContainer>
   );
 }

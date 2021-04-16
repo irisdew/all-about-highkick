@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import baseUrl from '../../url/http';
 
 const TopSectorTitle = styled.h1`
   color: black;
@@ -20,7 +21,7 @@ const TopSectorImage = styled.img`
   width: 25vw;
   height: 30vh;
 `;
-const TopSectorDescription = styled.p`
+const TopSectorDescription = styled.h3`
   color: black;
   font-size: 4vh;
   margin-top: 3vh;
@@ -36,7 +37,10 @@ function ResultTopSector(props) {
         {userName}님은 {props.nickName} {props.name}
       </TopSectorTitle>
       <TopSectorImageContainer>
-        <TopSectorImage src={props.img} alt={props.name} />
+        <TopSectorImage
+          src={`${baseUrl}/image/result/${props.image}`}
+          alt={props.name}
+        />
       </TopSectorImageContainer>
       <TopSectorDescription>{props.desc}</TopSectorDescription>
     </>

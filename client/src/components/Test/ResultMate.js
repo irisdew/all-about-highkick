@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import baseUrl from '../../url/http';
 
 const MiddleSectorContainer = styled.div`
   overflow: hidden;
@@ -16,23 +17,32 @@ const MiddlesectorEmotionContainer = styled.div`
 const MiddleSectorTitle = styled.h1`
   color: black;
 `;
-const MiddleMateSectorImage = styled.img``;
+const MiddleMateSectorImage = styled.img`
+  width: 20vw;
+  height: 20vh;
+`;
 const MiddleMateSectorName = styled.p`
   color: black;
 `;
-function ResultMate() {
+function ResultMate(props) {
   return (
     <>
       <MiddleSectorContainer>
         <MiddlesectorEmotionContainer>
           <MiddleSectorTitle>찰떡 궁합</MiddleSectorTitle>
-          <MiddleMateSectorImage src="/images/Hyemi.jpg" alt={'박혜미'} />
-          <MiddleMateSectorName>{'박혜미'}</MiddleMateSectorName>
+          <MiddleMateSectorImage
+            src={`${baseUrl}/image/result/${props.pair[0]}`}
+            alt={''}
+          />
+          <MiddleMateSectorName>{''}</MiddleMateSectorName>
         </MiddlesectorEmotionContainer>
         <MiddlesectorEmotionContainer>
           <MiddleSectorTitle>극혐 조합</MiddleSectorTitle>
-          <MiddleMateSectorImage src="/images/Soonjae.jpg" alt={'이순재'} />
-          <MiddleMateSectorName>{'이순재'}</MiddleMateSectorName>
+          <MiddleMateSectorImage
+            src={`${baseUrl}/image/result/${props.pair[1]}`}
+            alt={''}
+          />
+          <MiddleMateSectorName>{''}</MiddleMateSectorName>
         </MiddlesectorEmotionContainer>
       </MiddleSectorContainer>
     </>
