@@ -15,7 +15,7 @@ with open(
     for row in csv_data:
         with app.app_context():
             question_number = row[0]
-            question = row[2].replace("\,", ",")
+            question = row[2].replace("\,", ",").replace("#", "<br />")
             image = f"{row[0]}.png"
             select_1 = row[3] + "\n" + row[4]
             select_2 = row[5] + "\n" + row[6]

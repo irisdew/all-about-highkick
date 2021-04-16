@@ -43,7 +43,8 @@ with open(
         with app.app_context():
             image = f"{row[0]}.png"
             rank = row[0]
-            description = row[1]
+            description = row[1].replace("#", "<br />")
+            print(description)
             overdose_result = OverdoseResult(
                 rank=rank, image=image, description=description
             )
