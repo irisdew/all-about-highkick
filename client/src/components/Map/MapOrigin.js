@@ -125,7 +125,7 @@ export default function MapOrigin() {
     style.push({
       selector: `#${i}`,
       style: {
-        'background-image': `images/${i}.jpg`,
+        'background-image': `images/map/${i}.jpg`,
         'background-fit': 'cover',
       },
     });
@@ -154,14 +154,10 @@ export default function MapOrigin() {
           console.log('EVT', cy);
 
           cy.on('tap', 'node', (evt) => {
-            var node = evt.target;
-            console.log('EVT', evt);
-            console.log('TARGET', node.data());
-            console.log('mymymy', node.data().id);
-            console.log('TARGET TYPE', typeof node[0]);
+            const node = evt.target;
 
-            dispatch(characterOpen());
             dispatch(characterSelected(node.data().id));
+            dispatch(characterOpen());
           });
         }}
       />

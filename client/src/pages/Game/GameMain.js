@@ -1,29 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { gameNumber, gameDescription, gameBall } from '../../actions';
+import { gameRandom } from '../../actions';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
+
+import axios from 'axios';
+import baseUrl from '../../url/http';
 
 export default function GameMain() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [gameData, setGameData] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/data/game.json')
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response.data);
-        setGameData(response.data);
-      });
-  }, []);
 
   const handleClick = () => {
-    const gameResult = gameData[Math.floor(Math.random() * gameData.length)];
-    dispatch(gameNumber(gameResult.number));
-    dispatch(gameDescription(gameResult.description));
-    dispatch(gameBall(gameResult));
+    try {
+      axios.get(baseUrl + 'game').then((response) => {
+        console.log(response.data.data[0]);
+        dispatch(gameRandom(response.data.data[0]));
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const Container = styled.div`
@@ -51,7 +48,6 @@ export default function GameMain() {
         color="primary"
         onClick={() => {
           history.push('/game/result');
-          // 백엔드 API에서 랜덤으로 데이터 1개 받아옴
           handleClick();
         }}
       >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { characterClose } from '../../actions';
 import styled from 'styled-components';
@@ -18,9 +18,6 @@ import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import { MdClose } from 'react-icons/md';
 
-import axios from 'axios';
-import baseUrl from '../../url/http';
-
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -34,30 +31,8 @@ const Container = styled.div`
 
 export default function Characters() {
   const dispatch = useDispatch();
-  const selectedId = useSelector((state) => state.character.id);
   const open = useSelector((state) => state.character.open);
   const [isDA, setIsDA] = useState(false);
-  const [data, setData] = useState({});
-
-  // 백엔드에서 selectedName에 맞는 인물상세페이지 데이터 받아오기
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/data/character_detail.json')
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       console.log(response.data[0]);
-  //       setData(response.data[0]);
-  //     });
-  // }, []);
-
-  useEffect(() => {
-    try {
-      axios.get(baseUrl + 'character/' + selectedId).then((response) => {
-        console.log('3333', response.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
 
   function handleChange() {
     setIsDA(!isDA);
@@ -76,7 +51,7 @@ export default function Characters() {
       style={{
         justifyContent: 'center',
         alignItems: 'center',
-        width: '90vw',
+        width: '70vw',
         height: '90vh',
         margin: 'auto',
       }}
@@ -126,10 +101,10 @@ export default function Characters() {
                   >
                     <MdClose />
                   </IconButton>
-                  <Typography variant="h6">나문희</Typography>
+                  <Typography variant="h6">캐릭터 상세 정보</Typography>
                 </Toolbar>
               </AppBar>
-              <Character data={data} />
+              <Character />
             </Dialog>
           </div>
         )}

@@ -1,14 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { gameClick } from '../../actions';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 import Ball from '../../components/Ball';
 import GameDialog from '../../components/Dialog/GameDialog';
 
-import axios from 'axios';
-import baseUrl from '../../url/http';
-
 export default function GameResult() {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   return (
@@ -39,7 +39,10 @@ export default function GameResult() {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => history.push('/game/all')}
+          onClick={() => {
+            dispatch(gameClick(false));
+            history.push('/game/all');
+          }}
           style={{ margin: '1rem 0.5rem 0 0.5rem' }}
         >
           전체 보기
