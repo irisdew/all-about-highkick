@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ContextStrong = styled.strong`
-  color: #7566ff;
-  font-size: 2.3vh;
+  font-family: 'yangjin';
+  font-size: 1.1rem;
 `;
 const IntroParagraph = styled.p`
   color: black;
