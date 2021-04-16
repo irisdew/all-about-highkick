@@ -41,8 +41,8 @@ function ResultGraph(props) {
         name: props.characterName,
         data: [
           props.characterEmotion['기쁨'],
-          props.characterEmotion['분노'],
           props.characterEmotion['슬픔'],
+          props.characterEmotion['분노'],
         ],
       },
     ],

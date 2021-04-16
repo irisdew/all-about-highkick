@@ -133,11 +133,6 @@ export default function MapOrigin() {
     tile: true,
   };
 
-<<<<<<< HEAD
-=======
-  let myCyRef;
-
->>>>>>> bc336aa5b0817620cf07f74a5afbb13ead767908
   return (
     <>
       <CytoscapeComponent
@@ -150,11 +145,6 @@ export default function MapOrigin() {
         maxZoom={5}
         minZoom={1}
         cy={(cy) => {
-<<<<<<< HEAD
-=======
-          myCyRef = cy;
-
->>>>>>> bc336aa5b0817620cf07f74a5afbb13ead767908
           console.log('EVT', cy);
 
           cy.on('tap', 'node', (evt) => {
