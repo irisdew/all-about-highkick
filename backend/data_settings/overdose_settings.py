@@ -41,9 +41,9 @@ with open(
     next(csv_data)
     for row in csv_data:
         with app.app_context():
-            image = f"../static/highkick_test_image/{row[0]}.png"
+            image = f"{row[0]}.png"
             rank = row[0]
-            description = row[1]
+            description = row[1].replace("#", "<br />")
             overdose_result = OverdoseResult(
                 rank=rank, image=image, description=description
             )

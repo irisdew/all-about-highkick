@@ -15,8 +15,8 @@ with open(
     for row in csv_data:
         with app.app_context():
             question_number = row[0]
-            question = row[2].replace("\,", ",")
-            image = f"../static/survey_question_image/{row[0]}.png"
+            question = row[2].replace("\,", ",").replace("#", "<br />")
+            image = f"{row[0]}.png"
             select_1 = row[3] + "\n" + row[4]
             select_2 = row[5] + "\n" + row[6]
             select_3 = row[7] + "\n" + row[8]
@@ -39,15 +39,11 @@ with open(
     csv_data = csv.reader(csv_file)
     for row in csv_data:
         with app.app_context():
-            image = f"../static/survey_question_image/{row[0]}.png"
+            image = f"{row[0]}.png"
             description = row[4]
             nick_name = row[3]
             name = row[2]
-            pair = (
-                f"../static/survey_question_image/{row[8]}.png"
-                + "\n"
-                + f"../static/survey_question_image/{row[9]}.png"
-            )
+            pair = f"{row[8]}.png" + "\n" + f"{row[9]}.png"
             survey_result = SurveyResult(
                 image=image,
                 description=description,

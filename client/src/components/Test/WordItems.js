@@ -49,10 +49,10 @@ function WordItems() {
     }
   }, []);
 
-  function changeDivCss(idx) {
-    var parent = document.querySelector(`#word${idx}`).parentElement;
-    parent.style.opacity = 0;
-  }
+  // function changeDivCss(idx) {
+  //   var parent = document.querySelector(`#word${idx}`).parentElement;
+  //   parent.style.opacity = 0;
+  // }
 
   function FormRow() {
     const wordList = words.map((word, index) => (

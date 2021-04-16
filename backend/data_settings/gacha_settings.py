@@ -16,6 +16,7 @@ with open(
     for row in csv_data:
         with app.app_context():
             gacha_number = row[8]
+            nickname = row[4]
             quote = row[3]
             question = row[5]
             description = row[6]
@@ -27,6 +28,7 @@ with open(
 
             gacha = Gacha(
                 gacha_number=gacha_number,
+                nickname=nickname,
                 quote=quote,
                 question=question,
                 description=description,

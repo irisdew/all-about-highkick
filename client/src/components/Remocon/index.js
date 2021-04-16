@@ -6,15 +6,23 @@ import { IoGameControllerOutline } from 'react-icons/io5';
 import { GiOrganigram } from 'react-icons/gi';
 import { AiOutlineHome } from 'react-icons/ai';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { home } from '../../actions';
 
-export default function Remocon() {
-  const isSelected = useSelector((state) => state.homeSelect);
+export default function SimpleBottomNavigation() {
   const dispatch = useDispatch();
 
+  const [value, setValue] = React.useState(0);
+
   return (
-    <BottomNavigation value={isSelected} showLabels>
+    <BottomNavigation
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(event.target.key);
+        console.log(value);
+      }}
+      showLabels
+    >
       <BottomNavigationAction
         key={0}
         label="홈"

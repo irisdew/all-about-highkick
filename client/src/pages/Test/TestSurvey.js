@@ -46,18 +46,11 @@ function TestSurvey() {
   useEffect(() => {
     try {
       axios.get(baseUrl + 'test/survey').then((response) => {
-        console.log(response.data.data);
         setSurveyData(response.data.data);
       });
     } catch (error) {
       console.log(error);
     }
-    // fetch('http://localhost:3000/data/survey.json')
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     setSurveyData(res.data);
-    //   });
   }, []);
 
   if (surveyData.length === 0) return null;
