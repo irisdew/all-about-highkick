@@ -19,6 +19,7 @@ class Game(Resource):
             )
             for game in game_set:
                 game_id = game.id
+                nickname = game.nickname
                 number = game.gacha_number
                 description = game.description
                 quote = game.quote
@@ -27,6 +28,7 @@ class Game(Resource):
                 data = {
                     "id": game_id,
                     "number": number,
+                    "nickname": nickname,
                     "description": description,
                     "quote": quote,
                     "question": question,
