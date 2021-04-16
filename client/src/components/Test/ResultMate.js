@@ -20,9 +20,6 @@ const MiddleMateSectorImage = styled.img``;
 const MiddleMateSectorName = styled.p`
   color: black;
 `;
-
-// 변해야할 것들 : 캐릭터 이미지주소, 캐릭터설명,캐릭터이름
-
 function ResultMate() {
   return (
     <>

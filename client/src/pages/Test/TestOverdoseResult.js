@@ -60,7 +60,6 @@ function TestOverdoseResult() {
   const history = useHistory();
 
   useEffect(() => {
-    console.log(overdoseCount);
     fetch('http://localhost:3000/data/overdoseResult.json')
       .then((res) => res.json())
       .then((res) => {

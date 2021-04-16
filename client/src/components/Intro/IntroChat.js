@@ -1,11 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import Disqus from 'disqus-react';
-
-const chatContainer = styled.div`
-  align-items: center;
-  width: 70px;
-`;
+import { Hidden } from '@material-ui/core';
 
 function IntroChat() {
   const disqusShortname = 'hoguma';
@@ -21,6 +16,8 @@ function IntroChat() {
         margin: '0 auto',
         textAlign: 'center',
         alignItems: 'center',
+        maxHeight: '40vh',
+        overflowY: 'auto',
       }}
     >
       <Disqus.DiscussionEmbed

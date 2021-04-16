@@ -26,12 +26,6 @@ const TopSectorDescription = styled.p`
   margin-top: 3vh;
   margin-bottom: 0;
 `;
-
-// API : 매칭 캐릭터 정보 객체 ( 캐릭터 매핑정보 )
-// => 캐릭터 이름, 캐릭터이미지경로, 결과멘트
-// 매칭 캐릭터별
-// 변해야 할 것들 : 캐릭터 형용사, 캐릭터 이름, 캐릭터 이미지, 캐릭터 설명 멘트
-
 function ResultTopSector(props) {
   const userName = useSelector((state) => state.test.name);
 

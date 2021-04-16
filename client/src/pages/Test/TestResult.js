@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
+  testPage,
   testUserName,
   testSurveyNumber,
   testEmotionCount,
@@ -11,6 +12,7 @@ import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+
 import { Link } from 'react-router-dom';
 
 import ResultTopSector from '../../components/Test/ResultTopSector';
@@ -18,7 +20,6 @@ import ResultEmotionSector from '../../components/Test/ResultEmotionSector';
 import ResultMate from '../../components/Test/ResultMate';
 import ResultGraph from '../../components/Test/ResultGraph';
 import ResultButtons from '../../components/Test/ResultButton';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -40,19 +41,29 @@ const Container = styled.div`
   align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
   justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
 
-  padding: 0 15vw;
+  margin-left: 20vw;
+  margin-right: 20vw;
+`;
+const ContentContainer = styled.div`
+  align-items: center;
 `;
 const HomeButtonLink = styled(Link)`
   text-decoration: none;
   color: black;
 `;
-const ResultPhargraph = styled.h1`
+const ResultPhargraph = styled.p`
   color: black;
   font-size: 5vh;
   display: inline-block;
   margin: 0 2vw;
 `;
 
+/*
+{characterInfo[0].emotion}
+{userCharacterInfo['기쁨']}
+{userCharacterInfo['슬픔']}
+{userCharacterInfo['화남']}
+*/
 function TestResult() {
   const classes = useStyles();
   const [characterInfo, setCharacterInfo] = useState({});
@@ -70,8 +81,9 @@ function TestResult() {
   }, []);
 
   if (Object.keys(characterInfo).length === 0) return null;
+  // characterInfo = 매칭 캐릭터 하나 정보 객체로 올것임 => 수정 필요
   return (
-    <Container id="result-img">
+    <Container>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
@@ -112,6 +124,7 @@ function TestResult() {
             <ResultPhargraph
               onClick={() => {
                 history.push('/');
+                //dispatch(testPage(1));
                 dispatch(testUserName(''));
                 dispatch(testSurveyNumber(0));
                 dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 화남: 0 }));
@@ -120,6 +133,15 @@ function TestResult() {
             >
               <HomeButtonLink to="/"> 홈 이동</HomeButtonLink>
             </ResultPhargraph>
+
+            {/* <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+               
+              >
+              
+              </Button> */}
           </Paper>
         </Grid>
       </Grid>
