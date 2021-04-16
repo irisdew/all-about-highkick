@@ -8,6 +8,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 import OverdoseContents from '../../components/Test/OverdoseContents';
+import axios from 'axios';
+import baseUrl from '../../url/http';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,12 +62,21 @@ function TestOverdoseResult() {
   const history = useHistory();
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/overdoseResult.json')
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.result);
-        setOverdoseData(res.result);
+    console.log(overdoseCount);
+    try {
+      axios.get(baseUrl + `overdose/${overdoseCount}`).then((response) => {
+        console.log(response.data.data);
+        setOverdoseData(response.data.data);
       });
+    } catch (error) {
+      console.log(error);
+    }
+    // fetch('http://localhost:3000/data/overdoseResult.json')
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log(res.result);
+    //     setOverdoseData(res.result);
+    //   });
   }, []);
 
   if (!overdoseData.length) return null;

@@ -7,8 +7,9 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Button } from '@material-ui/core';
-
 import OverdoseTestQuestion from '../../components/Test/OverdoseTestQuestion';
+import axios from 'axios';
+import baseUrl from '../../url/http';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,12 +70,20 @@ function TestOverdose() {
     setIsChecked(checkedCount);
   }
   useEffect(() => {
-    fetch('http://localhost:3000/data/overdose.json')
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.test);
-        setOverdoseQuestion(res.test);
+    try {
+      axios.get(baseUrl + 'overdose').then((response) => {
+        console.log(response.data.test);
+        setOverdoseQuestion(response.data.test);
       });
+    } catch (error) {
+      console.log(error);
+    }
+    // fetch('http://localhost:3000/data/overdose.json')
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log(res.test);
+    //     setOverdoseQuestion(res.test);
+    //   });
   }, []);
 
   if (!overdoseQuestion.length) return null;

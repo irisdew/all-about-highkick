@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import baseUrl from '../../url/http';
 
 const ImgContainer = styled.div`
   overflow: hidden;
@@ -39,23 +40,15 @@ function OverdoseContents(props) {
       </ScoreDiv>
 
       <img
-        src={props.data[Math.round(props.answerCount / 2)].imgSrc}
-        alt={props.data[Math.round(props.answerCount / 2)].rank}
+        src={`${baseUrl}/image/overdose/${props.data.image}`}
+        alt={props.data.image}
       />
       <ContentsDescription>
         성적표야? 어디보자~
         <br />
-        {
-          props.data[Math.round(props.answerCount / 2)].description.split(
-            '<br />',
-          )[0]
-        }
+        {props.data.description.split('<br />')[0]}
         <br />
-        {
-          props.data[Math.round(props.answerCount / 2)].description.split(
-            '<br />',
-          )[1]
-        }
+        {props.data.description.split('<br />')[1]}
         <br />
       </ContentsDescription>
     </ImgContainer>

@@ -19,7 +19,7 @@ function OverdoseTestQuestion(props) {
           id={`q${props.id}-select1`}
           className="select-radio"
           type="radio"
-          value={`${props.select1[1]}`}
+          value={props.select1[1].toString()}
           name={`${props.id}`}
           onClick={() => props.checkedCounter()}
         />
@@ -30,7 +30,7 @@ function OverdoseTestQuestion(props) {
           id={`q${props.id}-select2`}
           className="select-radio"
           type="radio"
-          value={`${props.select2[1]}`}
+          value={props.select2[1].toString()}
           name={`${props.id}`}
           onClick={() => props.checkedCounter()}
         />
@@ -41,7 +41,7 @@ function OverdoseTestQuestion(props) {
           id={`q${props.id + 1}-select3`}
           className="select-radio"
           type="radio"
-          value={`${props.select3[1]}`}
+          value={props.select3[1].toString()}
           name={`${props.id}`}
           onClick={() => props.checkedCounter()}
         />
@@ -52,7 +52,7 @@ function OverdoseTestQuestion(props) {
           id={`q${props.id}-select4`}
           className="select-radio"
           type="radio"
-          value={`${props.select4[1]}`}
+          value={props.select4[1].toString()}
           name={`${props.id}`}
           onClick={() => props.checkedCounter()}
         />

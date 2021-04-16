@@ -4,6 +4,7 @@ import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useSnackbar } from 'notistack';
+import { toPng } from 'html-to-image';
 
 const ButtonContainer = styled.div`
   display: block;
