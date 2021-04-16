@@ -6,6 +6,8 @@ from hoguma.models.emotion import Emotion
 from hoguma.models.character import Character
 from hoguma import db
 
+import random
+
 
 parser = reqparse.RequestParser()
 parser.add_argument("joy")
@@ -42,6 +44,7 @@ class Test(Resource):
             words = db.session.query(Word.id, Word.emotion, Word.word).all()
             for word in words:
                 result.append(list(word))
+            random.shuffle(result)
             return jsonify(message="success", data=result)
         elif category == "result":
             user_emotion_dict = dict()
