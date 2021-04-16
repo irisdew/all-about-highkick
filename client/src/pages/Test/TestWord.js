@@ -50,7 +50,7 @@ function TestWord() {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <WordTestTitle>
-              다음 중 평소 사용하는 단어와 비슷한 단어를 골라주세요.
+              평소 사용하는 단어와 비슷한 단어 8개를 골라주세요.
             </WordTestTitle>
           </Paper>
         </Grid>
@@ -66,7 +66,7 @@ function TestWord() {
             style={{ border: 'none' }}
           >
             <WordSubmit
-              style={{ display: wordCounter < 10 && 'none' }}
+              style={{ display: wordCounter < 8 && 'none' }}
               onClick={() => {
                 history.push('/roading');
                 setTimeout(function () {

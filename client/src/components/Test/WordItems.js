@@ -57,7 +57,6 @@ function WordItems() {
 
   function changeDivCss(idx) {
     var parent = document.querySelector(`#word${idx}`).parentElement;
-    parent.style.border = '10px solid blue';
     parent.style.opacity = 0;
   }
 
@@ -75,13 +74,9 @@ function WordItems() {
                 // 선택한 radio버튼 박스는 사라지고, 버튼활성화 카운터 1증가 하고 싶음
                 // 아래 처럼 작동시키면, changeDivCss 가 먹힌다. => 대신 버튼활성화 카운트가 안된다. => 당연히 안됨, 조건을 봐라.
                 // 그러자고, 저 if문을 제거해서 실행하면, changeDivCss만 안먹힌다. ㅠ
-                event.preventDefault();
-                changeDivCss(word[0]);
-                if (event.target.checked === false) {
-                  emotionCount[event.target.value] += 1;
-                  dispatch(testEmotionCount(emotionCount));
-                  event.target.checked = true;
-                }
+                // changeDivCss(word[0]);
+                dispatch(testEmotionCount(emotionCount));
+                emotionCount[event.target.value] += 1;
                 dispatch(testWordCount(wordCount + 1));
                 //dispatch(testWordCount(wordCount + 1));
 

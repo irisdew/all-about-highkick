@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  testPage,
   testUserName,
   testSurveyNumber,
   testEmotionCount,
@@ -20,6 +19,8 @@ import ResultEmotionSector from '../../components/Test/ResultEmotionSector';
 import ResultMate from '../../components/Test/ResultMate';
 import ResultGraph from '../../components/Test/ResultGraph';
 import ResultButtons from '../../components/Test/ResultButton';
+import baseUrl from '../../url/http';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -41,11 +42,9 @@ const Container = styled.div`
   align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
   justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
 
-  margin-left: 20vw;
-  margin-right: 20vw;
-`;
-const ContentContainer = styled.div`
-  align-items: center;
+  padding: 0 20vw;
+  /* margin-left: 20vw;
+  margin-right: 20vw; */
 `;
 const HomeButtonLink = styled(Link)`
   text-decoration: none;
@@ -58,12 +57,6 @@ const ResultPhargraph = styled.p`
   margin: 0 2vw;
 `;
 
-/*
-{characterInfo[0].emotion}
-{userCharacterInfo['기쁨']}
-{userCharacterInfo['슬픔']}
-{userCharacterInfo['화남']}
-*/
 function TestResult() {
   const classes = useStyles();
   const [characterInfo, setCharacterInfo] = useState({});
@@ -83,7 +76,7 @@ function TestResult() {
   if (Object.keys(characterInfo).length === 0) return null;
   // characterInfo = 매칭 캐릭터 하나 정보 객체로 올것임 => 수정 필요
   return (
-    <Container>
+    <Container id="result-img">
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Disqus from 'disqus-react';
-import { Hidden } from '@material-ui/core';
 
 function IntroChat() {
   const disqusShortname = 'hoguma';
