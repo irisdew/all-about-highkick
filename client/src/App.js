@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/Intro';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/about" component={About} />
 
         {/* ========= */}
+
         <Route exact path="/survey" component={TestMain} />
         <Route exact path="/survey/process" component={TestSurvey} />
         <Route exact path="/survey/word" component={TestWord} />
