@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  testUserName,
-  testSurveyNumber,
-  testEmotionCount,
-  testWordCount,
-} from '../../actions';
+import { useSelector } from 'react-redux';
+
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-
-import { Link } from 'react-router-dom';
-
 import ResultTopSector from '../../components/Test/ResultTopSector';
 import ResultEmotionSector from '../../components/Test/ResultEmotionSector';
 import ResultMate from '../../components/Test/ResultMate';
@@ -43,23 +34,11 @@ const Container = styled.div`
   justify-content: center;
   padding: 0 20vw;
 `;
-const HomeButtonLink = styled(Link)`
-  text-decoration: none;
-  color: black;
-`;
-const ResultPhargraph = styled.h1`
-  color: black;
-  font-size: 5vh;
-  display: inline-block;
-  margin: 0 2vw;
-`;
 
 function TestResult() {
   const classes = useStyles();
   const [characterInfo, setCharacterInfo] = useState({});
   const userCharacterInfo = useSelector((state) => state.test.emotionCount);
-  const dispatch = useDispatch();
-  const history = useHistory();
 
   useEffect(() => {
     try {
@@ -72,7 +51,6 @@ function TestResult() {
           },
         })
         .then((response) => {
-          console.log(response.data.data);
           setCharacterInfo(response.data.data);
         });
     } catch (error) {
@@ -96,7 +74,7 @@ function TestResult() {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <ResultEmotionSector emotion={characterInfo.emotion} />
+            <ResultEmotionSector userCharacterInfo={userCharacterInfo} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -116,21 +94,6 @@ function TestResult() {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <ResultButtons />
-          </Paper>
-        </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <ResultPhargraph
-              onClick={() => {
-                history.push('/');
-                dispatch(testUserName(''));
-                dispatch(testSurveyNumber(0));
-                dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 분노: 0 }));
-                dispatch(testWordCount(0));
-              }}
-            >
-              <HomeButtonLink to="/"> 홈 이동</HomeButtonLink>
-            </ResultPhargraph>
           </Paper>
         </Grid>
       </Grid>

@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import * as htmlToImage from 'html-to-image';
-import download from 'downloadjs';
+// import * as htmlToImage from 'html-to-image';
+// import download from 'downloadjs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useSnackbar } from 'notistack';
-
+import { Link } from 'react-router-dom';
+import {
+  testUserName,
+  testSurveyNumber,
+  testEmotionCount,
+  testWordCount,
+} from '../../actions';
 const ButtonContainer = styled.div`
   display: block;
 `;
@@ -16,11 +24,15 @@ const ResultPhargraph = styled.h1`
   margin: auto 2vw;
   cursor: pointer;
 `;
+const HomeButtonLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
 
 const callKakaoBtn = () => {
   if (window.Kakao.isInitialized() === false) {
     window.Kakao.init('01ce767b8835e65a664c0c446be9ad7b');
-    console.log(window.Kakao.isInitialized());
+    // console.log(window.Kakao.isInitialized());
   }
   window.Kakao.Link.createDefaultButton({
     container: '#kakao-link-btn',
@@ -34,8 +46,8 @@ const callKakaoBtn = () => {
       link: {
         mobileWebUrl: `http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com/survey/result`,
         webUrl: `http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com/survey/result`,
-        // mobileWebUrl: 'http://localhost:3000/Result',
-        // webUrl: `http://localhost:3000/Result?seq=${seq}`
+        // mobileWebUrl: 'http://localhost:3000/survey/result',
+        // webUrl: `http://localhost:3000/survey/result`,
       },
     },
     social: {
@@ -47,44 +59,46 @@ const callKakaoBtn = () => {
       {
         title: '검사결과 보기',
         link: {
-          // mobileWebUrl: `http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com/survey/result`,
-          // webUrl: `http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com/survey/result`,
-          mobileWebUrl: `http://localhost:3000/survey/result`,
-          webUrl: `http://localhost:3000/survey/result`,
+          mobileWebUrl: `http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com/survey/result`,
+          webUrl: `http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com/survey/result`,
+          // mobileWebUrl: `http://localhost:3000/survey/result`,
+          // webUrl: `http://localhost:3000/survey/result`,
         },
       },
       {
         title: '서비스로 이동',
         link: {
-          // mobileWebUrl:
-          //   'http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com',
-          // webUrl:
-          //   'http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com',
-          mobileWebUrl: 'http://localhost:3000',
-          webUrl: 'http://localhost:3000',
+          mobileWebUrl:
+            'http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com',
+          webUrl:
+            'http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com',
+          // mobileWebUrl: 'http://localhost:3000',
+          // webUrl: 'http://localhost:3000',
         },
       },
     ],
   });
 };
 function onClickKakao() {
-  // window.open(
-  //   'http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com/survey/result',
-  // );
-  window.open('http://localhost:3000/survey/result');
+  window.open(
+    'http://elice-kdt-ai-track-vm-da-02.koreacentral.cloudapp.azure.com/survey/result',
+  );
+  // window.open('http://localhost:3000/survey/result');
 }
 
-function makeImg() {
-  htmlToImage
-    .toPng(document.getElementById('result-img'))
-    .then(function (dataUrl) {
-      download(dataUrl, 'test-result.png');
-    });
-}
+// function makeImg() {
+//   htmlToImage
+//     .toPng(document.getElementById('result-img'))
+//     .then(function (dataUrl) {
+//       download(dataUrl, 'test-result.png');
+//     });
+// }
 
 function ResultButton() {
   const { enqueueSnackbar } = useSnackbar();
   const url = window.location.href; // 현재 url 복사
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const copyClick = () => {
     enqueueSnackbar('URL이 복사되었습니다.');
@@ -103,7 +117,17 @@ function ResultButton() {
         </CopyToClipboard>
       </React.Fragment>
 
-      <ResultPhargraph onClick={() => makeImg()}>저장하자</ResultPhargraph>
+      <ResultPhargraph
+        onClick={() => {
+          history.push('/');
+          dispatch(testUserName(''));
+          dispatch(testSurveyNumber(0));
+          dispatch(testEmotionCount({ 기쁨: 0, 슬픔: 0, 분노: 0 }));
+          dispatch(testWordCount(0));
+        }}
+      >
+        <HomeButtonLink to="/"> 홈 이동</HomeButtonLink>
+      </ResultPhargraph>
     </ButtonContainer>
   );
 }
