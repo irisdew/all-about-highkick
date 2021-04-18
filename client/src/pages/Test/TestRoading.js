@@ -24,7 +24,7 @@ function TestRoading() {
     <Container>
       <ContentContainer>
         <CircularProgress />
-        <LoadingMention>로딩중 페이지...</LoadingMention>
+        <LoadingMention>분석중 입니다...</LoadingMention>
       </ContentContainer>
     </Container>
   );

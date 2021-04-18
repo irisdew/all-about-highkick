@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,19 +35,10 @@ const Container = styled.div`
   padding: 0 20vw;
 `;
 
-const ResultPhargraph = styled.h1`
-  color: black;
-  font-size: 5vh;
-  display: inline-block;
-  margin: 0 2vw;
-`;
-
 function TestResult() {
   const classes = useStyles();
   const [characterInfo, setCharacterInfo] = useState({});
   const userCharacterInfo = useSelector((state) => state.test.emotionCount);
-  const dispatch = useDispatch();
-  const history = useHistory();
 
   useEffect(() => {
     try {
