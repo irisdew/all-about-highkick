@@ -8,12 +8,36 @@ const QuestionDiv = styled.div`
 const SelectDiv = styled.div`
   display: block;
 `;
+const Question = styled.h3`
+  font-size: 2.2vh;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 1.6vh;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 1.4vh;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 1.2vh;
+  }
+`;
+const QuestionLabel = styled.label`
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 1.6vh;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 1.4vh;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 1.2vh;
+  }
+`;
+
 function OverdoseTestQuestion(props) {
   return (
     <QuestionDiv>
-      <h3>
+      <Question>
         {props.id}. {props.question}
-      </h3>
+      </Question>
       <SelectDiv>
         <input
           id={`q${props.id}-select1`}
@@ -23,7 +47,9 @@ function OverdoseTestQuestion(props) {
           name={`${props.id}`}
           onClick={() => props.checkedCounter()}
         />
-        <label htmlFor={`q${props.id}-select1`}>{props.select1[0]}</label>
+        <QuestionLabel htmlFor={`q${props.id}-select1`}>
+          {props.select1[0]}
+        </QuestionLabel>
       </SelectDiv>
       <SelectDiv>
         <input
@@ -34,7 +60,9 @@ function OverdoseTestQuestion(props) {
           name={`${props.id}`}
           onClick={() => props.checkedCounter()}
         />
-        <label htmlFor={`q${props.id}-select2`}>{props.select2[0]}</label>
+        <QuestionLabel htmlFor={`q${props.id}-select2`}>
+          {props.select2[0]}
+        </QuestionLabel>
       </SelectDiv>
       <SelectDiv>
         <input
@@ -45,7 +73,9 @@ function OverdoseTestQuestion(props) {
           name={`${props.id}`}
           onClick={() => props.checkedCounter()}
         />
-        <label htmlFor={`q${props.id}-select3`}>{props.select3[0]}</label>
+        <QuestionLabel htmlFor={`q${props.id}-select3`}>
+          {props.select3[0]}
+        </QuestionLabel>
       </SelectDiv>
       <SelectDiv>
         <input
@@ -56,7 +86,9 @@ function OverdoseTestQuestion(props) {
           name={`${props.id}`}
           onClick={() => props.checkedCounter()}
         />
-        <label htmlFor={`q${props.id}-select4`}>{props.select4[0]}</label>
+        <QuestionLabel htmlFor={`q${props.id}-select4`}>
+          {props.select4[0]}
+        </QuestionLabel>
       </SelectDiv>
     </QuestionDiv>
   );

@@ -9,12 +9,25 @@ const TestRadioContainer = styled.div`
 `;
 const TestLabel = styled.label`
   display: block;
-  padding-top: 4vh;
+  padding-top: 3vh;
   height: 7vh;
   border: 2px solid black;
   border-radius: 30px;
   margin: 1vw 2vh;
   background-color: #dbdbdb;
+  font-size: 2vw;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding-top: 4vh;
+    font-size: 2vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding-top: 4vh;
+    font-size: 2vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding-top: 5vh;
+    font-size: 2vw;
+  }
 `;
 const TestRadioButton = styled.input`
   display: none;
