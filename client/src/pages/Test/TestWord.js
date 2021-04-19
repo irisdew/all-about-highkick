@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import WordItems from '../../components/Test/WordItems';
+import axios from 'axios';
+import baseUrl from '../../url/http';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,14 +32,41 @@ const Container = styled.div`
 
   margin-left: 20vw;
   margin-right: 20vw;
+  padding-top: 5vh;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding-top: 10vh;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding-top: 10vh;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+  }
 `;
 const WordTestTitle = styled.h1`
   color: black;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 2.2vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 2.2vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 2vw;
+  }
 `;
 const WordSubmit = styled.h1`
   color: black;
   margin: 0 auto;
   cursor: pointer;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 2.2vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 2.2vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 2vw;
+  }
 `;
 
 function TestWord() {
@@ -45,6 +74,19 @@ function TestWord() {
   const wordCounter = useSelector((state) => state.test.wordCount);
   const qNumber = useSelector((state) => state.test.surveyNumber);
   const history = useHistory();
+  const [words, setWords] = useState([]);
+
+  useEffect(() => {
+    try {
+      axios.get(baseUrl + 'test/word').then((response) => {
+        setWords(response.data.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  if (words.length !== 24) return null;
   return (
     <Container>
       <Grid container spacing={3}>
@@ -57,7 +99,7 @@ function TestWord() {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <WordItems qNumber={qNumber} />
+            <WordItems words={words} qNumber={qNumber} />
           </Paper>
         </Grid>
         <Grid item xs={12}>

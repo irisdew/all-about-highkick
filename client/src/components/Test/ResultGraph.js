@@ -13,10 +13,20 @@ const BottomSectorContainer = styled.div`
 `;
 const BottomSectorTitle = styled.h1`
   color: black;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 3.5vw;
+  }
 `;
 const BottomGraphDiv = styled.div`
   display: block;
   justify-content: center;
+  align-items: center;
 `;
 
 function ResultGraph(props) {
@@ -57,8 +67,8 @@ function ResultGraph(props) {
       transition: 'transform 0.5s ease-in',
     },
     chart: {
-      width: 600,
-      height: 400,
+      width: 'auto',
+      height: 'auto',
       animation: {
         duration: 300,
       },
@@ -98,7 +108,11 @@ function ResultGraph(props) {
     <BottomSectorContainer>
       <BottomSectorTitle>3대 감정 측정결과</BottomSectorTitle>
       <BottomGraphDiv>
-        <ColumnChart data={data} options={options} />
+        <ColumnChart
+          data={data}
+          options={options}
+          style={{ width: '50vw', height: '40vh', paddingLeft: '2vw' }}
+        />
       </BottomGraphDiv>
     </BottomSectorContainer>
   );

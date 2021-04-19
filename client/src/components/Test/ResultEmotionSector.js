@@ -3,6 +3,15 @@ import styled from 'styled-components';
 
 const MiddleSectorTitle = styled.h1`
   color: black;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 3.5vw;
+  }
 `;
 const MiddleSectorContainer = styled.div`
   overflow: hidden;
@@ -17,10 +26,29 @@ const MiddlesectorEmotionContainer = styled.div`
   margin: 0 2vw;
 `;
 const MiddleSectorImage = styled.img`
-  width: 100px;
+  width: 5vw;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 5vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    width: 5vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 5vw;
+  }
 `;
 const MiddleSectorDescription = styled.p`
   color: black;
+  font-size: 1vw;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 1vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 1vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 1vw;
+  }
 `;
 
 // 변해야 할 것 : 매핑되는 감정이미지, 이미지 설명도 매핑시켜 저장해놔야 할듯

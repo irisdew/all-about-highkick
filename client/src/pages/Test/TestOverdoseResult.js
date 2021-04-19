@@ -39,18 +39,44 @@ const Container = styled.div`
 
   margin-left: 20vw;
   margin-right: 20vw;
+  @media (min-width: 768px) and (max-width: 1024px) {
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding-top: 10vh;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding-top: 15vh;
+  }
 `;
 const ResultTitle = styled.h1`
   color: black;
   font-size: 5vh;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 4vh;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 3vh;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 2vh;
+  }
 `;
-const ResultPhargraph = styled.p`
+const ResultPhargraph = styled.h1`
   color: black;
   font-size: 5vh;
   display: inline-block;
   margin: 0 2vw;
   cursor: pointer;
   font-family: 'yangjin';
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 3.5vh;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 2vh;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 1.3vh;
+  }
 `;
 const MyLink = styled(Link)`
   text-decoration: none;

@@ -23,6 +23,15 @@ const ResultPhargraph = styled.h1`
   display: inline-block;
   margin: auto 2vw;
   cursor: pointer;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 3vh;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 2vh;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 1.5vh;
+  }
 `;
 const HomeButtonLink = styled(Link)`
   text-decoration: none;

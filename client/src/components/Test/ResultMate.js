@@ -16,10 +16,27 @@ const MiddlesectorEmotionContainer = styled.div`
 `;
 const MiddleSectorTitle = styled.h1`
   color: black;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 3.5vw;
+  }
 `;
 const MiddleMateSectorImage = styled.img`
   width: 20vw;
-  height: 20vh;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 20vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    width: 20vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 20vw;
+  }
 `;
 const MiddleMateSectorName = styled.p`
   color: black;

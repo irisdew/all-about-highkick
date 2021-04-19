@@ -3,11 +3,29 @@ import styled from 'styled-components';
 
 const ContextStrong = styled.strong`
   font-family: 'yangjin';
-  font-size: 1.1rem;
+  font-size: 1.8vw;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 1.4vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 1.2vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 1vw;
+  }
 `;
 const IntroParagraph = styled.p`
   color: black;
-  font-size: 1vw;
+  font-size: 1.1vw;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 0.6vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 0.4vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 0.2vw;
+  }
 `;
 function IntroContext() {
   return (

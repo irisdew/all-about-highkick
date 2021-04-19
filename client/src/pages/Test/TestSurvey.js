@@ -23,9 +23,17 @@ const Container = styled.div`
   background-color: white;
   align-items: center; /* 세로에서 가운데에 요소를 배치하겠다 */
   justify-content: center; /*가로에서 가운데에 요소(자식요소)를 배치하겠다*/
-
   margin-left: 20vw;
   margin-right: 20vw;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding-top: 2vh;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding-top: 5vh;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    padding-top: 10vh;
+  }
 `;
 const ContentContainer = styled.div`
   align-items: center;
@@ -37,6 +45,31 @@ const ProcessImageContainer = styled.div`
   justify-content: center;
   width: auto;
   height: auto;
+`;
+const SurveyQuestion = styled.h1`
+  margin-bottom: 0;
+  font-size: 1.5vw;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 1.5vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 2vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 2vw;
+  }
+`;
+const SurveyImage = styled.img`
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 50vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    width: 50vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 50vw;
+  }
 `;
 function TestSurvey() {
   const [surveyData, setSurveyData] = useState([]);
@@ -59,18 +92,18 @@ function TestSurvey() {
       <ContentContainer className={classes.root}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <h1 style={{ marginBottom: 0 }}>
+            <SurveyQuestion>
               Q{surveyData[qNumber].q_num}.{' '}
               {surveyData[qNumber].question.split('<br />')[0].length !== 0 &&
                 surveyData[qNumber].question.split('<br />')[0]}
-            </h1>
-            <h1 style={{ marginTop: '1vh' }}>
+            </SurveyQuestion>
+            <SurveyQuestion>
               {surveyData[qNumber].question.split('<br />')[1].length !== 0 &&
                 surveyData[qNumber].question.split('<br />')[1]}
-            </h1>
+            </SurveyQuestion>
 
             <ProcessImageContainer>
-              <img
+              <SurveyImage
                 src={`${baseUrl}/image/question/${surveyData[qNumber].image_url}`}
                 alt={surveyData[qNumber].image_url}
               />

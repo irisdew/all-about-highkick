@@ -8,6 +8,16 @@ const TopSectorTitle = styled.h1`
   font-size: 5.5vh;
   margin-top: 1vh;
   margin-bottom: 2vh;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 3.5vw;
+  }
 `;
 const TopSectorImageContainer = styled.div`
   overflow: hidden;
@@ -19,13 +29,30 @@ const TopSectorImageContainer = styled.div`
 `;
 const TopSectorImage = styled.img`
   width: 25vw;
-  height: 30vh;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 25vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    width: 25vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 25vw;
+  }
 `;
 const TopSectorDescription = styled.h3`
   color: black;
   font-size: 4vh;
   margin-top: 3vh;
   margin-bottom: 0;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 3.5vw;
+  }
 `;
 function ResultTopSector(props) {
   const userName = useSelector((state) => state.test.name);
